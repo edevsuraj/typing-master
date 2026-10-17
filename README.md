@@ -93,8 +93,11 @@ it does not lock the next one, so you can revisit anything at any time.
 
 The curriculum is validated by `validateCurriculum()` (also callable from the
 browser console as `TypingMasterLessons.validateCurriculum()`). It checks for
-duplicate ids, missing objectives, repeated passages and — most importantly —
-characters used before they are taught.
+duplicate ids, missing objectives, repeated passages, characters used before
+they are taught, and — most importantly — that every passage is between 300
+and 400 characters inclusive (`passage.length >= 300 &&
+passage.length <= 400`), so every typing exercise from Lesson 1 onward meets
+the minimum length requirement.
 
 ---
 
