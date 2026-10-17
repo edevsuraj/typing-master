@@ -3,8 +3,8 @@
    -------------------------------------------------------------------------
    1. Tokens (dark + light)      5. Lesson panel
    2. Reset and base             6. Results + review
-   3. Top bar and controls       7. Responsive
-   4. Practice screen            8. Motion & print
+   3. Top bar and controls       7. Footer
+   4. Practice screen            8. Responsive · motion · print
    ========================================================================= */
 
 /* ------------------------------------------------------------ 1. tokens */
@@ -123,17 +123,34 @@ button, select, input { font: inherit; color: inherit; }
 
 .brand { display: flex; align-items: center; gap: 9px; min-width: 0; }
 
+/* The logo doubles as the home button: it returns you to your place in the
+   course. Padded out and pulled back by the same amount so the mark stays
+   optically flush with the page edge. */
+.brand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: -5px;
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 120ms var(--ease), border-color 120ms var(--ease);
+}
+.brand-btn:hover { background: var(--bg-raised); border-color: var(--line); }
+.brand-btn:active { background: var(--panel); }
+
 .brand-mark {
   display: grid;
   place-items: center;
+  flex-shrink: 0;
   width: 26px; height: 26px;
   border-radius: 7px;
   background: var(--accent);
-  color: var(--accent-ink);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  color: var(--accent-ink);         /* the mark is drawn in currentColor */
 }
+.brand-mark svg { display: block; }
 
 .brand-name {
   font-size: 0.9rem;
@@ -708,6 +725,38 @@ dialog::backdrop { background: rgba(6, 9, 13, 0.62); }
 }
 .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
+/* ------------------------------------------------------------- footer */
+.site-footer {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 5vw, 32px) clamp(24px, 5vh, 40px);
+  text-align: center;
+}
+
+.footer-note {
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.footer-link-row { font-size: 0.82rem; }
+
+.footer-link {
+  color: var(--text-dim);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 1px;
+  transition: color 120ms var(--ease), border-color 120ms var(--ease);
+}
+.footer-link:hover {
+  color: var(--accent);
+  border-bottom-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
 /* -------------------------------------------------------- 7. responsive */
 @media (max-width: 780px) {
   :root { --passage-lines: 3; }
@@ -745,6 +794,6 @@ dialog::backdrop { background: rgba(6, 9, 13, 0.62); }
 }
 
 @media print {
-  .topbar, .progress, .toast, .panel, .results { display: none !important; }
+  .topbar, .progress, .toast, .panel, .results, .site-footer { display: none !important; }
   body { background: #fff; color: #000; }
 }

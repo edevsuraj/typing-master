@@ -115,6 +115,7 @@
       difficultySelect: id('difficulty-select'),
       difficultyField: id('difficulty-field'),
       restartBtn: id('restart-btn'),
+      homeBtn: id('home-btn'),
       lessonsBtn: id('lessons-btn'),
       themeBtn: id('theme-btn'),
 
@@ -200,6 +201,7 @@
     });
 
     dom.restartBtn.addEventListener('click', restart);
+    dom.homeBtn.addEventListener('click', goHome);
     dom.lessonsBtn.addEventListener('click', togglePanel);
     dom.themeBtn.addEventListener('click', function () {
       var current = doc.documentElement.getAttribute('data-theme');
@@ -640,13 +642,24 @@
   function syncScroll() {
     var span = spans[currentIndex];
     if (!span) return;
-    if (!viewportHeight || contentHeight <= viewportHeight) {
+    if (!viewportHeight || !caretLineHeight || contentHeight <= viewportHeight) {
       dom.text.style.transform = 'translateY(0px)';
       return;
     }
-    var desired = span.offsetTop - (viewportHeight / 2) + (caretLineHeight / 2);
-    var min = -(contentHeight - viewportHeight);
-    var y = Math.max(min, Math.min(0, desired));
+
+    // A character span is an inline box sitting inside its line box, offset by
+    // the extra leading, so offsetTop is not a line boundary. Snap it back onto
+    // the grid: line boxes start at k * caretLineHeight down the passage.
+    var lineTop = Math.round(span.offsetTop / caretLineHeight) * caretLineHeight;
+
+    // Centre the caret line, then clamp that offset to the window in which the
+    // caret's line is fully visible and the passage still begins and ends
+    // where it should. Without this clamp the opening line of a long passage
+    // scrolls straight out of sight, so the opening words cannot be read.
+    var desired = lineTop - (viewportHeight / 2) + (caretLineHeight / 2);
+    var lowest = Math.max(-(contentHeight - viewportHeight), -lineTop);   // end of passage / caret at the top
+    var highest = Math.min(0, viewportHeight - lineTop - caretLineHeight); // start of passage / caret at the bottom
+    var y = Math.max(lowest, Math.min(highest, desired));
     dom.text.style.transform = 'translateY(' + Math.round(y) + 'px)';
   }
 
@@ -1259,6 +1272,17 @@
   }
 
   /* ============================================================ helpers */
+
+  /**
+   * The logo: jump back to your place in the course, the next lesson you have
+   * not finished. Deliberately not progress.lastLessonId, which startSession()
+   * rewrites on every lesson change and would make this a button that appears
+   * to do nothing.
+   */
+  function goHome() {
+    var lesson = L.nextLesson(Store.completedIds()) || L.LESSONS[0];
+    startSession({ mode: Store.setting('mode'), lessonId: lesson.id });
+  }
 
   function restart() {
     startSession({ mode: session.mode, lessonId: session.lessonId, passageIndex: session.passageIndex });

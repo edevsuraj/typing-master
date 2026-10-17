@@ -205,6 +205,9 @@ Browser shortcuts (`Ctrl`+`R`, `Ctrl`+`Tab`, …) are deliberately left alone.
 - Returns to the tab re-focus the typing field automatically when no dialog is
   open, and the cursor is never trapped: `Tab` inserts spaces inside the text,
   but every control remains reachable by keyboard outside it.
+- The logo is a real `<button>` with an `aria-label` that names both it and what
+  it does, and it sits early in the tab order, so jumping back to your place in
+  the course does not need a mouse.
 
 ---
 
@@ -212,6 +215,7 @@ Browser shortcuts (`Ctrl`+`R`, `Ctrl`+`Tab`, …) are deliberately left alone.
 
 ```
 index.html            markup and dialogs
+assets/logo.svg       the logo: a caret at the start of three lines of text
 css/style.css         tokens, layout, both themes, responsive rules
 js/lessons.js         the curriculum: 82 lessons, 342 passages
 js/storage.js         versioned localStorage with migration and repair
@@ -226,6 +230,15 @@ README.md             this file
 that attach to `window`, loaded in dependency order with ordinary `<script>`
 tags — deliberately *not* ES modules, because modules are blocked by the CORS
 rules on `file://` and this app must run by opening a file.
+
+The logo exists twice on purpose. `assets/logo.svg` is the reusable file, and
+the header inlines the same geometry with `fill="currentColor"` so the mark
+follows `--accent-ink` and stays legible in both themes. The favicon inlines it
+a third time as a data URI, so it still resolves when the app is opened straight
+from disk rather than over HTTP. Keep the three in step if you redraw it, and
+keep `assets/logo.svg` free of non-ASCII characters and of runs of hyphens: XML
+forbids `--` inside a comment, and a `-----` divider silently turns the whole
+file into an undecodable image.
 
 ---
 

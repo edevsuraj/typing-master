@@ -7,15 +7,28 @@
 <meta name="description" content="A calm, distraction-free touch typing tutor. Structured lessons from the home row to advanced practice, live WPM and accuracy, and progress saved in your browser.">
 <meta name="color-scheme" content="dark light">
 <link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23151a21'/%3E%3Cpath d='M8 11h16M8 16h11M8 21h7' stroke='%2364d2a4' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<!-- Mirrors assets/logo.svg (that file is the reusable asset; this inlines it so
+     the favicon still resolves when the app is opened straight from disk). -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23063b2a'/%3E%3Cg fill='%2363d3a3'%3E%3Crect x='7.5' y='9' width='3.5' height='14' rx='1.75'/%3E%3Crect x='13.5' y='10.25' width='8.5' height='3.5' rx='1.75'/%3E%3Crect x='13.5' y='15.5' width='11.5' height='3.5' rx='1.75'/%3E%3Crect x='13.5' y='20.75' width='6' height='3.5' rx='1.75'/%3E%3C/g%3E%3C/svg%3E">
 </head>
 <body>
 <a class="skip-link" href="#tm-text">Skip to the typing text</a>
 
 <header class="topbar">
   <div class="brand">
-    <span class="brand-mark" aria-hidden="true">TM</span>
-    <span class="brand-name">Typing Master</span>
+    <button type="button" class="brand-btn" id="home-btn"
+            aria-label="Typing Master — go to your next lesson"
+            title="Go to your next lesson">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor" focusable="false">
+          <rect x="7.5" y="9" width="3.5" height="14" rx="1.75"/>
+          <rect x="13.5" y="10.25" width="8.5" height="3.5" rx="1.75"/>
+          <rect x="13.5" y="15.5" width="11.5" height="3.5" rx="1.75"/>
+          <rect x="13.5" y="20.75" width="6" height="3.5" rx="1.75"/>
+        </svg>
+      </span>
+      <span class="brand-name">Typing Master</span>
+    </button>
   </div>
 
   <div class="controls" role="group" aria-label="Practice controls">
@@ -95,6 +108,13 @@
     <p class="status-line" id="status-line" role="status"></p>
   </section>
 </main>
+
+<footer class="site-footer">
+  <p class="footer-note">More from the lab</p>
+  <p class="footer-link-row">
+    <a class="footer-link" href="https://edevsuraj.github.io/explore-our-apps-and-extensions/" target="_blank" rel="noopener noreferrer">Explore our apps and extensions</a>
+  </p>
+</footer>
 
 <!-- ============================ lesson panel ============================ -->
 <dialog class="panel" id="panel" aria-labelledby="panel-title">

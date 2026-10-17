@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Typing Master logo.
+
+   A caret standing at the start of three lines of text: you type, the words
+   appear. The geometry is shared with the inline mark in index.html; only the
+   colours differ, because this file has to carry its own.
+
+   Dark-surface pairing. Two constraints shaped this file. It stays pure ASCII,
+   because it is often served as image/svg+xml with no charset. And it avoids
+   runs of hyphens: XML forbids a double hyphen inside a comment, so a divider
+   line of dashes makes the whole file a parse error.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"
+     role="img" aria-label="Typing Master">
+  <rect width="32" height="32" rx="8" fill="#063b2a"/>
+  <g fill="#63d3a3">
+    <rect x="7.5" y="9" width="3.5" height="14" rx="1.75"/>
+    <rect x="13.5" y="10.25" width="8.5" height="3.5" rx="1.75"/>
+    <rect x="13.5" y="15.5" width="11.5" height="3.5" rx="1.75"/>
+    <rect x="13.5" y="20.75" width="6" height="3.5" rx="1.75"/>
+  </g>
+</svg>
