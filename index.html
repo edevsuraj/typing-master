@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typing Master — learn touch typing, one lesson at a time</title>
+<meta name="description" content="A calm, distraction-free touch typing tutor. Structured lessons from the home row to advanced practice, live WPM and accuracy, and progress saved in your browser.">
+<meta name="color-scheme" content="dark light">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23151a21'/%3E%3Cpath d='M8 11h16M8 16h11M8 21h7' stroke='%2364d2a4' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip-link" href="#tm-text">Skip to the typing text</a>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">TM</span>
+    <span class="brand-name">Typing Master</span>
+  </div>
+
+  <div class="controls" role="group" aria-label="Practice controls">
+    <span class="field">
+      <label class="field-label" for="mode-select">Mode</label>
+      <select id="mode-select" autocomplete="off">
+        <option value="guided">Guided lesson</option>
+        <option value="practice">Free practice</option>
+        <option value="timed">Timed test</option>
+        <option value="accuracy">Accuracy focus</option>
+        <option value="speed">Speed challenge</option>
+        <option value="weak">Weak-key practice</option>
+        <option value="random">Random test</option>
+      </select>
+    </span>
+
+    <span class="field" id="duration-field">
+      <label class="field-label" for="duration-select">Time</label>
+      <select id="duration-select" autocomplete="off">
+        <option value="15">15s</option>
+        <option value="30">30s</option>
+        <option value="60">60s</option>
+        <option value="120">120s</option>
+      </select>
+    </span>
+
+    <span class="field" id="difficulty-field" hidden>
+      <label class="field-label" for="difficulty-select">Level</label>
+      <select id="difficulty-select" autocomplete="off">
+        <option value="1">1 · home row</option>
+        <option value="2">2 · easy words</option>
+        <option value="3">3 · full alphabet</option>
+        <option value="4">4 · sentences</option>
+        <option value="5">5 · advanced</option>
+      </select>
+    </span>
+
+    <button type="button" id="restart-btn" class="btn" title="Restart this passage (Ctrl + Enter)">Restart</button>
+    <button type="button" id="lessons-btn" class="btn" aria-haspopup="dialog" aria-expanded="false">Lessons</button>
+    <button type="button" id="theme-btn" class="btn btn-icon" aria-label="Switch between dark and light theme">
+      <span class="theme-glyph" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main class="stage">
+  <section class="session" aria-labelledby="lesson-title">
+    <div class="session-head">
+      <p class="lesson-label" id="lesson-label">Home Row · Lesson 01</p>
+      <h1 class="lesson-title" id="lesson-title">F and J · The Anchors</h1>
+      <p class="objective" id="objective"></p>
+      <ul class="key-chips" id="key-chips" aria-label="Keys being practised"></ul>
+    </div>
+
+    <div class="statbar" id="statbar" role="group" aria-label="Live statistics">
+      <p class="stat"><span class="stat-value" id="stat-wpm">0</span><span class="stat-label">wpm</span></p>
+      <p class="stat"><span class="stat-value" id="stat-acc">100</span><span class="stat-label">% accuracy</span></p>
+      <p class="stat"><span class="stat-value" id="stat-time">0:00</span><span class="stat-label" id="time-label">elapsed</span></p>
+    </div>
+
+    <div class="text-frame">
+      <div class="text-viewport" id="tm-text">
+        <div class="text" id="text-inner"></div>
+        <!-- Real focusable field: keeps physical keyboards, mobile keyboards,
+             screen readers and browser focus management working. -->
+        <textarea id="capture" class="capture" rows="1" spellcheck="false" autocomplete="off"
+                  autocorrect="off" autocapitalize="off" wrap="off"
+                  aria-describedby="text-hint"
+                  aria-label="Typing area. Type the passage shown. Backspace corrects a mistake, Escape opens the lesson list, Control plus Enter restarts."></textarea>
+      </div>
+      <p class="caps-hint" id="caps-hint" hidden>Caps Lock is on — that explains the capitals.</p>
+      <p class="text-hint" id="text-hint">Just start typing. Nothing needs clicking first.</p>
+      <p class="storage-note">Progress is saved in this browser only — it does not sync between devices.</p>
+    </div>
+
+    <div class="progress" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
+    <p class="status-line" id="status-line" role="status"></p>
+  </section>
+</main>
+
+<!-- ============================ lesson panel ============================ -->
+<dialog class="panel" id="panel" aria-labelledby="panel-title">
+  <div class="panel-inner">
+    <header class="panel-head">
+      <h2 class="panel-title" id="panel-title">Curriculum</h2>
+      <button type="button" class="btn btn-icon" id="panel-close" aria-label="Close the lesson list">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </header>
+
+    <div class="panel-tabs" role="tablist" aria-label="Panel sections">
+      <button type="button" class="tab is-active" id="tab-lessons" role="tab" aria-selected="true" aria-controls="view-lessons">Lessons</button>
+      <button type="button" class="tab" id="tab-progress" role="tab" aria-selected="false" aria-controls="view-progress">Progress &amp; settings</button>
+    </div>
+
+    <div class="panel-view" id="view-lessons" role="tabpanel" aria-labelledby="tab-lessons" tabindex="0">
+      <div class="lesson-list" id="lesson-list"></div>
+    </div>
+
+    <div class="panel-view" id="view-progress" role="tabpanel" aria-labelledby="tab-progress" tabindex="0" hidden>
+      <div class="summary" id="summary"></div>
+
+      <h3 class="panel-subtitle">Recent sessions</h3>
+      <ul class="recent" id="recent-list"></ul>
+      <p class="empty" id="recent-empty">No sessions recorded yet. Finish a passage and it will appear here.</p>
+
+      <h3 class="panel-subtitle">Keys to practise</h3>
+      <ul class="weak-list" id="weak-list"></ul>
+      <p class="empty" id="weak-empty">Mistakes you make will be collected here automatically.</p>
+
+      <h3 class="panel-subtitle">Preferences</h3>
+      <div class="settings">
+        <span class="field">
+          <label class="field-label" for="theme-select">Theme</label>
+          <select id="theme-select">
+            <option value="system">Match system</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
+        </span>
+        <span class="field">
+          <label class="field-label" for="default-duration">Default test length</label>
+          <select id="default-duration">
+            <option value="15">15 seconds</option>
+            <option value="30">30 seconds</option>
+            <option value="60">60 seconds</option>
+            <option value="120">120 seconds</option>
+          </select>
+        </span>
+        <span class="field">
+          <label class="field-label" for="default-difficulty">Random test level</label>
+          <select id="default-difficulty">
+            <option value="1">1 · home row only</option>
+            <option value="2">2 · easy words</option>
+            <option value="3">3 · full alphabet</option>
+            <option value="4">4 · sentences</option>
+            <option value="5">5 · advanced</option>
+          </select>
+        </span>
+        <span class="field">
+          <label class="field-label" for="caret-select">Caret</label>
+          <select id="caret-select">
+            <option value="block">Block</option>
+            <option value="line">Line</option>
+            <option value="underline">Underline</option>
+            <option value="none">None</option>
+          </select>
+        </span>
+        <span class="field field-check">
+          <input type="checkbox" id="live-stats">
+          <label for="live-stats">Show live statistics while typing</label>
+        </span>
+      </div>
+
+      <div class="danger">
+        <button type="button" class="btn btn-danger" id="reset-btn">Reset saved progress</button>
+        <p class="hint" id="reset-hint" role="status">This clears lessons, records and weak keys in this browser. It cannot be undone.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============================== results ============================== -->
+<dialog class="results" id="results" aria-labelledby="results-title">
+  <div class="results-body">
+    <header class="results-head">
+      <p class="results-kicker" id="results-kicker">Lesson 01</p>
+      <h2 class="results-title" id="results-title">Passage complete</h2>
+      <button type="button" class="btn btn-icon results-close" id="results-close" aria-label="Close results">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </header>
+
+    <div class="results-primary">
+      <p class="big-stat"><span class="big-value" id="r-wpm">0</span><span class="big-label">wpm</span></p>
+      <p class="big-stat"><span class="big-value" id="r-acc">100</span><span class="big-label">% accuracy</span></p>
+    </div>
+
+    <p class="results-message" id="r-message"></p>
+
+    <dl class="results-grid">
+      <div><dt>Gross speed</dt><dd id="r-gross">0 wpm</dd></div>
+      <div><dt>Characters</dt><dd id="r-chars">0 correct · 0 wrong</dd></div>
+      <div><dt>Duration</dt><dd id="r-duration">0:00</dd></div>
+      <div><dt>Personal best</dt><dd id="r-best">&mdash;</dd></div>
+    </dl>
+
+    <ul class="results-mistakes" id="r-mistakes"></ul>
+
+    <div class="results-actions">
+      <button type="button" class="btn btn-primary" id="r-retry">Retry</button>
+      <button type="button" class="btn" id="r-next">Next lesson</button>
+      <button type="button" class="btn" id="r-review">Review passage</button>
+    </div>
+
+    <div class="review" id="review" hidden>
+      <h3 class="review-title" id="review-title">Passage review</h3>
+      <div class="text-viewport review-viewport">
+        <div class="text" id="review-text"></div>
+      </div>
+      <ul class="review-list" id="review-list"></ul>
+      <button type="button" class="btn" id="review-back">Back to results</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<noscript>
+  <p class="noscript">Typing Master needs JavaScript to score your keystrokes. Please enable it and reload the page.</p>
+</noscript>
+
+<script src="js/lessons.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/typing-engine.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

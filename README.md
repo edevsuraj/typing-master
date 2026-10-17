@@ -1,0 +1,288 @@
+# Typing Master
+
+A calm, distraction-free touch-typing tutor that runs entirely in the browser.
+No build step, no framework, no backend, no accounts — just HTML, CSS and
+vanilla JavaScript.
+
+Open `index.html` and start typing. There is no on-screen keyboard anywhere in
+the application: you use your physical keyboard, and the app quietly scores
+every keystroke.
+
+---
+
+## Contents
+
+- [Quick start](#quick-start)
+- [Features](#features)
+- [The curriculum](#the-curriculum)
+- [Practice modes](#practice-modes)
+- [How the numbers are calculated](#how-the-numbers-are-calculated)
+- [What gets saved, and where](#what-gets-saved-and-where)
+- [Keyboard shortcuts](#keyboard-shortcuts)
+- [Accessibility](#accessibility)
+- [Project layout](#project-layout)
+- [Testing](#testing)
+- [Deploying to GitHub Pages](#deploying-to-github-pages)
+- [Browser support](#browser-support)
+
+---
+
+## Quick start
+
+**Just open it.** Double-click `index.html`, or drag it into a browser window.
+Everything works from `file://` because the scripts are plain browser scripts
+with relative paths.
+
+**Or serve it locally** (handy for testing, optional for use):
+
+```bash
+node tools/serve.js        # → http://localhost:8080/
+node tools/serve.js 3000   # pick a different port
+```
+
+**Or check the headless tests:**
+
+```bash
+node tools/verify.js
+```
+
+No dependencies are required for any of the above. Node is only used for the
+optional test and server scripts; the application itself never needs it.
+
+---
+
+## Features
+
+- **82 lessons** across 7 stages, from the F and J anchors to long-form prose.
+- **Seven practice modes**: guided lessons, free practice, timed tests,
+  accuracy focus, speed challenge, weak-key practice and random tests.
+- **Live statistics** — net WPM, accuracy and a timer that counts up or down
+  depending on the mode.
+- **Character-by-character feedback** with a caret, wrong-character marking and
+  automatic scrolling that keeps your current line in view.
+- **Results card** with net WPM, gross WPM, accuracy, character counts,
+  duration, an honest comparison with your personal best, and a passage review
+  that lists every key you missed with its surrounding text.
+- **Weak-key drills** generated from the characters you actually get wrong.
+- **Light and dark themes**, plus "match system".
+- **Progress saved in the browser**, with a two-step reset.
+- **Works on a phone**, with an explanation that a physical keyboard is
+  recommended for learning touch typing.
+
+---
+
+## The curriculum
+
+The course is ordered so that no lesson ever asks you to type a character it
+has not taught you. `js/lessons.js` contains the whole course, and it enforces
+that rule itself.
+
+| Stage | Name | What it covers |
+| --- | --- | --- |
+| 1 | Home Row | F and J as anchors, then D/K, S/L, A and `;`, G/H, full sweeps, words, phrases and a passage — using only `a s d f g h j k l ;` |
+| 2 | Top Row | Q/P, W/O, E/I, R/U, T/Y in pairs, full sweeps, vertical reaches, words, sentences and a passage |
+| 3 | Bottom Row | Z/M, X/comma, C/full stop, V/slash, B/N, sweeps, alternating rows, punctuation, sentences and a passage |
+| 4 | Complete Alphabet | The whole alphabet, common letter pairs, the commonest words, long words, prefixes and suffixes, capitals and Shift, quotes, numbers |
+| 5 | Words & Sentences | Everyday sentences and vocabulary, longer sentences, paragraphs, capitalisation, numbers and symbols, dialogue, letters and email, natural prose |
+| 6 | Speed & Accuracy | Accuracy before speed, rhythm, short-word bursts, weak-finger drills, common words at speed, consistency, mistake recovery |
+| 7 | Advanced | Long paragraphs, complex punctuation, numbers and symbols, proper nouns, advanced vocabulary, endurance runs, technical and literary prose |
+
+Each lesson records a `mastery` target — a speed and an accuracy that must both
+be met to mark the lesson as mastered. Completing a lesson records your result;
+it does not lock the next one, so you can revisit anything at any time.
+
+The curriculum is validated by `validateCurriculum()` (also callable from the
+browser console as `TypingMasterLessons.validateCurriculum()`). It checks for
+duplicate ids, missing objectives, repeated passages and — most importantly —
+characters used before they are taught.
+
+---
+
+## Practice modes
+
+| Mode | What it does |
+| --- | --- |
+| **Guided lesson** | The current lesson, no time limit. Finishing it records progress and unlocks the mastery mark. |
+| **Free practice** | The same text with no pressure and no effect on lesson progress. |
+| **Timed test** | 15, 30, 60 or 120 seconds. The text is assembled from passages that suit your chosen level, and the clock starts with your first keystroke. |
+| **Accuracy focus** | The longest passage of the lesson, scored for mistakes rather than speed. |
+| **Speed challenge** | A timed sprint aimed at beating your stored personal best. |
+| **Weak-key practice** | A drill generated from the characters you miss most, paired with their neighbours on the same row and mixed into real words. Falls back to a foundation drill until there is something to work on. |
+| **Random test** | A random passage from the level you choose (1–5). |
+
+---
+
+## How the numbers are calculated
+
+A "word" is **5 characters**, the standard convention in typing tests.
+
+```
+gross WPM = (every keystroke / 5) / minutes elapsed
+net   WPM = ((correct characters − remaining errors) / 5) / minutes elapsed, floored at 0
+accuracy  = (correct characters) / (every character attempted) × 100
+```
+
+- **Correct characters** are counted from the passage itself: every character
+  before the caret is either correct or wrong, so it is simply
+  `caret position − wrong characters`.
+- **Net WPM** is the headline number, because it cannot flatter a messy run.
+  Gross WPM is shown on the results card.
+- **Accuracy** uses every keystroke in the denominator, so correcting a
+  mistake with Backspace does not restore full accuracy — the failed keystroke
+  is still counted. Resetting a lesson clears the counters but cannot erase a
+  stored record.
+- **Very short sessions** (under 300 ms) report `0` rather than a division by
+  almost zero, and a session under one second reports "—" for speed on the
+  results card, because those numbers would be meaningless. Nothing can ever
+  display `NaN` or `Infinity`.
+- **Personal bests** only count sessions of at least 60 characters, so a lucky
+  three-key run cannot become a record.
+- **The clock starts with your first keystroke**, not when the text appears, so
+  nobody loses time to reading.
+
+`tools/verify.js` tests all of this against hand-worked examples, including the
+"11 characters in 10 seconds = 13.2 wpm" case.
+
+---
+
+## What gets saved, and where
+
+Everything lives in `localStorage` under the key `typingmaster.progress.v1`, as
+one versioned JSON object:
+
+- which lessons you have completed and mastered, and your best result for each
+- best WPM, best accuracy, session count, total characters, total practice time
+- a daily practice log (last 120 days)
+- your last 25 sessions
+- per-character mistake counts, used by weak-key practice
+- preferences: theme, mode, test length, random-test level, caret style, and
+  whether the live statistics row is shown
+
+**Your progress is stored in this browser only.** It does not sync between
+browsers, devices or private windows, and clearing site data deletes it.
+
+The data is versioned (`version: 2`) and migrated forward on load, and every
+field is type-checked on read: a corrupted or hand-edited blob is repaired, a
+backup copy is kept under `…v1.corrupt`, and the app starts fresh with a
+message. If `localStorage` is unavailable altogether (private mode, storage
+disabled), the app runs from memory and says so.
+
+**Reset:** *Lessons → Progress & settings → Reset saved progress*, then confirm.
+The button changes to "Confirm reset" for five seconds.
+
+---
+
+## Keyboard shortcuts
+
+| Key | Action |
+| --- | --- |
+| any key | Start typing immediately — no clicking required |
+| `Backspace` | Step back and fix a mistake |
+| `Tab` | Inserts two spaces |
+| `Enter` | Matches a line break in the passage |
+| `Ctrl` / `Cmd` + `Enter` | Restart the passage |
+| `Escape` | Open or close the lesson list |
+
+Browser shortcuts (`Ctrl`+`R`, `Ctrl`+`Tab`, …) are deliberately left alone.
+
+---
+
+## Accessibility
+
+- Semantic landmarks, headings and lists; real `<button>`, `<select>` and
+  `<label>` elements throughout.
+- Input arrives through a visually hidden `<textarea>`, so physical keyboards,
+  on-screen keyboards, IME input, browser focus handling and assistive
+  technology all behave normally. The passage itself is real, selectable text.
+- The lesson panel and the results card are native modal `<dialog>` elements,
+  which gives correct focus trapping, focus restoration and `Escape` handling.
+- Keystrokes are only captured while that field has focus, so buttons, selects
+  and dialogs never lose a keypress.
+- Visible focus rings on every interactive element, a skip link to the typing
+  text, live status text for mode changes, and contrast that meets WCAG AA in
+  both themes.
+- `prefers-reduced-motion` disables the caret blink and all transitions.
+- Returns to the tab re-focus the typing field automatically when no dialog is
+  open, and the cursor is never trapped: `Tab` inserts spaces inside the text,
+  but every control remains reachable by keyboard outside it.
+
+---
+
+## Project layout
+
+```
+index.html            markup and dialogs
+css/style.css         tokens, layout, both themes, responsive rules
+js/lessons.js         the curriculum: 82 lessons, 342 passages
+js/storage.js         versioned localStorage with migration and repair
+js/typing-engine.js   scoring, timing and the WPM/accuracy maths (DOM-free)
+js/app.js             screens, input handling, rendering, results
+tools/verify.js       headless checks for the curriculum and the maths
+tools/serve.js        optional static file server for local testing
+README.md             this file
+```
+
+`js/lessons.js`, `js/storage.js` and `js/typing-engine.js` are plain scripts
+that attach to `window`, loaded in dependency order with ordinary `<script>`
+tags — deliberately *not* ES modules, because modules are blocked by the CORS
+rules on `file://` and this app must run by opening a file.
+
+---
+
+## Testing
+
+```bash
+node tools/verify.js
+```
+
+It checks the curriculum (unique ids, real objectives, no repeated prose, and
+that no lesson uses a character before it is taught) and the engine's maths:
+gross and net WPM against a worked example, accuracy before and after a
+correction, the guards that stop `NaN`, backspace behaviour at the start of a
+passage, input after completion being ignored, countdown expiry, and mistake
+bookkeeping.
+
+Manually, the useful things to try are: typing a lesson start to finish;
+making a mistake and correcting it with Backspace; switching every mode; running
+a 15-second test; pressing `Escape` and `Ctrl`+`Enter`; switching themes;
+resizing the window mid-passage; and resetting progress after a warning.
+
+---
+
+## Deploying to GitHub Pages
+
+1. Create a repository (a project site is fine).
+2. Put these files at the repository root:
+
+   ```
+   index.html
+   css/style.css
+   js/lessons.js
+   js/storage.js
+   js/typing-engine.js
+   js/app.js
+   README.md
+   ```
+
+   `tools/` is optional and is not used by the page.
+3. Commit and push.
+4. In the repository, go to **Settings → Pages** and set **Source** to
+   **Deploy from a branch**, branch `main`, folder `/ (root)`.
+5. The site appears at `https://<user>.github.io/<repository>/`.
+
+Everything already works under that URL: all asset paths are relative, there is
+no server-side routing, no environment variables, no build step and no external
+requests. There is no service worker, so there is nothing to register and
+nothing to cache-bust.
+
+---
+
+## Browser support
+
+Modern desktop browsers: Chrome, Edge, Firefox and Safari (current versions).
+The app uses `<dialog>`, CSS custom properties, `color-mix()` and
+`backdrop-filter`; where a browser lacks native `<dialog>` support the panel and
+results fall back to a plain attribute-driven open/close.
+
+On a phone the layout adapts and an on-screen keyboard works, but a physical
+keyboard is strongly recommended — that is the entire point of the course.
