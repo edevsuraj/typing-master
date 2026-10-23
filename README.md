@@ -53,7 +53,7 @@ optional test and server scripts; the application itself never needs it.
 
 ## Features
 
-- **82 lessons** across 7 stages, from the F and J anchors to long-form prose.
+- **83 lessons** across 7 stages, from the F and J anchors to long-form prose.
 - **Seven practice modes**: guided lessons, free practice, timed tests,
   accuracy focus, speed challenge, weak-key practice and random tests.
 - **Live statistics** — net WPM, accuracy and a timer that counts up or down
@@ -292,6 +292,18 @@ requests. There is no service worker, so there is nothing to register and
 nothing to cache-bust.
 
 ---
+
+## Downloads (offline desktop app)
+
+A Windows `.exe` is provided in `downloads/TypingMaster.exe`. It is a standalone
+desktop application (native window, no browser) that runs fully offline.
+
+Because the `.exe` is not code-signed, Windows SmartScreen may warn "Windows
+protected your PC". Click **More info → Run anyway** to launch it, or sign the
+build with a code-signing certificate.
+
+For a free trusted signature on an open-source project, apply at
+https://about.signpath.io and use the workflow in `.github/workflows/build.yml`.
 
 ## Browser support
 

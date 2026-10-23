@@ -200,8 +200,17 @@
       if (session.mode === 'random') startSession({ mode: session.mode, lessonId: session.lessonId });
     });
 
-    dom.restartBtn.addEventListener('click', restart);
+    if (dom.restartBtn) dom.restartBtn.addEventListener('click', restart);
     dom.homeBtn.addEventListener('click', goHome);
+    var reloadBtn = doc.querySelector('.btn-reload');
+    if (reloadBtn) reloadBtn.addEventListener('click', function () { location.reload(); });
+
+    doc.addEventListener('keydown', function (e) {
+      if (e.key === 'F5' || (e.ctrlKey && (e.key === 'r' || e.key === 'R'))) {
+        e.preventDefault();
+        location.reload();
+      }
+    });
     dom.lessonsBtn.addEventListener('click', togglePanel);
     dom.themeBtn.addEventListener('click', function () {
       var current = doc.documentElement.getAttribute('data-theme');

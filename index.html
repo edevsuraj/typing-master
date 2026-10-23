@@ -6,6 +6,7 @@
 <title>Typing Master — learn touch typing, one lesson at a time</title>
 <meta name="description" content="A calm, distraction-free touch typing tutor. Structured lessons from the home row to advanced practice, live WPM and accuracy, and progress saved in your browser.">
 <meta name="color-scheme" content="dark light">
+<script>if (/[?&]desktop=1/.test(location.search)) document.documentElement.dataset.desktop = "1";</script>
 <link rel="stylesheet" href="css/style.css">
 <!-- Mirrors assets/logo.svg (that file is the reusable asset; this inlines it so
      the favicon still resolves when the app is opened straight from disk). -->
@@ -66,11 +67,12 @@
       </select>
     </span>
 
-    <button type="button" id="restart-btn" class="btn" title="Restart this passage (Ctrl + Enter)">Restart</button>
     <button type="button" id="lessons-btn" class="btn" aria-haspopup="dialog" aria-expanded="false">Lessons</button>
     <button type="button" id="theme-btn" class="btn btn-icon" aria-label="Switch between dark and light theme">
       <span class="theme-glyph" aria-hidden="true"></span>
     </button>
+    <a class="btn btn-download" href="downloads/TypingMaster.exe" download="TypingMaster.exe" title="Download the offline desktop app (.exe)">Download app</a>
+    <button type="button" class="btn btn-reload" title="Reload the app (Ctrl + R / F5)">Reload</button>
   </div>
 </header>
 
@@ -113,6 +115,16 @@
   <p class="footer-note">More from the lab</p>
   <p class="footer-link-row">
     <a class="footer-link" href="https://edevsuraj.github.io/explore-our-apps-and-extensions/" target="_blank" rel="noopener noreferrer">Explore our apps and extensions</a>
+  </p>
+  <p class="footer-link-row">
+    <a class="footer-link footer-contact" href="mailto:edev.suraj@gmail.com" aria-label="Email the developer">
+      <svg class="footer-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+      edev.suraj@gmail.com
+    </a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a class="footer-link" href="https://buymeacoffee.com/surajchauhan" target="_blank" rel="noopener noreferrer">Buy me a coffee ☕</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a class="footer-link" href="tel:+918112773132">UPI: 8112773132</a>
   </p>
 </footer>
 
@@ -252,5 +264,17 @@
 <script src="js/storage.js"></script>
 <script src="js/typing-engine.js"></script>
 <script src="js/app.js"></script>
+<script>
+  // Deterrents against casual source inspection (cannot fully prevent it in a browser).
+  (function () {
+    document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    document.addEventListener('keydown', function (e) {
+      var k = e.key;
+      if (k === 'F12') { e.preventDefault(); return; }
+      if (e.ctrlKey && (k === 'u' || k === 'U' || k === 's' || k === 'S')) { e.preventDefault(); return; }
+      if (e.ctrlKey && e.shiftKey && (k === 'I' || k === 'i' || k === 'J' || k === 'j' || k === 'C' || k === 'c')) { e.preventDefault(); return; }
+    });
+  })();
+</script>
 </body>
 </html>

@@ -1173,6 +1173,17 @@
         "of May. Then a little faster for a month. Speed arrives when accuracy is calm. There is no trick to touch typing. She opened the window and let the fresh air in. The bill came to forty eight dollars including eight percent tax. The office was quiet at that hour and the street was still. It works best when you stop while you are still doing well. The keyboard has become a place your hands already",
       ],
       difficulty: 5, mastery: { wpm: 75, accuracy: 92 }
+    }),
+    mk({
+      id: 's7-11', stage: 7,
+      title: 'Calm Confidence',
+      objective: 'A gentle final lesson: type with ease and let the rhythm carry you. Speed is the by-product of relaxed accuracy.',
+      keys: [], newKeys: [],
+      passages: [
+        "Practice is the quiet work that builds real skill. Each session adds a small layer of ease to your hands. Over weeks the effort fades and the rhythm stays. Keep the pace calm and let accuracy lead. When you type with care the speed follows on its own. There is no shortcut and no secret trick, only steady daily effort. Enjoy the feeling of your hands moving with quiet confidence.",
+        "The best typists are not the fastest at first. They are the most patient. They let each keystroke land cleanly before reaching for the next. Over time the gaps between keys shrink and the words flow. Stay relaxed in the shoulders and keep the wrists light. Breathe evenly and let the fingers do the work. A calm body makes a calm rhythm, and a calm rhythm makes real speed."
+      ],
+      difficulty: 4, mastery: { wpm: 60, accuracy: 95 }
     })
   ];
 

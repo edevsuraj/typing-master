@@ -1,0 +1,53 @@
+name: Build Typing Master
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Build executable
+        run: |
+          pyinstaller --noconsole --onefile --name TypingMaster `
+            --icon tools/icon.ico `
+            --add-data "index.html;." `
+            --add-data "css;css" `
+            --add-data "js;js" `
+            --add-data "assets;assets" `
+            --hidden-import "webview" --hidden-import "clr_loader" --hidden-import "pythonnet" `
+            tools/desktop.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TypingMaster
+          path: dist/TypingMaster.exe
+
+      # Optional: sign with SignPath (free for open-source projects).
+      # 1. Make this repository public.
+      # 2. Create a project at https://about.signpath.io and link this repo.
+      # 3. Add the SignPath GitHub Action below with your project/slug secrets.
+      # - name: Sign with SignPath
+      #   uses: signpath/github-action-submit-signing-request@v1
+      #   with:
+      #     api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+      #     organization-id: ${{ secrets.SIGNPATH_ORGANIZATION_ID }}
+      #     project-slug: typing-master
+      #     signing-policy-slug: release-signing
+      #     artifact-configuration-slug: exe
+      #     github-artifact-id: ${{ steps.upload.outputs.artifact-id }}
+      #     wait-for-completion: true
+      #     output-artifact-directory: dist/signed

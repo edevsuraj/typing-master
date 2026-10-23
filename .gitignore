@@ -1,0 +1,9 @@
+# Build artifacts
+build/
+dist/
+release/
+release2/
+win-unpacked/
+downloads/win-unpacked/
+*.spec
+__pycache__/
