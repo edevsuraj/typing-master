@@ -270,157 +270,88 @@
      ======================================================================= */
   var STAGE2 = [
     mk({
-      id: 's2-01', stage: 2,
-      title: 'Q and P',
-      objective: 'Add the two outside top keys. Little fingers stretch up and outward, then return immediately to A and the semicolon key.',
-      keys: ['q', 'p', 'a', ';'], newKeys: ['q', 'p'],
-      passages: [
-        "type out the quiet story we put it away we will wait here for the quiet hour we write quietly at a quiet hour we will wait here for the quiet hour type out the quiet story we put it away we shall wait here the quiet hour has passed quite a while to type write it out loud we shall wait here the quiet",
-        "hour has passed type out the quiet story we put it away type it out pour the water quite a while your quiet trip we will wait here the pure light is out we put it away quite a while to type write it out loud type it out pour the water quite a while your quiet trip we will wait here the quiet road is pure i put the rope out write quietly",
-        "at a quiet hour the pure light type it out pour the water quite a while write quietly at a quiet hour the pure light the quiet road is pure i put the rope out quite a while to type write it out loud the quiet road is pure i put the rope out write quietly at a quiet hour the pure light we will wait here for the quiet hour your quiet trip we will wait here type it out pour the",
-        "water quite a while quite a while to type write it out loud we will wait here for the quiet hour type out the quiet story we put it away type it out pour the water quite a while quite a while to type write it out loud we will wait here for the quiet hour quite a while to type write it out loud type it out pour the water quite a while we write",
-        "quietly at a quiet hour we will wait here for the quiet hour we write quietly at a quiet hour type it out pour the water quite a while quite a while to type write it out loud type it out pour the water quite a while quite a while to type write it out loud the pure light is out we put it away we write quietly at a quiet hour the quiet road is pure i put the rope out quite a while to ty",
-      ],
-      difficulty: 2, mastery: { wpm: 16, accuracy: 92 }
-    }),
-    mk({
       id: 's2-aq', stage: 2,
       title: 'A and Q',
       objective: 'Drill the left pinky column: Q sits one row above A. Reach up and out with the little finger, type, and drop straight back down without looking.',
-      keys: ['q', 'a'], newKeys: [],
+      keys: ['q', 'a'], newKeys: ['q'],
       passages: [
         "qa aa qq aq aq qa qa qq aq aq qq aq qq qa qq qq qq aq aq qq qq qq aq qa aa aq aq aa qa aq aa aa qa aa qa aq aq qq qq qa aa aq qq aa qa qq qa aq aq aa qq aq qa qa qa qa qa aq aq aa qa qq qq qa qq qa qa qq qa aq aq qa qa qa aa qa qq aa aa qq aa aa aa aa qa aq aa qq aa qa qq aa aa qa qa aq aa qa qq qq aa aq qa qa qa qq qq aa qa qq aq aq aa aa",
         "qa aa qq aq aq a qq qq qa qq q aq aa a q q aq qq qq q qq aq aa qa aq aa a a qq a aq aa aq a qa qq q a aq q aa aq qa aa aq q qa aa q a qq qq aq aa qq qq qq aa q aq q q a qa a aa aa qa qq qq aa aq aa qa qq aa q aa aa q aa qa aa aa qq aq qq q q qq aq a aa q a qq aq a qq aa aa qa qa q aa a qa qa aa qa a aq a aq a qq a a qa qq qa q q qq q aq aa",
         "qa aa qq aq qa aq aq qa aq qa qa aq qa qa qa qa aq qa qa qa aq qa qa qa qa aq aq aq qa aq qa qa aq aq aq qa qa aq aq aq qa aq aq aq aq qa aq qa aq qa aq qa qa aq qa aq aq aq aq aq aq aq qa qa qa qa qa aq aq qa qa aq aq qa qa qa qa aq aq qa qa aq qa aq qa aq qa qa aq aq qa aq qa qa qa qa aq qa aq aq qa qa qa qa qa aq qa qa qa qa qa qa qa aq",
         "qa aa qq aq aq q q a qa a q qa q aa q a aq aq qa aq a aq aq aa qq q q qq a qq qa a q a aq a a qa qq q aq aq a qq q q q a q aa q qa q a a a aa a a a a a a qa aq a aq qq a a aa q qq qa a aa aa aq a qa q qa qq a aq qa qq a aa aa a q aq qa a aa aq q qa a a aa q aq aq aq q aq qa q aq aq q q qq q qq aq a a aq qq qa aq aq a a a aq a aq qq q a q aq",
       ],
-      difficulty: 2, mastery: { wpm: 16, accuracy: 92 }
-    }),
-    mk({
-      id: 's2-sp', stage: 2,
-      title: 'P and the Semicolon Key',
-      objective: 'Drill the right pinky column: P sits one row above the semicolon key. Little fingers stretch up, type, and return home at once.',
-      keys: ['p', ';'], newKeys: [],
-      passages: [
-        "p; ;; pp ;p p; ;p pp ;p p; ;; ;p ;; pp ;; pp ;; p; ;; ;; ;p pp p; pp p; pp ;; ;p p; ;; p; p; p; ;; ;; pp pp pp ;; p; p; pp ;p ;p ;p pp pp pp ;; pp ;; pp ;p ;p pp ;; p; pp ;p ;p ;p ;p ;; ;; ;; p; pp ;; ;p pp ;p ;; p; p; ;p ;; ;; p; p; ;; pp pp p; ;p p; p; ;; p; pp ;; pp pp p; p; p; ;p p; p; p; ;; pp ;; pp ;p ;; ;; p; p; ;; ;p pp ;; ;p ;p pp",
-        "p; ;; pp ;p ;p pp ; p; pp pp p p ;; ;; p p; p ;; ; p; ; ;p p p ;p p; p p; p; ;; ;p p p; p; p; p p; p pp p; p pp p; p ;; p; ; p; pp pp p; ; p p pp ;p ;; p p; ; ;; pp ;; ;p p p ; ; ; ;; p p ;p ;p p; pp p p; pp pp ;p pp ;; p p; ;p p ;; p; p p; ; ;p ; ; p pp p; ; pp ; ;p pp ;; p ;p pp p p ;p p; ; p; ;; ;p pp ; p ; ; ; ; p ; ;p pp ;p p ;; ; pp",
-        "p; ;; pp ;p p; p; ;p p; p; ;p ;p ;p p; p; ;p p; ;p ;p p; p; p; ;p ;p ;p p; ;p p; ;p p; ;p ;p p; ;p ;p ;p p; ;p ;p p; p; ;p ;p p; p; p; ;p p; ;p ;p ;p p; ;p p; p; p; ;p p; ;p p; p; p; ;p p; ;p p; ;p ;p ;p ;p ;p ;p ;p ;p ;p p; ;p ;p ;p p; ;p p; p; ;p ;p p; p; p; ;p ;p ;p p; ;p p; ;p ;p p; ;p ;p p; p; ;p p; p; ;p ;p p; p; p; ;p ;p p; ;p ;p p;",
-        "p; ;; pp ;p ; p ;p ;p p pp p p p; p ; p p; p p; ; p p pp p; p p pp ;; ;p ;; ; p pp pp ; ; p; ;; p ; p; ; ;p ;; ; pp ; p; pp ; pp ;; pp ; p ; p ; ; p p p p p p; p p; ; ; pp p p ;p ;p ; ; ; ; p; p; p; p ; ; ; p ;; p ; p; ;p p; pp p ; p pp ;p p; p; ;p p; p ;; ;p p ;p ;; p ; pp p; ;; ;p p; ;p pp p ;; p p p ;; pp ;p ; ; p; pp ; p ; ;; ; pp ; ;;",
-      ],
-      difficulty: 2, mastery: { wpm: 16, accuracy: 92 }
-    }),
-    mk({
-      id: 's2-02', stage: 2,
-      title: 'W and O',
-      objective: 'Add W and O with the ring fingers, one key further out. The reach should feel like a small step, not a leap.',
-      keys: ['w', 'o', 'q', 'p'], newKeys: ['w', 'o'],
-      passages: [
-        "we shall wait here the quiet hour has passed we write quietly at a quiet hour the pure light is out we put it away write quietly at a quiet hour the pure light we will wait here for the quiet hour type out the quiet story we put it away we will wait here for the quiet hour we write quietly at a quiet",
-        "hour we will wait here for the quiet hour write quietly at a quiet hour the pure light the quiet road is pure i put the rope out write quietly at a quiet hour the pure light we will wait here for the quiet hour your quiet trip we will wait here the quiet road is pure i put the rope out your quiet trip we will wait here we will wait here",
-        "for the quiet hour write quietly at a quiet hour the pure light type it out pour the water quite a while write quietly at a quiet hour the pure light we shall wait here the quiet hour has passed your quiet trip we will wait here we shall wait here the quiet hour has passed write quietly at a quiet hour the pure light we will wait here for the quiet hour type out the quiet",
-        "story we put it away the quiet road is pure i put the rope out type out the quiet story we put it away we shall wait here the quiet hour has passed your quiet trip we will wait here the pure light is out we put it away we write quietly at a quiet hour we will wait here for the quiet hour we write quietly at a quiet hour we will wait here",
-        "for the quiet hour quite a while to type write it out loud type it out pour the water quite a while write quietly at a quiet hour the pure light we shall wait here the quiet hour has passed your quiet trip we will wait here we shall wait here the quiet hour has passed type out the quiet story we put it away the quiet road is pure i put the rope out your quiet trip we will wait here we will w",
-      ],
-      difficulty: 2, mastery: { wpm: 17, accuracy: 92 }
+      difficulty: 2, mastery: { wpm: 14, accuracy: 92 }
     }),
     mk({
       id: 's2-sw', stage: 2,
       title: 'S and W',
       objective: 'Drill the left ring-finger column: W sits one row above S. It should feel like a small step up and down, never a leap.',
-      keys: ['w', 's'], newKeys: [],
+      keys: ['w', 's'], newKeys: ['w'],
       passages: [
         "ws ss ww sw ww ws ss ss ww sw sw ws ws ws ws ww ws sw ws ss ww ws ws ss ws sw sw ss ws ww sw ws ww sw ss sw ww ww ww ws ww ww ws sw ss ws ws sw ws ww ss ss ww ws sw sw sw ss ws sw ws sw sw ss ws sw ss ws ws ss ws ww ww ws ws sw ww ww ws ww ss sw ws ss ws ww ww ww ss ww ss sw ws sw ws ss ww sw sw sw ww ww ww ws ws ss ww ss ss ws ss ss sw ww",
         "ws ss ww sw ws ss ss s sw ss s ss ss sw ws sw ss ws ww w ww sw s w s ww ws w s sw ss s s ws s ss ws ss sw ww s w s s s ww ss sw s ww ww ws ww ws sw ws ss ss w ww sw s w sw s sw ws sw ws w sw sw ss s sw ws ss s ws ss sw w ss ww sw ss s ws s w ww sw ss ss ws s ss ww ss w sw w ss ws s ss s w w ww sw sw s w w sw ws ws ww ww ws ws s w w s w ww",
         "ws ss ww sw sw sw ws ws sw ws ws ws sw sw ws ws ws sw ws ws sw ws ws ws sw ws ws sw sw ws sw sw ws ws ws sw sw ws sw ws ws sw sw ws sw ws sw sw ws sw sw ws sw ws ws sw sw sw sw sw ws ws ws sw ws sw ws ws sw sw sw sw ws sw sw sw sw sw sw sw sw sw sw ws sw sw ws ws ws sw ws sw sw ws sw ws ws sw sw sw sw ws sw ws sw ws ws ws ws sw ws ws ws sw",
         "ws ss ww sw ss ss ws w sw s s s ws w s sw s s ww ww ws sw ss sw w ss ww w s s s w w w ws sw s ss s ss ws ws w s sw sw ww ww ws ss ws s s ws ws s ss ws w sw ww ws s s w ww ss w s w ww s w w w s s w ss ww ws w ws s ww w ss ws ss s ss w s ss ww ww s s ww ws sw w s sw w s sw s w w ss w s s w ww w s s ws ws ss w w w ws w s s ss ws w ws ss sw w",
       ],
-      difficulty: 2, mastery: { wpm: 17, accuracy: 92 }
-    }),
-    mk({
-      id: 's2-lo', stage: 2,
-      title: 'L and O',
-      objective: 'Drill the right ring-finger column: O sits one row above L. Keep the wrist still and let the finger make the small reach.',
-      keys: ['o', 'l'], newKeys: [],
-      passages: [
-        "ol ll oo lo oo ol ll oo ll lo ol lo ol lo ll lo ol oo oo lo ll ll ol oo ll ol ol oo oo lo ol ll ol ll lo ll ol ol oo oo oo oo ol ll lo lo oo oo ol ll ol ol ll ll lo lo ol ol lo ll oo ol ol ol lo ll oo ol lo ll ll lo ll ol ll lo ol ol oo oo lo ll lo lo ll ol oo lo lo ol lo oo ll lo ll ol oo oo oo ll ol ll ll ol oo oo ll ll ol ol ol lo lo lo",
-        "ol ll oo lo ll oo ll l ol o ll ll l lo o l ol l lo ol ll o oo lo ll l lo ol oo o l oo ll ll lo lo l oo oo o oo ll oo ol ll ll l l lo ol lo l l o ll ll l o oo ll ol lo ll ol lo oo l o o ll oo ol oo ol o oo ol oo l oo l ll ll lo oo ll oo l lo ll ol l lo ll oo oo ll o ol l ll lo lo oo ll l o ll lo l lo l o ll o oo lo l ll ll ll oo ol o lo ll",
-        "ol ll oo lo lo ol lo lo lo ol lo lo ol lo ol lo lo ol ol lo ol ol lo ol ol ol lo ol ol ol lo ol lo lo lo lo lo ol ol lo lo ol ol lo ol ol ol lo ol lo ol ol ol ol ol lo ol ol lo lo ol ol lo lo ol ol ol ol ol lo ol ol lo ol lo lo ol lo lo lo lo ol ol ol ol lo lo ol ol ol ol lo ol ol lo lo ol lo lo ol lo lo lo lo ol ol lo lo lo lo lo ol lo lo",
-        "ol ll oo lo o ll l o ol o l ll o ll lo lo o l o o l l o ol lo oo lo o l o ol ol ol o ll oo oo o l l l ol l lo l lo ll ll lo ll ol ll lo o o o o o o o l lo ol l ol o oo l l l o ol l ol l oo l ll l o ll l l l l ll o ol oo l l o lo o o ll ol ol o l ll o o ll o l l l o l ol ll l l o l l o o l o ol lo l l o o l ol l lo o o l lo l l l lo o l ll",
-      ],
-      difficulty: 2, mastery: { wpm: 17, accuracy: 92 }
-    }),
-    mk({
-      id: 's2-03', stage: 2,
-      title: 'E and I',
-      objective: 'Add E and I with the middle fingers. These two keys appear in a large share of English words, so accuracy here pays off quickly.',
-      keys: ['e', 'i', 'd', 'k'], newKeys: ['e', 'i'],
-      passages: [
-        "your quiet trip we will wait here the quiet road is pure i put the rope out your quiet trip we will wait here type it out pour the water quite a while write quietly at a quiet hour the pure light type it out pour the water quite a while quite a while to type write it out loud the pure light is out we",
-        "put it away quite a while to type write it out loud we shall wait here the quiet hour has passed quite a while to type write it out loud we will wait here for the quiet hour quite a while to type write it out loud we will wait here for the quiet hour quite a while to type write it out loud type it out pour the water quite a while quite",
-        "a while to type write it out loud we will wait here for the quiet hour type out the quiet story we put it away the quiet road is pure i put the rope out write quietly at a quiet hour the pure light type it out pour the water quite a while quite a while to type write it out loud type it out pour the water quite a while we write quietly at a quiet hour we shall wait here the",
-        "quiet hour has passed your quiet trip we will wait here the quiet road is pure i put the rope out we write quietly at a quiet hour we will wait here for the quiet hour write quietly at a quiet hour the pure light we will wait here for the quiet hour write quietly at a quiet hour the pure light type it out pour the water quite a while your",
-        "quiet trip we will wait here we shall wait here the quiet hour has passed write quietly at a quiet hour the pure light we will wait here for the quiet hour we write quietly at a quiet hour we will wait here for the quiet hour write quietly at a quiet hour the pure light we will wait here for the quiet hour write quietly at a quiet hour the pure light the pure light is out we put it away typ",
-      ],
-      difficulty: 2, mastery: { wpm: 18, accuracy: 92 }
+      difficulty: 2, mastery: { wpm: 15, accuracy: 92 }
     }),
     mk({
       id: 's2-ed', stage: 2,
       title: 'D and E',
       objective: 'Drill the left middle-finger column: E sits one row above D. Middle fingers reach up and return without lifting the hand.',
-      keys: ['e', 'd'], newKeys: [],
+      keys: ['e', 'd'], newKeys: ['e'],
       passages: [
         "ed dd ee de ee de ee dd dd dd dd de ee ee ee ee ed dd dd ee dd dd dd ed ee de ee dd ee de dd ee ee de ed ed ee ed de dd de ed de de ee dd ee ed ee ee de de dd de dd ee ed ed ed de ee de de ee ed ed de ee ed dd dd de ee ed ed de ee ed dd dd ed dd ed dd de ee de de ee dd ee ed ee ed ed ee dd ee ee ee ee dd ed dd ed ed ee de ed de ed ee de de",
         "ed dd ee de dd d ed ee e dd d e ee e de ee d e ed d dd e ee dd dd dd de e ee ee e e dd ed de d d e ed e ed dd ee dd ee ed d d ee de de de ed ed ed e e de dd ed dd e d ee ee e d de dd ed e d e e de dd e ed ee d dd dd d ed de ed e e ed ee dd ee d d dd ed e e e ed d de dd e ed e dd e de e e ed dd ed ed dd dd de ed d e de de ee ee d e dd d ed",
         "ed dd ee de ed ed de ed ed ed ed ed de ed ed ed ed ed ed ed de ed ed de ed ed ed de ed ed ed de de ed ed de ed ed de ed ed ed ed ed ed ed ed de ed de ed de ed de de de ed ed ed ed de de ed de ed de de de de ed ed de de de ed de de ed de ed ed ed de de ed ed de de de de ed de ed ed ed de de ed ed ed de ed ed ed de de de de ed ed de ed de ed",
         "ed dd ee de e de ed de ed dd ed dd ed dd d e ee ed ee d dd ee de ed d d dd d de e d dd ee d ed de dd e ed ed e d d d ed dd dd ed d e dd ed ee d de e de d d e ed e ee ed e dd d de ed d dd de e e d d d de ee ee de dd dd e dd ee d ed e de e ed dd d d ed e ee dd ee d ed e dd dd ed d e e d ed ee d e de d e de d e e dd d ed de dd e de e dd d d d",
       ],
-      difficulty: 2, mastery: { wpm: 18, accuracy: 92 }
-    }),
-    mk({
-      id: 's2-ki', stage: 2,
-      title: 'K and I',
-      objective: 'Drill the right middle-finger column: I sits one row above K. Make this reach automatic; the middle finger does it constantly in real words.',
-      keys: ['i', 'k'], newKeys: [],
-      passages: [
-        "ik kk ii ki kk ki kk ii ii kk ik ki ki ii ki kk kk ii ki ii kk kk ki ki ki ik ki ki kk ii kk ki ii ii ik ik ii ki ki kk ik ki kk ik ii kk ki ii kk kk ik kk kk ik ik ii ii ik ki ik ik ki ki ik kk ik kk kk ii ki kk ii kk ik ik ii ik ik kk ik ki kk ki ik kk ki ki ik ik ki ki ki ik ki kk ii kk ii ik ik kk ik kk kk ki ii ik ik ki ii kk ki ii ii",
-        "ik kk ii ki ik k ki i kk i k kk k i i ik ii i ii ii ki ik kk ik k i ki ki ki ii k ik ik ik kk k i ki ik ik kk kk ik ii i ki ii i i k ki ki ii k ik ki i k ik ik ki k ii i ii i k ii ii ii ik ii kk kk ii ik ii ii ik ii kk kk ik k ii ki ik ki k i k i ki ik ik kk i kk i ii ki ki ki ii k i kk i kk i ik ki ik kk i ik ii ii ik ii ii k k ii kk ii k",
-        "ik kk ii ki ik ki ik ki ik ki ki ki ki ik ki ki ik ik ki ik ki ki ki ik ki ik ki ik ik ki ki ki ki ki ki ik ik ik ki ki ik ki ki ki ki ik ki ik ki ik ik ik ik ki ik ki ik ki ki ik ki ki ki ik ki ik ik ik ki ik ki ik ik ki ik ki ik ik ki ik ki ik ki ik ik ik ki ki ik ik ki ki ki ik ki ik ik ik ik ki ik ik ki ki ki ik ik ki ik ki ik ki ik ik",
-        "ik kk ii ki kk i k ik i kk i k ki k ii i k ii ki k k k ii k i i ik ii ki k ii ki i kk ki kk i i k ii k k kk i ik k ii ki i i k ik ki kk k kk ii i i i ki ii i ki ki k i ki i k ii i ii i i i ii k i ii i ki k i ki i k kk ik k k kk ik ki ik i kk ii k kk ik i i i kk ki i ik i ii k i i i k ki ik kk k ik ii k ki kk ii kk k ki i ik k ii ki ik i k",
-      ],
-      difficulty: 2, mastery: { wpm: 18, accuracy: 92 }
-    }),
-    mk({
-      id: 's2-04', stage: 2,
-      title: 'R and U',
-      objective: 'Add R and U. R sits just above F and U just above J, so the same finger now covers three rows.',
-      keys: ['r', 'u', 'f', 'j'], newKeys: ['r', 'u'],
-      passages: [
-        "we will wait here for the quiet hour quite a while to type write it out loud the quiet road is pure i put the rope out your quiet trip we will wait here the pure light is out we put it away quite a while to type write it out loud the quiet road is pure i put the rope out type out the quiet story we put",
-        "it away we shall wait here the quiet hour has passed quite a while to type write it out loud we shall wait here the quiet hour has passed type out the quiet story we put it away we shall wait here the quiet hour has passed we write quietly at a quiet hour we shall wait here the quiet hour has passed write quietly at a quiet hour the pure",
-        "light the quiet road is pure i put the rope out your quiet trip we will wait here we shall wait here the quiet hour has passed write quietly at a quiet hour the pure light we shall wait here the quiet hour has passed write quietly at a quiet hour the pure light the quiet road is pure i put the rope out your quiet trip we will wait here the quiet road is pure i put the rope",
-        "out type out the quiet story we put it away type it out pour the water quite a while your quiet trip we will wait here the quiet road is pure i put the rope out write quietly at a quiet hour the pure light the pure light is out we put it away your quiet trip we will wait here we shall wait here the quiet hour has passed we write quietly",
-        "at a quiet hour we shall wait here the quiet hour has passed we write quietly at a quiet hour we shall wait here the quiet hour has passed your quiet trip we will wait here the pure light is out we put it away we write quietly at a quiet hour we shall wait here the quiet hour has passed write quietly at a quiet hour the pure light type it out pour the water quite a while we write quietly",
-      ],
-      difficulty: 2, mastery: { wpm: 18, accuracy: 92 }
+      difficulty: 2, mastery: { wpm: 16, accuracy: 92 }
     }),
     mk({
       id: 's2-fr', stage: 2,
       title: 'F and R',
       objective: 'Drill the left index column: R sits one key above and to the left of F. Let the index finger pivot up, type, and rest back on its anchor.',
-      keys: ['r', 'f'], newKeys: [],
+      keys: ['r', 'f'], newKeys: ['r'],
       passages: [
         "rf ff rr fr ff ff rr rf ff fr rf ff rf rr rr rf rf rf rf rr fr rf fr rf rf fr rr rr fr rf rr ff rr fr ff fr ff ff rf rf fr rr fr rf ff ff rr rr rf ff ff ff fr rr fr rr rr rf fr rf rf fr ff fr ff ff ff rr ff ff ff rr fr rf rf rf rr ff rf fr ff rr fr rf ff rf rr ff fr fr fr fr rf rf rr fr rr ff fr ff ff fr rr fr rf fr fr fr ff ff rf fr ff ff",
         "rf ff rr fr rr rr ff rf rf ff rf fr rf rf rr r rf rf fr ff f rr r r rr ff f rf r f fr fr f rr rf rr rr ff rf f rr fr r rf ff ff ff f rr r rf fr rf fr f rf f ff f rr rr rr ff rr ff rr r r rf rr fr r fr rf f f rf r r rr fr rr fr rr r r ff rr ff rr f fr r fr rf rr ff ff f ff ff ff r fr fr rf f ff ff fr rf fr f fr rf ff r rr r rf rr rf rf rr r",
         "rf ff rr fr rf rf fr rf fr rf rf rf rf fr fr rf rf fr fr fr rf fr rf rf fr rf rf fr fr rf rf rf rf rf rf fr fr rf rf rf fr fr rf rf fr fr fr rf fr rf fr fr rf fr fr fr rf fr rf rf fr fr fr fr rf rf rf fr fr fr rf rf rf fr rf rf fr fr fr rf fr rf rf rf rf fr rf fr fr rf fr rf fr rf rf fr fr fr rf rf fr fr fr rf fr fr fr fr fr rf rf fr rf rf",
         "rf ff rr fr rf r rf r rf rf r rr r r r r rf f rf ff r r r rf ff rr r f f rr rr ff r rr r f rf f rf rf rr ff f rr fr rr rf f fr f rf fr f rf rf rr fr rf r r rf rr f f f r r r f rr ff f r f f r f r rr ff fr r f f ff r r rf r ff rr rr ff r rf ff rf rr r r r r fr f r ff rf f f f f rr fr f rr ff fr r rf fr rr r f f r f r rr f r f r r ff rf rr rf",
       ],
-      difficulty: 2, mastery: { wpm: 18, accuracy: 92 }
+      difficulty: 2, mastery: { wpm: 16, accuracy: 92 }
+    }),
+    mk({
+      id: 's2-gt', stage: 2,
+      title: 'G and T',
+      objective: 'Drill the left stretch column: T sits a full row above G. Rock the index finger up for every T and settle it straight back on G.',
+      keys: ['t', 'g'], newKeys: ['t'],
+      passages: [
+        "tg gg tt gt tg gt tg tg tg tt tt gg tt tt tg tt tg gt gg tt gg gt tg tg gg gt tt tt tt tg tg tt gt tt tg gg gg tg gt gg gt tg gg tt tt gg gg gt gg tg gg gg tt tg gt tg tg tg gt tt tt gg tg gg tt tg tg gt gg tt gt tg gt gg gt tg tg tg tg gt gt tt tt gg gg gg tt gt tg gg gt tg tt tg tg gt gt tg gt tt gg gt gg tg tt gg tt tt gg gg gg tt gt tg",
+        "tg gg tt gt tg gg gg g tt gt t g tt g t tt g t gg gt gt t gt gg tg tt t tg tt g g tg gt t gg tg gt gg t gg g tt tt tt g tt tg t tg tg gt g t t gt tt g gg tt gt t gg tt gt gt g t tg gg tt g tg t gg tt tg gg tt t gt g gg g t t tg tg tg gg tt tt gg t tt tg g t gg tg gg gg tg tg g gt t tg tg t gt g gg gt tt gg t g tt tt gg tt gt g tt gt tg tt",
+        "tg gg tt gt gt tg tg tg gt tg gt gt tg gt tg gt tg tg gt tg tg tg gt gt tg tg gt tg gt tg tg gt gt tg tg tg tg gt tg tg tg gt gt gt tg tg gt gt gt gt tg tg gt gt tg tg gt gt tg gt gt tg gt tg gt tg gt tg tg tg tg tg tg gt tg gt gt tg gt gt gt gt tg gt gt gt tg tg tg gt gt gt gt gt tg tg gt tg tg tg tg tg gt tg gt gt gt gt gt gt gt tg tg tg",
+        "tg gg tt gt tt gg gg g tt t t gg t g t t g g t gt t g g g g g g gt tt tt tg gg tt tg g t gt tt g tt tg gg t tt gg t t gt g tg t gt t g t t g tt g gg tg gg t t t gg t t tg tt gg t gg g gg t t g gg tt gg gg gt tt g g t t g t t tt gg g t tg g g tg g t g gg g t g t tg tg tg t tg tg g tt g g g gg g t g g t g t g gt tg t g t gt t g g gg tg g gg",
+      ],
+      difficulty: 2, mastery: { wpm: 17, accuracy: 92 }
+    }),
+    mk({
+      id: 's2-hy', stage: 2,
+      title: 'H and Y',
+      objective: 'Drill the right-hand stretch: Y sits a full row above H. Reach up and slightly left each time, then let the finger fall back on H.',
+      keys: ['y', 'h'], newKeys: ['y'],
+      passages: [
+        "yh hh yy hy hh yh hy yh yh hy hy yy hy yy hy yh yy hy hy hh yh yh yh yy yy hy yh hy yh hy yh yy yh hh yy yy yy hy yy yh yh yy yh hh hy hy yh hh yy yh yy yy hy hy yh hy yh yy yh yh hy hh hy yh yy hh yh yy hy hh hy hh yh yy hh hy yh yh yh hy hy hy hy hy yy yh yh yy hy yy yy yh hy hy hy hy yh yy yh yh hy yh hh yy hh hy hy yh hy yh yy yh hy yh",
+        "yh hh yy hy h yh h h yy hy yh h h y hh hy h y y h yy h yy y hh yy yy hy hy hh hy yy hy yh yh hy yh yh hh y h hh h yh hy yy yh yy y y y y y yy yy h h hy yy h y h yy hy yh hy yy hh hh hy h yh hh y y y yh h hy yh yy h hy hh hh hh yy hh h yy hy yh yh yy hh h y h yy yy h h hh hy yy hy hh y hh yy hy h h hh yh y yh yy hy yy hh yh yh yy yh yy hy hy",
+        "yh hh yy hy hy hy hy yh yh yh hy yh hy yh yh hy hy hy yh yh yh yh hy yh yh yh hy yh yh yh hy yh yh hy hy yh yh yh hy yh yh yh yh hy yh yh hy yh yh yh hy yh hy yh yh hy hy hy yh yh yh yh yh hy yh hy hy hy hy yh hy hy yh hy yh hy hy yh yh hy yh hy hy hy hy hy yh yh yh hy hy yh hy hy yh hy yh yh yh yh yh hy yh yh hy hy yh hy hy yh hy yh hy yh",
+        "yh hh yy hy h hh h y yh hh y y hh hh h hy h yh h y hh yy yy hy yy hh hh yh y hh h y h y hh h y y h y yy h y y hh h h yy hh yh yy y y hy y y h yy hh yy hh hh h yy yh yy hy h hy yh h hh y hh hh h hy h h yh y yy h yh h y yh hh h y y hh y hy yh yy y hy y h yh h yy hy h yh yh hh h yh h h hy hy h h hy hy yh y yh h y h yy h h yy yh h h hy y yy y",
+      ],
+      difficulty: 2, mastery: { wpm: 17, accuracy: 92 }
     }),
     mk({
       id: 's2-ju', stage: 2,
       title: 'J and U',
       objective: 'Drill the right index column: U sits one key above and to the left of J. Pivot up, type, and drop home without looking.',
-      keys: ['u', 'j'], newKeys: [],
+      keys: ['u', 'j'], newKeys: ['u'],
       passages: [
         "uj jj uu ju jj jj jj uu uj ju ju jj ju uj ju uj uu uj uj uu ju uj ju uu uu uj jj uj uj uj uu uj uu ju ju ju ju uu jj uu uj ju ju ju uj jj uu jj uu ju ju uu uj ju uj jj uu ju ju uj jj uu ju uj jj ju uu uu uu uj uj uu uj ju uj uj uu jj ju uu uu uj ju jj ju uu jj jj jj uu jj ju uu jj jj uj uu uj jj ju uu uj uu uj uu ju uu uj ju jj jj uu jj jj",
         "uj jj uu ju jj ju j uj uu j jj uj jj u uu u jj uj ju u uj ju j uj u ju jj u ju jj uj ju u uj j u jj j j uj u ju uu jj uu uu uu ju ju ju u ju uu uj uj ju j uj u jj u jj jj jj ju uj uu uj uu jj ju uu u u j uu u jj ju j ju ju j uj uu uj j uj u j jj j uu uu ju u uj uu u ju u jj jj j uj uj uu ju u ju uj j jj jj jj uu uu jj ju j jj u j j uu uu j",
@@ -430,10 +361,105 @@
       difficulty: 2, mastery: { wpm: 18, accuracy: 92 }
     }),
     mk({
+      id: 's2-ki', stage: 2,
+      title: 'K and I',
+      objective: 'Drill the right middle-finger column: I sits one row above K. Make this reach automatic; the middle finger does it constantly in real words.',
+      keys: ['i', 'k'], newKeys: ['i'],
+      passages: [
+        "ik kk ii ki kk ki kk ii ii kk ik ki ki ii ki kk kk ii ki ii kk kk ki ki ki ik ki ki kk ii kk ki ii ii ik ik ii ki ki kk ik ki kk ik ii kk ki ii kk kk ik kk kk ik ik ii ii ik ki ik ik ki ki ik kk ik kk kk ii ki kk ii kk ik ik ii ik ik kk ik ki kk ki ik kk ki ki ik ik ki ki ki ik ki kk ii kk ii ik ik kk ik kk kk ki ii ik ik ki ii kk ki ii ii",
+        "ik kk ii ki ik k ki i kk i k kk k i i ik ii i ii ii ki ik kk ik k i ki ki ki ii k ik ik ik kk k i ki ik ik kk kk ik ii i ki ii i i k ki ki ii k ik ki i k ik ik ki k ii i ii i k ii ii ii ik ii kk kk ii ik ii ii ik ii kk kk ik k ii ki ik ki k i k i ki ik ik kk i kk i ii ki ki ki ii k i kk i kk i ik ki ik kk i ik ii ii ik ii ii k k ii kk ii k",
+        "ik kk ii ki ik ki ik ki ik ki ki ki ki ik ki ki ik ik ki ik ki ki ki ik ki ik ki ik ik ki ki ki ki ki ki ik ik ik ki ki ik ki ki ki ki ik ki ik ki ik ik ik ik ki ik ki ik ki ki ik ki ki ki ik ki ik ik ik ki ik ki ik ik ki ik ki ik ik ki ik ki ik ki ik ik ik ki ki ik ik ki ki ki ik ki ik ik ik ik ki ik ik ki ki ki ik ik ki ik ki ik ki ik ik",
+        "ik kk ii ki kk i k ik i kk i k ki k ii i k ii ki k k k ii k i i ik ii ki k ii ki i kk ki kk i i k ii k k kk i ik k ii ki i i k ik ki kk k kk ii i i i ki ii i ki ki k i ki i k ii i ii i i i ii k i ii i ki k i ki i k kk ik k k kk ik ki ik i kk ii k kk ik i i i kk ki i ik i ii k i i i k ki ik kk k ik ii k ki kk ii kk k ki i ik k ii ki ik i k",
+      ],
+      difficulty: 2, mastery: { wpm: 18, accuracy: 92 }
+    }),
+    mk({
+      id: 's2-lo', stage: 2,
+      title: 'L and O',
+      objective: 'Drill the right ring-finger column: O sits one row above L. Keep the wrist still and let the finger make the small reach.',
+      keys: ['o', 'l'], newKeys: ['o'],
+      passages: [
+        "ol ll oo lo oo ol ll oo ll lo ol lo ol lo ll lo ol oo oo lo ll ll ol oo ll ol ol oo oo lo ol ll ol ll lo ll ol ol oo oo oo oo ol ll lo lo oo oo ol ll ol ol ll ll lo lo ol ol lo ll oo ol ol ol lo ll oo ol lo ll ll lo ll ol ll lo ol ol oo oo lo ll lo lo ll ol oo lo lo ol lo oo ll lo ll ol oo oo oo ll ol ll ll ol oo oo ll ll ol ol ol lo lo lo",
+        "ol ll oo lo ll oo ll l ol o ll ll l lo o l ol l lo ol ll o oo lo ll l lo ol oo o l oo ll ll lo lo l oo oo o oo ll oo ol ll ll l l lo ol lo l l o ll ll l o oo ll ol lo ll ol lo oo l o o ll oo ol oo ol o oo ol oo l oo l ll ll lo oo ll oo l lo ll ol l lo ll oo oo ll o ol l ll lo lo oo ll l o ll lo l lo l o ll o oo lo l ll ll ll oo ol o lo ll",
+        "ol ll oo lo lo ol lo lo lo ol lo lo ol lo ol lo lo ol ol lo ol ol lo ol ol ol lo ol ol ol lo ol lo lo lo lo lo ol ol lo lo ol ol lo ol ol ol lo ol lo ol ol ol ol ol lo ol ol lo lo ol ol lo lo ol ol ol ol ol lo ol ol lo ol lo lo ol lo lo lo lo ol ol ol ol lo lo ol ol ol ol lo ol ol lo lo ol lo lo ol lo lo lo lo ol ol lo lo lo lo lo ol lo lo",
+        "ol ll oo lo o ll l o ol o l ll o ll lo lo o l o o l l o ol lo oo lo o l o ol ol ol o ll oo oo o l l l ol l lo l lo ll ll lo ll ol ll lo o o o o o o o l lo ol l ol o oo l l l o ol l ol l oo l ll l o ll l l l l ll o ol oo l l o lo o o ll ol ol o l ll o o ll o l l l o l ol ll l l o l l o o l o ol lo l l o o l ol l lo o o l lo l l l lo o l ll",
+      ],
+      difficulty: 2, mastery: { wpm: 19, accuracy: 92 }
+    }),
+    mk({
+      id: 's2-sp', stage: 2,
+      title: 'P and the Semicolon Key',
+      objective: 'Drill the right pinky column: P sits one row above the semicolon key. Little fingers stretch up, type, and return home at once.',
+      keys: ['p', ';'], newKeys: ['p'],
+      passages: [
+        "p; ;; pp ;p p; ;p pp ;p p; ;; ;p ;; pp ;; pp ;; p; ;; ;; ;p pp p; pp p; pp ;; ;p p; ;; p; p; p; ;; ;; pp pp pp ;; p; p; pp ;p ;p ;p pp pp pp ;; pp ;; pp ;p ;p pp ;; p; pp ;p ;p ;p ;p ;; ;; ;; p; pp ;; ;p pp ;p ;; p; p; ;p ;; ;; p; p; ;; pp pp p; ;p p; p; ;; p; pp ;; pp pp p; p; p; ;p p; p; p; ;; pp ;; pp ;p ;; ;; p; p; ;; ;p pp ;; ;p ;p pp",
+        "p; ;; pp ;p ;p pp ; p; pp pp p p ;; ;; p p; p ;; ; p; ; ;p p p ;p p; p p; p; ;; ;p p p; p; p; p p; p pp p; p pp p; p ;; p; ; p; pp pp p; ; p p pp ;p ;; p p; ; ;; pp ;; ;p p p ; ; ; ;; p p ;p ;p p; pp p p; pp pp ;p pp ;; p p; ;p p ;; p; p p; ; ;p ; ; p pp p; ; pp ; ;p pp ;; p ;p pp p p ;p p; ; p; ;; ;p pp ; p ; ; ; ; p ; ;p pp ;p p ;; ; pp",
+        "p; ;; pp ;p p; p; ;p p; p; ;p ;p ;p p; p; ;p p; ;p ;p p; p; p; ;p ;p ;p p; ;p p; ;p p; ;p ;p p; ;p ;p ;p p; ;p ;p p; p; ;p ;p p; p; p; ;p p; ;p ;p ;p p; ;p p; p; p; ;p p; ;p p; p; p; ;p p; ;p p; ;p ;p ;p ;p ;p ;p ;p ;p ;p p; ;p ;p ;p p; ;p p; p; ;p ;p p; p; p; ;p ;p ;p p; ;p p; ;p ;p p; ;p ;p p; p; ;p p; p; ;p ;p p; p; p; ;p ;p p; ;p ;p p;",
+        "p; ;; pp ;p ; p ;p ;p p pp p p p; p ; p p; p p; ; p p pp p; p p pp ;; ;p ;; ; p pp pp ; ; p; ;; p ; p; ; ;p ;; ; pp ; p; pp ; pp ;; pp ; p ; p ; ; p p p p p p; p p; ; ; pp p p ;p ;p ; ; ; ; p; p; p; p ; ; ; p ;; p ; p; ;p p; pp p ; p pp ;p p; p; ;p p; p ;; ;p p ;p ;; p ; pp p; ;; ;p p; ;p pp p ;; p p p ;; pp ;p ; ; p; pp ; p ; ;; ; pp ; ;;",
+      ],
+      difficulty: 2, mastery: { wpm: 19, accuracy: 92 }
+    }),
+    mk({
+      id: 's2-01', stage: 2,
+      title: 'Q and P',
+      objective: 'Mix the two outside top keys across both hands: little fingers stretch up in turn, one on each side, and return straight to their home keys.',
+      keys: ['q', 'p', 'a', ';'], newKeys: [],
+      passages: [
+        "type out the quiet story we put it away we will wait here for the quiet hour we write quietly at a quiet hour we will wait here for the quiet hour type out the quiet story we put it away we shall wait here the quiet hour has passed quite a while to type write it out loud we shall wait here the quiet",
+        "hour has passed type out the quiet story we put it away type it out pour the water quite a while your quiet trip we will wait here the pure light is out we put it away quite a while to type write it out loud type it out pour the water quite a while your quiet trip we will wait here the quiet road is pure i put the rope out write quietly",
+        "at a quiet hour the pure light type it out pour the water quite a while write quietly at a quiet hour the pure light the quiet road is pure i put the rope out quite a while to type write it out loud the quiet road is pure i put the rope out write quietly at a quiet hour the pure light we will wait here for the quiet hour your quiet trip we will wait here type it out pour the",
+        "water quite a while quite a while to type write it out loud we will wait here for the quiet hour type out the quiet story we put it away type it out pour the water quite a while quite a while to type write it out loud we will wait here for the quiet hour quite a while to type write it out loud type it out pour the water quite a while we write",
+        "quietly at a quiet hour we will wait here for the quiet hour we write quietly at a quiet hour type it out pour the water quite a while quite a while to type write it out loud type it out pour the water quite a while quite a while to type write it out loud the pure light is out we put it away we write quietly at a quiet hour the quiet road is pure i put the rope out quite a while to ty",
+      ],
+      difficulty: 2, mastery: { wpm: 20, accuracy: 92 }
+    }),
+    mk({
+      id: 's2-02', stage: 2,
+      title: 'W and O',
+      objective: 'Mix the two ring-finger reaches: W with the left hand, O with the right, alternating without moving the wrists.',
+      keys: ['w', 'o', 'q', 'p'], newKeys: [],
+      passages: [
+        "we shall wait here the quiet hour has passed we write quietly at a quiet hour the pure light is out we put it away write quietly at a quiet hour the pure light we will wait here for the quiet hour type out the quiet story we put it away we will wait here for the quiet hour we write quietly at a quiet",
+        "hour we will wait here for the quiet hour write quietly at a quiet hour the pure light the quiet road is pure i put the rope out write quietly at a quiet hour the pure light we will wait here for the quiet hour your quiet trip we will wait here the quiet road is pure i put the rope out your quiet trip we will wait here we will wait here",
+        "for the quiet hour write quietly at a quiet hour the pure light type it out pour the water quite a while write quietly at a quiet hour the pure light we shall wait here the quiet hour has passed your quiet trip we will wait here we shall wait here the quiet hour has passed write quietly at a quiet hour the pure light we will wait here for the quiet hour type out the quiet",
+        "story we put it away the quiet road is pure i put the rope out type out the quiet story we put it away we shall wait here the quiet hour has passed your quiet trip we will wait here the pure light is out we put it away we write quietly at a quiet hour we will wait here for the quiet hour we write quietly at a quiet hour we will wait here",
+        "for the quiet hour quite a while to type write it out loud type it out pour the water quite a while write quietly at a quiet hour the pure light we shall wait here the quiet hour has passed your quiet trip we will wait here we shall wait here the quiet hour has passed type out the quiet story we put it away the quiet road is pure i put the rope out your quiet trip we will wait here we will w",
+      ],
+      difficulty: 2, mastery: { wpm: 20, accuracy: 92 }
+    }),
+    mk({
+      id: 's2-03', stage: 2,
+      title: 'E and I',
+      objective: 'Mix the two middle-finger reaches: E with the left hand, I with the right. These keys appear in a large share of English words.',
+      keys: ['e', 'i', 'd', 'k'], newKeys: [],
+      passages: [
+        "your quiet trip we will wait here the quiet road is pure i put the rope out your quiet trip we will wait here type it out pour the water quite a while write quietly at a quiet hour the pure light type it out pour the water quite a while quite a while to type write it out loud the pure light is out we",
+        "put it away quite a while to type write it out loud we shall wait here the quiet hour has passed quite a while to type write it out loud we will wait here for the quiet hour quite a while to type write it out loud we will wait here for the quiet hour quite a while to type write it out loud type it out pour the water quite a while quite",
+        "a while to type write it out loud we will wait here for the quiet hour type out the quiet story we put it away the quiet road is pure i put the rope out write quietly at a quiet hour the pure light type it out pour the water quite a while quite a while to type write it out loud type it out pour the water quite a while we write quietly at a quiet hour we shall wait here the",
+        "quiet hour has passed your quiet trip we will wait here the quiet road is pure i put the rope out we write quietly at a quiet hour we will wait here for the quiet hour write quietly at a quiet hour the pure light we will wait here for the quiet hour write quietly at a quiet hour the pure light type it out pour the water quite a while your",
+        "quiet trip we will wait here we shall wait here the quiet hour has passed write quietly at a quiet hour the pure light we will wait here for the quiet hour we write quietly at a quiet hour we will wait here for the quiet hour write quietly at a quiet hour the pure light we will wait here for the quiet hour write quietly at a quiet hour the pure light the pure light is out we put it away typ",
+      ],
+      difficulty: 2, mastery: { wpm: 21, accuracy: 92 }
+    }),
+    mk({
+      id: 's2-04', stage: 2,
+      title: 'R and U',
+      objective: 'Mix the two index-finger reaches above the anchors: R with the left hand, U with the right.',
+      keys: ['r', 'u', 'f', 'j'], newKeys: [],
+      passages: [
+        "we will wait here for the quiet hour quite a while to type write it out loud the quiet road is pure i put the rope out your quiet trip we will wait here the pure light is out we put it away quite a while to type write it out loud the quiet road is pure i put the rope out type out the quiet story we put",
+        "it away we shall wait here the quiet hour has passed quite a while to type write it out loud we shall wait here the quiet hour has passed type out the quiet story we put it away we shall wait here the quiet hour has passed we write quietly at a quiet hour we shall wait here the quiet hour has passed write quietly at a quiet hour the pure",
+        "light the quiet road is pure i put the rope out your quiet trip we will wait here we shall wait here the quiet hour has passed write quietly at a quiet hour the pure light we shall wait here the quiet hour has passed write quietly at a quiet hour the pure light the quiet road is pure i put the rope out your quiet trip we will wait here the quiet road is pure i put the rope",
+        "out type out the quiet story we put it away type it out pour the water quite a while your quiet trip we will wait here the quiet road is pure i put the rope out write quietly at a quiet hour the pure light the pure light is out we put it away your quiet trip we will wait here we shall wait here the quiet hour has passed we write quietly",
+        "at a quiet hour we shall wait here the quiet hour has passed we write quietly at a quiet hour we shall wait here the quiet hour has passed your quiet trip we will wait here the pure light is out we put it away we write quietly at a quiet hour we shall wait here the quiet hour has passed write quietly at a quiet hour the pure light type it out pour the water quite a while we write quietly",
+      ],
+      difficulty: 2, mastery: { wpm: 21, accuracy: 92 }
+    }),
+    mk({
       id: 's2-05', stage: 2,
       title: 'T and Y',
-      objective: 'Add T and Y, the two top keys nearest the centre. That closes the top row, so relax your shoulders.',
-      keys: ['t', 'y', 'g', 'h'], newKeys: ['t', 'y'],
+      objective: 'Mix the long index reaches: T with the left hand, Y with the right — the furthest stretches on the top row.',
+      keys: ['t', 'y', 'g', 'h'], newKeys: [],
       passages: [
         "we write quietly at a quiet hour type it out pour the water quite a while quite a while to type write it out loud the quiet road is pure i put the rope out type out the quiet story we put it away the pure light is out we put it away type out the quiet story we put it away we will wait here for the quiet",
         "hour write quietly at a quiet hour the pure light the quiet road is pure i put the rope out we write quietly at a quiet hour the pure light is out we put it away write quietly at a quiet hour the pure light the pure light is out we put it away we write quietly at a quiet hour we will wait here for the quiet hour your quiet trip we will",
@@ -441,33 +467,7 @@
         "hour the pure light the pure light is out we put it away write quietly at a quiet hour the pure light the pure light is out we put it away write quietly at a quiet hour the pure light we will wait here for the quiet hour we write quietly at a quiet hour type it out pour the water quite a while type out the quiet story we put it away the pure",
         "light is out we put it away write quietly at a quiet hour the pure light type it out pour the water quite a while quite a while to type write it out loud the pure light is out we put it away we write quietly at a quiet hour type it out pour the water quite a while type out the quiet story we put it away type it out pour the water quite a while your quiet trip we will wait here the qui",
       ],
-      difficulty: 2, mastery: { wpm: 19, accuracy: 92 }
-    }),
-    mk({
-      id: 's2-gt', stage: 2,
-      title: 'G and T',
-      objective: 'Drill the left stretch column: T sits a full row above G. Rock the index finger up for every T and settle it straight back on G.',
-      keys: ['t', 'g'], newKeys: [],
-      passages: [
-        "tg gg tt gt tg gt tg tg tg tt tt gg tt tt tg tt tg gt gg tt gg gt tg tg gg gt tt tt tt tg tg tt gt tt tg gg gg tg gt gg gt tg gg tt tt gg gg gt gg tg gg gg tt tg gt tg tg tg gt tt tt gg tg gg tt tg tg gt gg tt gt tg gt gg gt tg tg tg tg gt gt tt tt gg gg gg tt gt tg gg gt tg tt tg tg gt gt tg gt tt gg gt gg tg tt gg tt tt gg gg gg tt gt tg",
-        "tg gg tt gt tg gg gg g tt gt t g tt g t tt g t gg gt gt t gt gg tg tt t tg tt g g tg gt t gg tg gt gg t gg g tt tt tt g tt tg t tg tg gt g t t gt tt g gg tt gt t gg tt gt gt g t tg gg tt g tg t gg tt tg gg tt t gt g gg g t t tg tg tg gg tt tt gg t tt tg g t gg tg gg gg tg tg g gt t tg tg t gt g gg gt tt gg t g tt tt gg tt gt g tt gt tg tt",
-        "tg gg tt gt gt tg tg tg gt tg gt gt tg gt tg gt tg tg gt tg tg tg gt gt tg tg gt tg gt tg tg gt gt tg tg tg tg gt tg tg tg gt gt gt tg tg gt gt gt gt tg tg gt gt tg tg gt gt tg gt gt tg gt tg gt tg gt tg tg tg tg tg tg gt tg gt gt tg gt gt gt gt tg gt gt gt tg tg tg gt gt gt gt gt tg tg gt tg tg tg tg tg gt tg gt gt gt gt gt gt gt tg tg tg",
-        "tg gg tt gt tt gg gg g tt t t gg t g t t g g t gt t g g g g g g gt tt tt tg gg tt tg g t gt tt g tt tg gg t tt gg t t gt g tg t gt t g t t g tt g gg tg gg t t t gg t t tg tt gg t gg g gg t t g gg tt gg gg gt tt g g t t g t t tt gg g t tg g g tg g t g gg g t g t tg tg tg t tg tg g tt g g g gg g t g g t g t g gt tg t g t gt t g g gg tg g gg",
-      ],
-      difficulty: 2, mastery: { wpm: 19, accuracy: 92 }
-    }),
-    mk({
-      id: 's2-hy', stage: 2,
-      title: 'H and Y',
-      objective: 'Drill the right-hand stretch: Y sits a full row above H. Reach up and slightly left each time, then let the finger fall back on H.',
-      keys: ['y', 'h'], newKeys: [],
-      passages: [
-        "yh hh yy hy hh yh hy yh yh hy hy yy hy yy hy yh yy hy hy hh yh yh yh yy yy hy yh hy yh hy yh yy yh hh yy yy yy hy yy yh yh yy yh hh hy hy yh hh yy yh yy yy hy hy yh hy yh yy yh yh hy hh hy yh yy hh yh yy hy hh hy hh yh yy hh hy yh yh yh hy hy hy hy hy yy yh yh yy hy yy yy yh hy hy hy hy yh yy yh yh hy yh hh yy hh hy hy yh hy yh yy yh hy yh",
-        "yh hh yy hy h yh h h yy hy yh h h y hh hy h y y h yy h yy y hh yy yy hy hy hh hy yy hy yh yh hy yh yh hh y h hh h yh hy yy yh yy y y y y y yy yy h h hy yy h y h yy hy yh hy yy hh hh hy h yh hh y y y yh h hy yh yy h hy hh hh hh yy hh h yy hy yh yh yy hh h y h yy yy h h hh hy yy hy hh y hh yy hy h h hh yh y yh yy hy yy hh yh yh yy yh yy hy hy",
-        "yh hh yy hy hy hy hy yh yh yh hy yh hy yh yh hy hy hy yh yh yh yh hy yh yh yh hy yh yh yh hy yh yh hy hy yh yh yh hy yh yh yh yh hy yh yh hy yh yh yh hy yh hy yh yh hy hy hy yh yh yh yh yh hy yh hy hy hy hy yh hy hy yh hy yh hy hy yh yh hy yh hy hy hy hy hy yh yh yh hy hy yh hy hy yh hy yh yh yh yh yh hy yh yh hy hy yh hy hy yh hy yh hy yh",
-        "yh hh yy hy h hh h y yh hh y y hh hh h hy h yh h y hh yy yy hy yy hh hh yh y hh h y h y hh h y y h y yy h y y hh h h yy hh yh yy y y hy y y h yy hh yy hh hh h yy yh yy hy h hy yh h hh y hh hh h hy h h yh y yy h yh h y yh hh h y y hh y hy yh yy y hy y h yh h yy hy h yh yh hh h yh h h hy hy h h hy hy yh y yh h y h yy h h yy yh h h hy y yy y",
-      ],
-      difficulty: 2, mastery: { wpm: 19, accuracy: 92 }
+      difficulty: 2, mastery: { wpm: 22, accuracy: 92 }
     }),
     mk({
       id: 's2-06', stage: 2,
@@ -580,64 +580,23 @@
      ======================================================================= */
   var STAGE3 = [
     mk({
-      id: 's3-01', stage: 3,
-      title: 'Z and M',
-      objective: 'Start the bottom row with the little fingers. Z is under A and M sits inboard of the comma key.',
-      keys: ['z', 'm', 'a', ';'], newKeys: ['z', 'm'],
-      passages: [
-        "mix the box then zip it then fix it too a busy zoo with a box and a zebra too fix the box then mix it then fax the box fix the box then mix it then fax it well a box and a map and a zip then fix it come and go and stay with a big box fix the box and zip it then mix it well we can move the box then fix",
-        "it then zip it the vet fixes the box then mixes it well mix the box then zip it then fix it too fix the box then mix it then fax the box fix six boxes then mix them then fax them the vet will fix the box and mix it well fix the box and zip it then mix it well a small box and a big zip then we mix it a zebra goes to the zoo with a box the",
-        "box is a big box with a small map a busy place with a box and a map and a zip fix the box then mix it then fax it well come go stay and do not complain about the mess mix the box then fix it then box it again the comic book was fun bring me six more fix the box then mix it then fax the box a box and a map and a zip and a fix then mix the box then fix it then zip the box a",
-        "small box and a big map then mix it zip the box then fix it then mix it well mix the box then zip it box it and fix it a big box then a small box then mix them the vet will fix the box and mix it well a small box and a big map then mix it buy a box and mix it with a big fax fix the box and zip it then mix it well a busy zoo with a box and",
-        "a zebra too fix the box then mix it then fax the box a small box and a big zip then we mix it a small box a big map and a quick zip come go stay then mix the box then fix it zip the box then fix it then mix it well a small box a big map and a quick zip we can fix the box then mix it then zip it a big zoo we can mix the map then zip it mix the box then zip it then fix it too we can mix and",
-      ],
-      difficulty: 2, mastery: { wpm: 20, accuracy: 91 }
-    }),
-    mk({
       id: 's3-az', stage: 3,
       title: 'A and Z',
       objective: 'Drill the left pinky column downward: Z sits one row below A. Curl the little finger a little further, type, and return to A.',
-      keys: ['z', 'a'], newKeys: [],
+      keys: ['z', 'a'], newKeys: ['z'],
       passages: [
         "za aa zz az aa az az zz za zz zz aa aa az zz zz za aa aa az az za az za za zz aa az zz aa za aa az aa az aa za aa zz za az za az za az aa aa az za az za az az az az az az zz az aa za az aa za za zz az za az aa aa za za aa az az aa zz za za za aa aa zz aa az zz zz zz za aa zz zz az zz zz zz aa zz aa za aa aa az za zz za aa aa zz zz aa za aa",
         "za aa zz az zz az z aa aa za az aa az zz a a a aa za aa a az zz aa zz za aa a a za zz aa za a a a aa z z az za z za aa zz z az aa zz za z az zz aa aa a az zz aa za zz aa zz aa a z a za az az aa a az z az az az zz az a z z zz az za aa aa aa aa az a aa a za a az zz z zz za a za aa z a aa az za z aa z aa zz aa a a zz zz aa a aa az z zz zz z aa",
         "za aa zz az za za az za az az az za az za za za za az za za za za za az az za az za za az az az za az az za za za za za az az az za za za az za za za za za az az az az za za az za za az za za za za az az za az az za az az az az az za az za za za za za za za za za za za az az az za az az za za az az za az az za az az az za az za az az za za",
         "za aa zz az za z z a za aa az a a za az zz a za z a z zz z aa aa za z a z aa az z z az aa z az za z zz aa a aa a z az aa a zz az zz z a zz a a a za a a aa zz az aa z aa aa zz zz zz aa a z az zz zz a a za za aa az zz a aa aa z az a a zz az za a z zz a z a a za z az az za az aa a za az a z az z az zz z a za z az za a aa a z aa zz za z za a z",
       ],
-      difficulty: 2, mastery: { wpm: 20, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-jm', stage: 3,
-      title: 'J and M',
-      objective: 'Drill the right middle-finger column downward: M sits one row below J. Curl down, type, and drop back home without looking.',
-      keys: ['m', 'j'], newKeys: [],
-      passages: [
-        "mj jj mm jm mm jm mj mm jm mm jj jm jj mj mm jm mm mm mm jm jm jm mm mm jj jm mm jj mm jj jj jm mm jm jj mj mj jm mm mm jj jj mj mj jj mj jj jj mm mj mm jj mj mm mj jj mm jm jm mm jj mm jj mm jj jm mj mj mm mj jj mm mm mm jm mm mm jj jm jm mj jj jm mj jj mj mm jj mm mm mj mj mm mm jj jj mj jm jj mm jj mm mm jj jj jj jm mj jj jm mj jm mj jm",
-        "mj jj mm jm j j jm jj m mm j mj mm mj mj jm mm jm m j jj jm mm mj jj m jm j m mm mj mj mm jj j mj jm jm j m jj jj m m j mj mj jj jm jj jj m jm jm mm mj mj jm jj jm m mj j j jj m mm mj mj jm mm mm jm mj jj j mm mj m j mm mm m jj mj j j j mm j j jj j j mm m jm m mm mm jj jm m m mm jm j j jj jm m mj mm jj mj mj j mj m jj mj m jj mm mj j j m jm",
-        "mj jj mm jm jm mj mj jm mj mj mj mj jm mj jm jm jm jm jm jm mj mj jm mj mj jm jm mj jm jm mj mj mj jm jm jm mj mj jm jm mj jm mj mj jm mj mj mj jm jm mj mj jm jm mj jm jm jm mj mj jm mj jm jm jm mj jm mj jm jm mj jm mj jm jm jm mj jm mj mj jm mj jm mj jm jm jm mj mj jm mj mj jm mj mj mj jm jm jm mj jm mj jm mj jm jm mj jm mj mj jm mj mj jm",
-        "mj jj mm jm jm j m m mj jm jj mj m mj j j jm m jm mm mm mm mj jm j j jm m j jm mj jm mm j j m m m mm mj m j j j j j m mj m jm jm jj j m jm j m mj m m j jj j j m jm mm jm jm m j m m j jj m mj jj j mm m jm mj j m jj jj mm jm j m j jm m jj mj jm mm mj mm m m jj jj mj mm mj mm m j jj jj m j jj mm j m mj j mj jj j j m j jj jj m m j jm mj mm jm",
-      ],
-      difficulty: 2, mastery: { wpm: 20, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-02', stage: 3,
-      title: 'X and the Comma',
-      objective: 'Add X and the comma key. The comma is the most typed punctuation mark in English, so this reach pays off quickly.',
-      keys: ['x', ',', 's', 'l'], newKeys: ['x', ','],
-      passages: [
-        "a small box and a big box and a map too come and go and stay with a big box buy six boxes then mix them with a fax a zebra goes to the zoo with a box mix the box then fix it then zip the box a big zoo we can mix the map then zip it a small box and a zip and a map then mix we can not move the box but",
-        "we can fix it come and go and stay with a big box we can not move but we can fix a box then a small box a big map and a quick zip mix the box then zip it then fix it too mix six boxes then fix the mix and fax it a small box and a big zip then we mix it a small box and a zip and a map then mix mix the box then zip it then fix it too fix",
-        "the box then mix it then fax the box the vet will fix the box and mix it well buy six boxes then fix them then mix them mix the box then zip it then fix it too a small box and a big box and a map too a big box and a small map then we mix it buy a box and a map and mix them well a box and a map and a zip then fix it mix the box then fix it then zip the box come go stay then",
-        "mix the box then fix it the zoo is a busy place so bring a big box buy a box and a map and mix them well a box and a map and a zip then fix it fix the box then mix it then fax the box mix six boxes then fix the mix and fax it we can move the box then fix it then zip it mix the box then fix it then box it again come go stay and do not complain",
-        "about the mess the comic book was fun with a box and a zip a zebra goes to the zoo with a box a big box and a small map then we mix it mix the box then fix it then box it again the vet fixes the box then mixes it well we can mix and fix the box then zip it buy six boxes then fix them then mix them buy six boxes then mix them with a fax the vet fixes the box then mixes it well we can not",
-      ],
-      difficulty: 2, mastery: { wpm: 20, accuracy: 91 }
+      difficulty: 2, mastery: { wpm: 19, accuracy: 91 }
     }),
     mk({
       id: 's3-sx', stage: 3,
       title: 'S and X',
       objective: 'Drill the left ring-finger column: X sits one row below S. Curl the ring finger straight down and come straight home.',
-      keys: ['x', 's'], newKeys: [],
+      keys: ['x', 's'], newKeys: ['x'],
       passages: [
         "xs ss xx sx sx xs xx xs ss ss xs xx ss sx xs sx xx xs xs xs sx ss sx sx ss xx sx xx sx sx xx xx xx xx xx sx sx xs ss xs xs xs ss xs ss ss ss ss sx sx sx xx ss sx ss xs xs xs xx sx sx xs ss ss xs xx xx xx sx ss sx ss sx xx xx xs sx ss sx sx ss sx sx sx ss xs ss xx xx ss xs xs xx xx sx sx xs xs xx sx sx ss sx xx xx xs xx ss ss sx ss xs xx ss",
         "xs ss xx sx xs xx ss sx sx s s xs xx xs x ss xx xs xs x xs sx s xx ss s ss xx sx s s sx ss ss x xx xx ss xs sx xx xx xs ss ss sx x ss s xx x s s xs xs ss s ss s x xx x xs ss sx xx ss xs x xs xs sx s ss xx xs ss xx s s ss s x ss xs xx sx x s x xx ss xs x x ss xx s ss ss ss xs sx xx s ss xs xx xs xs s xs xs x xs s xs sx xs s xx sx ss sx xs sx",
@@ -647,77 +606,23 @@
       difficulty: 2, mastery: { wpm: 20, accuracy: 91 }
     }),
     mk({
-      id: 's3-cm', stage: 3,
-      title: 'K and the Comma',
-      objective: 'Drill the right-hand column into punctuation: the comma sits one row below K. Curl the middle finger down and return.',
-      keys: [',', 'k'], newKeys: [],
-      passages: [
-        ",k kk ,, k, k, kk kk ,k kk ,, kk ,k k, k, k, kk kk ,k ,k k, k, kk ,k ,k k, ,, ,, k, ,, ,, ,, ,k kk ,, k, ,k ,, ,, kk ,k k, k, k, ,, ,, k, ,k ,k k, ,, ,, ,, k, ,, kk ,k kk ,k kk ,, k, ,k kk ,k ,k ,k k, kk kk ,k ,k kk ,k ,k ,k ,k ,k ,k ,k k, ,k k, k, ,, kk ,, ,, k, ,, kk ,, kk ,, ,k ,k kk k, k, ,k ,k k, ,k kk k, ,k ,, k, ,k ,, ,k kk k, k, ,k",
-        ",k kk ,, k, ,, ,, ,, k, k k k ,, , , kk kk , ,, ,k k, k, ,k , ,, ,k ,k k, ,k , k, kk ,, ,k , k kk ,k , kk ,k , ,, , ,, ,k k ,, ,k ,, , ,, kk ,, kk k, , , , ,, , ,k ,k ,k ,, k, ,k ,, ,k ,k k , kk k, ,, , k ,k kk k k , k, , k, , ,k k, k ,, ,, k, , kk ,, k ,, , k k kk kk k ,k , ,, , k k , kk , ,, kk ,, , ,k ,, kk k ,k ,k k, k ,, k, k ,k k, kk",
-        ",k kk ,, k, k, ,k ,k ,k ,k k, k, ,k ,k ,k k, k, ,k ,k k, k, ,k ,k k, ,k ,k ,k k, ,k k, ,k ,k ,k k, ,k k, ,k k, ,k ,k ,k ,k ,k ,k k, k, k, ,k ,k ,k ,k ,k ,k k, ,k k, ,k k, ,k k, ,k k, ,k ,k ,k k, ,k k, k, k, ,k k, k, ,k k, k, k, ,k k, ,k ,k ,k ,k k, ,k k, ,k k, ,k ,k k, ,k ,k ,k ,k k, k, k, ,k k, ,k ,k ,k k, ,k ,k ,k ,k k, ,k ,k ,k k, ,k k,",
-        ",k kk ,, k, k kk ,k , k, k, k ,k , , k , k , ,, , kk k ,, ,k k , , kk kk k, k k k kk ,k ,k ,k k, k , ,k kk k, ,, k, k ,k ,, ,k , k, k ,k , k, k , ,, kk k kk ,, ,, k ,k k kk k kk k k , k, ,k ,, k k kk ,k ,k k ,, k, , k , k kk ,, k k kk ,, kk k, ,, , k k , kk k k ,, ,, ,, kk ,k ,k ,, k, ,, , , k ,, , , ,k k, k , , k ,k ,, , kk , k , , ,, , k",
-      ],
-      difficulty: 2, mastery: { wpm: 20, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-03', stage: 3,
-      title: 'C and the Full Stop',
-      objective: 'Add C and the full stop. These keys invite accidental double hits, so keep the touch light and quick.',
-      keys: ['c', '.', 'd', 'k'], newKeys: ['c', '.'],
-      passages: [
-        "a box and a map and a zip and a fix then a box and a map and a zip then fix it the box is over the zoo with a map too a busy place with a box and a map and a zip the comic book was fun bring me six more fix six boxes then mix them then fax them buy six boxes then fix them then mix them come go stay and",
-        "do not complain about the mess a busy place with a box and a map and a zip come and go and stay with a big box the vet will fix the box and mix it well mix the box then fix it then box it again a big zoo we can mix the map then zip it a busy zoo with a box and a zebra too a zebra goes to the zoo with a box we can mix the map then zip it",
-        "box it and fix it too zip the box then fix it then mix it well come go stay then mix the box then fix it a big box then a small box then mix them buy a box and a map and mix them well zip the box then fix it then mix it well buy a box and a map and mix them well come go stay and do not complain about the mess a busy place with a box and a map and a zip a small box and a big",
-        "zip then we mix it the comic book was fun bring me six more fix the box and zip it then mix it well a zebra and a zoo and a box then mix them the vet will fix the box and mix it well mix six boxes then fix them then fax them a box and a map and a zip and a fix then fix the box then mix it then fax it well the zoo is a busy place so bring",
-        "a big box a big box and a small map then we mix it a box and a map and a zip then fix it the comic book was fun bring me six more mix six boxes then fix them then fax them mix six boxes then fix them then fax them a box and a map then we mix them well come and go and stay with a big box mix six boxes then fix the mix and fax it a big box then a small box then mix them fix six boxes then",
-      ],
-      difficulty: 2, mastery: { wpm: 21, accuracy: 91 }
-    }),
-    mk({
       id: 's3-dc', stage: 3,
       title: 'D and C',
       objective: 'Drill the left middle-finger column: C sits one row below D. Middle fingers curl down and return without disturbing the hand.',
-      keys: ['c', 'd'], newKeys: [],
+      keys: ['c', 'd'], newKeys: ['c'],
       passages: [
         "cd dd cc dc cd cd dc dc cd cc dd cc dc dc dc dc cc dd dc dd cc cc dc dd cd cc dc dd dc cc dc cc cc dc cd cd dd cd dd cc cd dd dc dc cc dc dc cc cd dc dd cd dd cc cc dd dd cc dc dd cc dd dd dd dd cc dd cc cc dc dd cc cc dc cc cd cd dc cc dd dc cc cd dd cc dc cc cc dc dc cc cd cc dc dd dc cc cd cd dc dd dd cd dd dd cc dc dc dc cd cc dd cc dd",
         "cd dd cc dc d d d cc cd d cc c dc cd c cd dc cc cc d cd cd d d cc cc c c dc cd d cc cd d cd dd cc d c dd c dd d cc cd d cc dc dc dd c dd dd cd dd dd cd d d dd d dc c dd dd dc cd cd c cd cc d c dc cd cc cd dc dc d cd cc c dc cd cc dc dc dc cd dd dd c dd d cc cd c c c d dd dc cd dd cc dd d d d d d c d d dc cc dd cd c dc cc d d d cc dd cc dc",
         "cd dd cc dc dc dc cd dc cd cd dc cd cd dc dc dc dc cd cd dc cd cd cd dc dc cd dc dc dc dc dc cd cd cd cd dc dc cd cd cd cd dc cd dc cd cd cd dc dc cd cd dc dc cd dc cd cd cd dc cd cd cd cd dc dc cd cd cd cd cd dc dc dc dc cd dc dc dc cd dc cd cd cd dc cd cd cd cd dc cd dc cd dc dc dc dc dc dc dc dc dc cd dc dc dc cd dc dc cd dc cd cd cd cd",
         "cd dd cc dc d dc cd d dc d d d dc c cc cd dc c dd d d dd c cc cc cc cd dc d dc d d c c dd cd c d cc d d cd d d c c d cc cd d d d cd c c d d dc c d dc dd d dd c d c d c dd cd dd dd dc cd cd dc d c c cd cd dc c d c c cd dd cd c d c cd cc dd d c d cd dc c cc d dc dc cc dd c c cd dc c c d c dd d cc d cd d cd dc c cc cc c dc cc c cd cc c d dc dd",
       ],
-      difficulty: 2, mastery: { wpm: 21, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-pd', stage: 3,
-      title: 'L and the Full Stop',
-      objective: 'Drill the right ring-finger column into punctuation: the full stop sits one row below L. Curl down, tap, and settle back on L.',
-      keys: ['.', 'l'], newKeys: [],
-      passages: [
-        ".l ll .. l. .. .. .. ll .l .l l. ll .l ll ll ll ll l. .l l. .l l. ll .. .. .l .. ll .. .l .. ll ll .. .l ll .. .l ll .l .l .l .l .. .. .. l. .. .. ll ll ll ll ll ll .l ll .. .. .l .. .l .. ll ll .. .l l. l. .l .. l. ll .. .. .. ll .l .. .. ll .l .. .. .l .l .. l. .l ll l. .l .. ll ll ll .. ll .l .. ll .. .l ll .. .l .. .. l. l. l. ll l. .l",
-        ".l ll .. l. ll l. .l ll l. .l l ll l. . .l . l. l .. .. l. ll .l l .l l. .. ll .. . .. l . .l l ll l . l ll l ll .. l . l l l. ll .l l .l l ll . ll l. .. l .. .l .. .. . l. l. l . .l ll .l . ll .. . .l l. .. . .l . .l .. ll l .. .. l l. l . l. ll ll l .l l ll .. .l l . .. .l .. l . .. ll .. ll ll ll .l l. .. ll l l . l. l l . l l. ll l. l.",
-        ".l ll .. l. .l l. l. l. l. .l l. .l .l .l l. l. l. .l .l .l l. l. l. l. l. .l .l l. .l l. l. l. .l l. l. l. l. l. .l l. .l l. .l .l l. .l .l .l .l .l .l l. l. .l l. .l .l .l l. l. .l .l l. .l .l l. .l l. .l l. .l l. l. .l l. l. .l .l l. .l l. .l l. l. l. .l l. l. l. .l .l l. .l l. l. l. l. l. .l .l l. l. l. l. l. .l .l .l .l .l .l l. .l .l",
-        ".l ll .. l. . .l . l .. . l l .l l. . ll .. l l . . . l. . l l l .l .. . .l . .l l. l. ll .. . l l. l .. .l l l l l .l .l .. l .. l l .l . ll l . l .. .l l l l. ll .l . l. l. .. . l l. .l . l. . .l . l l. l. .l .. l . .l l .l . l l l l .l l. l ll . ll l .l l. . ll .l l .. .l l. l ll ll .. l .. l .. .l l. . . l. l . l. . l . . . l. . ll .l",
-      ],
-      difficulty: 2, mastery: { wpm: 21, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-04', stage: 3,
-      title: 'V and the Slash',
-      objective: 'Add V and the slash key. Keep the wrist planted while the index finger makes its small outward move.',
-      keys: ['v', '/', 'f', 'j'], newKeys: ['v', '/'],
-      passages: [
-        "fix the box then mix it then fax it well mix the box then zip it box it and fix it the comic book was fun bring me six more a box and a map and a zip then fix it mix the box then zip it then fix it too buy six boxes then mix them with a fax mix the box then zip it box it and fix it fix six boxes then",
-        "mix them then fax them we can move the box then fix it then zip it mix the box then zip it then fix it too come go stay with a box and a map too fix the box then mix it then fax it well the comic book was fun bring me six more fix six boxes then mix them then fax them the box is a big box with a small map come go stay then mix the box then",
-        "fix it the zoo is a busy place so bring a big box the box is a big box with a small map a box and a map and a zip and a fix then a busy place with a box and a map and a zip the box is a big box with a small map the zebra went over the zoo with a box a busy place with a box and a map and a zip a zebra goes to the zoo with a box we can not move but we can fix a box then zip",
-        "the box then fix it then mix it well a big zoo we can mix the map then zip it the box is a big box with a small map come and go and stay with a big box mix six boxes then fix the mix and fax it a big box and a small map then we mix it a small box and a big zip then we mix it mix the box then zip it then fix it too a zebra goes to the zoo",
-        "with a box a box and a map and a zip then fix it the box is over the zoo with a map too buy six boxes then mix them with a fax a big box then a small box then mix them come and go and stay with a big box the comic book was fun with a box and a zip zip the box then fix it then mix it well fix the box and zip it then mix it well a small box and a big zip then we mix it come and go and stay",
-      ],
-      difficulty: 2, mastery: { wpm: 21, accuracy: 91 }
+      difficulty: 2, mastery: { wpm: 20, accuracy: 91 }
     }),
     mk({
       id: 's3-fv', stage: 3,
       title: 'F and V',
       objective: 'Drill the left index column downward: V sits one row below F. Curl the index finger under, type, and rest back on its anchor.',
-      keys: ['v', 'f'], newKeys: [],
+      keys: ['v', 'f'], newKeys: ['v'],
       passages: [
         "vf ff vv fv fv vv fv fv ff vv fv vv vv vf fv ff ff fv fv ff fv ff fv vv vf ff ff ff vv ff vv vf vf vf vv vv vf ff fv fv ff vv fv fv vf fv ff ff vf vv vv ff vv vv vv fv fv vf vv vv ff ff vv vv fv vv vv fv vf fv fv vv vv vf vv fv ff vv ff fv vf vv vv vf vv fv fv ff fv vf ff vv fv fv vv fv vf ff ff ff vf fv ff ff ff ff vf vf vf fv vv ff fv fv",
         "vf ff vv fv ff vv v ff v vv vv v ff fv vf f f fv fv v vf f fv ff vv v vv ff fv ff fv v f ff f vv f vf v vf vf vf fv vf v fv fv vf fv fv v f fv v vv fv ff f v fv f vv vf vv v f f v ff f vf vv f vf vf vf ff vf fv f f v vv vv vv f ff f fv f ff fv ff v fv vv fv vf vf v v vv vv v vv fv f v f vv vv vv ff f ff v vv v vv vf v v vf fv vv vf f fv vv",
@@ -727,50 +632,23 @@
       difficulty: 2, mastery: { wpm: 21, accuracy: 91 }
     }),
     mk({
-      id: 's3-sl', stage: 3,
-      title: 'Semicolon and Slash',
-      objective: 'Drill the right pinky column into punctuation: the slash sits one row below the semicolon key. Reach down and return without looking.',
-      keys: ['/', ';'], newKeys: [],
-      passages: [
-        "/; ;; // ;/ // // // // ;; // // ;; ;/ ;/ ;; /; // ;; ;; // ;/ // ;; // ;/ // /; // /; /; ;; ;; ;/ /; ;/ // ;; ;/ // /; // /; // /; /; ;; // ;; ;/ ;/ ;/ /; /; // // ;/ /; ;/ ;/ ;/ ;/ /; ;/ ;; ;/ ;; // ;/ ;; // /; // ;/ ;; ;; // ;/ ;/ ;/ /; /; /; /; ;/ // /; /; // // // // ;; ;/ ;/ ;/ // ;/ ;/ ;/ ;/ ;; // ;; // ;; /; ;/ // ;/ ;; /; ;/ ;; /;",
-        "/; ;; // ;/ ;/ ; ;/ // ;; / ;/ ; /; /; / ; ;; /; ;; ;; / // ; // ; ;/ /; // ;/ / ; ;/ ;; /; // /; ;/ / / / /; / / / // // ; ;/ // / /; ;; / // / / /; ;/ ;/ ;/ ;/ // // ;; ;; /; ;/ /; ;/ ;/ ;/ ;; ;; /; ;/ ; ;/ ;/ ; // ;; // / / /; / ; ; ;; /; // ;/ / /; /; // ;; ;; ;/ ; ;; ; ;; // /; /; / ; ; /; ;; // /; ;; / ;; /; ;/ // / ;; ;; /; / ; /; /",
-        "/; ;; // ;/ /; /; /; ;/ /; /; ;/ /; ;/ ;/ /; ;/ /; ;/ ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ ;/ /; /; /; ;/ ;/ /; ;/ /; /; ;/ ;/ ;/ ;/ /; ;/ ;/ /; ;/ ;/ ;/ /; /; /; ;/ ;/ /; /; ;/ /; ;/ ;/ /; /; /; ;/ /; /; /; /; /; ;/ /; /; /; ;/ /; ;/ ;/ ;/ /; /; /; /; /; ;/ /; /; ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ ;/ /; /; /; /; /; ;/ /; ;/ /; ;/ /;",
-        "/; ;; // ;/ ; ; ;/ / / // ; ; ; ; ;/ // / ; ; // / ; ;/ // ;/ / /; / ;; / ; / // ;/ / ; ; / /; ; ;; ; /; / ; // // ;; ;/ ;; ;; / ;/ /; /; ; ; / / ; /; /; ; ; ; ; // / ; ;/ ;; ;/ / / / ;/ // /; // ; // / / ;; / ; / ; // // // ;; // /; /; / / / ; /; / / /; ;/ ;; ;/ / /; ;; // // ;/ / / ;; // / ;/ // ; // ; / ; /; ;/ ; /; ; ; / ;/ /; ;; /; /",
-      ],
-      difficulty: 2, mastery: { wpm: 21, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-05', stage: 3,
-      title: 'B and N',
-      objective: 'Add B and N, the two bottom keys your index fingers reach directly beneath F and J.',
-      keys: ['b', 'n', 'f', 'j'], newKeys: ['b', 'n'],
-      passages: [
-        "a small box and a zip and a map then mix a busy zoo with a box and a zebra too a zebra goes to the zoo with a box a box and a map and a zip and a fix then come go stay with a box and a map too the comic book was fun with a box and a zip a zebra in a zoo with a box and a map fix the box then mix it then",
-        "fax it well the comic book was fun with a box and a zip we can not move but we can fix a box then a box and a map then we mix them well buy six boxes then fix them then mix them mix the box then zip it box it and fix it the comic book was fun bring me six more come go stay and do not complain about the mess the vet fixes the box then mixes",
-        "it well come and go and stay with a big box a box and a map and a zip then fix it a zebra goes to the zoo with a box a zebra and a zoo and a box then mix them we can not move but we can fix a small map the comic book was fun with a box and a zip mix the box then zip it then fix it too fix the box then mix it then fax it well we can not move but we can fix a box then a box",
-        "and a map and a zip then fix it fix six boxes then mix them then fax them the box is over the zoo with a map too a box and a map and a zip and a fix then the comic book was fun with a box and a zip fix the box and zip it then mix it well a zebra goes to the zoo with a box buy a box and a map and mix them well a zebra in a zoo with a box and",
-        "a map mix the box then fix it then box it again buy six boxes then mix them with a fax the zoo is a busy place so bring a big box a busy zoo with a box and a zebra too a small box and a big box and a map too we can not move but we can fix a small map a small box and a zip and a map then mix fix six boxes then mix them then fax them mix six boxes then fix the mix and fax it a busy pla",
-      ],
-      difficulty: 2, mastery: { wpm: 22, accuracy: 91 }
-    }),
-    mk({
       id: 's3-gb', stage: 3,
       title: 'G and B',
       objective: 'Drill the deep left stretch: B sits diagonally below G. Rock the index finger down for each B and back up to G.',
-      keys: ['b', 'g'], newKeys: [],
+      keys: ['b', 'g'], newKeys: ['b'],
       passages: [
         "bg gg bb gb bb gb bb bb gg bg bg gg bg bg bb gg gg gg gb gb bg gb bg gg gb bb bg gg gg bg bb gb bg gb bg gg bg gb bb bg bg bg bg gb bg bg gg gb bg bb gb bb bb gg bb bg bb bb bb gg gb bg gg gb bg bg gg bb bb gb gb bg bb bb bb bg gb bb bg bg bg gb gb bg gb gg gb gg gg bg gb gb bb gg bb gg gg bb gb gb gg bg gg bb gg bb bb bb bg bg gb bg gg bb",
         "bg gg bb gb bb g gg bb g bg g g gb bg g b gg b g bb g g bb b b gb bb bb g b bb gb gb gb b gb bb bb gb bb b g gg gg gg g gg bb gb bb bb gb g bg gb gg b b g g bb gb g gg bg bb bg b b gb g b g gb gg g g bb gg g b b bg gg bg b g gb gg bg b bb g g gb gg gg gb gb gb b bg b b bg gg gg bg gb gb gg bb g bb bg b g gg gg gb b g gb gb bg b gg gb gg bb",
         "bg gg bb gb gb gb bg bg bg gb gb bg bg gb gb bg gb gb bg gb bg gb bg bg bg bg gb bg gb gb gb gb bg bg gb gb bg bg bg gb bg bg gb bg gb gb gb gb bg gb gb bg bg bg bg gb bg gb gb bg bg bg gb bg gb bg gb gb gb gb bg bg bg bg gb gb bg bg gb bg gb bg bg bg gb gb gb gb gb gb gb bg gb gb gb bg bg gb gb bg bg gb gb gb gb gb gb bg gb bg bg bg bg gb",
         "bg gg bb gb gb bg g bb b g gb bg gg b bb g b gb gg bg b bg b g bb b b g b bb b g g gb bg b gg b gb bb g gg bg g bg gb g b b gg bb g g g gg gb g b b b bb bg bg g bg bb g gb bg b b bg gb bb b bg b b b b g b g b b bb g g b bb g gb b b bg b b gg g b gb b b bb gg gg b b g b bg gb g gg bb b g b b bg g g b g gb gg gb bb gg g gb b bb gg b g g gg gg",
       ],
-      difficulty: 2, mastery: { wpm: 22, accuracy: 91 }
+      difficulty: 2, mastery: { wpm: 21, accuracy: 91 }
     }),
     mk({
       id: 's3-hn', stage: 3,
       title: 'H and N',
       objective: 'Drill the right index column downward: N sits one row below H. Pivot the finger under, type, and settle it back on H.',
-      keys: ['n', 'h'], newKeys: [],
+      keys: ['n', 'h'], newKeys: ['n'],
       passages: [
         "nh hh nn hn hn hh hn hn hh hh hn nn nn nh nh nn nh nh hh nn hh hh hh hh nn hh nh nn nh nh nh nh nh hn hh hh nn nh hn hh hh nh nn hn nh nh nh hn nh nn nn nn nh hh nn nh nh hh hn nh nn hh nh hh hh nh hh nn hn hh hh hh hh hh hn hn hn nn nh hh nh nh nn nn nn nh hn nh hh nh nn hn nn nh hh nn hh nh hh nn nh nh hh hh hn nn nn nn hn hh hn nh hn hh",
         "nh hh nn hn h nn h nn h n n nh h nh n n h nh hh hn nh nn nn h n hh nh hn h h h h n h nh nh h hh hn nh n hh n n hh nh n hn n h nn hh hn hn n hh h nn nn nn nh nh hn n hh h nn n n hh nh nn h n nh n hn n hn h h nn n nn hn hh h hn nh hh h h hn h hn n nh nh hn hn n nh hn hn nh hh hn nh n hn nh nh hh hn hn hh hn n nh nn h nh h nh nn nh nh nn n hn",
@@ -778,6 +656,128 @@
         "nh hh nn hn h hh n hh n hn nh hn n nn hn n h n n n n hh h hh h h hh nh nh n nh h nn nn hn nn nh hh h n hh nh n hn hn hn hn h h n hh n h nh n hn nh hh hn hh nn nh n n nh h hn nh nh nn nh h nh h n h hh hn n h hh nh nn h n nn hh n nn nh n h nh h hh n h n n n hn n hh h hh n hh h h nn nn n n nh hn nh hn h nn h h hn n h hh hn hn hn h h h nh nn h",
       ],
       difficulty: 2, mastery: { wpm: 22, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-jm', stage: 3,
+      title: 'J and M',
+      objective: 'Drill the right middle-finger column downward: M sits one row below J. Curl down, type, and drop back home without looking.',
+      keys: ['m', 'j'], newKeys: ['m'],
+      passages: [
+        "mj jj mm jm mm jm mj mm jm mm jj jm jj mj mm jm mm mm mm jm jm jm mm mm jj jm mm jj mm jj jj jm mm jm jj mj mj jm mm mm jj jj mj mj jj mj jj jj mm mj mm jj mj mm mj jj mm jm jm mm jj mm jj mm jj jm mj mj mm mj jj mm mm mm jm mm mm jj jm jm mj jj jm mj jj mj mm jj mm mm mj mj mm mm jj jj mj jm jj mm jj mm mm jj jj jj jm mj jj jm mj jm mj jm",
+        "mj jj mm jm j j jm jj m mm j mj mm mj mj jm mm jm m j jj jm mm mj jj m jm j m mm mj mj mm jj j mj jm jm j m jj jj m m j mj mj jj jm jj jj m jm jm mm mj mj jm jj jm m mj j j jj m mm mj mj jm mm mm jm mj jj j mm mj m j mm mm m jj mj j j j mm j j jj j j mm m jm m mm mm jj jm m m mm jm j j jj jm m mj mm jj mj mj j mj m jj mj m jj mm mj j j m jm",
+        "mj jj mm jm jm mj mj jm mj mj mj mj jm mj jm jm jm jm jm jm mj mj jm mj mj jm jm mj jm jm mj mj mj jm jm jm mj mj jm jm mj jm mj mj jm mj mj mj jm jm mj mj jm jm mj jm jm jm mj mj jm mj jm jm jm mj jm mj jm jm mj jm mj jm jm jm mj jm mj mj jm mj jm mj jm jm jm mj mj jm mj mj jm mj mj mj jm jm jm mj jm mj jm mj jm jm mj jm mj mj jm mj mj jm",
+        "mj jj mm jm jm j m m mj jm jj mj m mj j j jm m jm mm mm mm mj jm j j jm m j jm mj jm mm j j m m m mm mj m j j j j j m mj m jm jm jj j m jm j m mj m m j jj j j m jm mm jm jm m j m m j jj m mj jj j mm m jm mj j m jj jj mm jm j m j jm m jj mj jm mm mj mm m m jj jj mj mm mj mm m j jj jj m j jj mm j m mj j mj jj j j m j jj jj m m j jm mj mm jm",
+      ],
+      difficulty: 2, mastery: { wpm: 22, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-cm', stage: 3,
+      title: 'K and the Comma',
+      objective: 'Drill the right-hand column into punctuation: the comma sits one row below K. Curl the middle finger down and return.',
+      keys: [',', 'k'], newKeys: [','],
+      passages: [
+        ",k kk ,, k, k, kk kk ,k kk ,, kk ,k k, k, k, kk kk ,k ,k k, k, kk ,k ,k k, ,, ,, k, ,, ,, ,, ,k kk ,, k, ,k ,, ,, kk ,k k, k, k, ,, ,, k, ,k ,k k, ,, ,, ,, k, ,, kk ,k kk ,k kk ,, k, ,k kk ,k ,k ,k k, kk kk ,k ,k kk ,k ,k ,k ,k ,k ,k ,k k, ,k k, k, ,, kk ,, ,, k, ,, kk ,, kk ,, ,k ,k kk k, k, ,k ,k k, ,k kk k, ,k ,, k, ,k ,, ,k kk k, k, ,k",
+        ",k kk ,, k, ,, ,, ,, k, k k k ,, , , kk kk , ,, ,k k, k, ,k , ,, ,k ,k k, ,k , k, kk ,, ,k , k kk ,k , kk ,k , ,, , ,, ,k k ,, ,k ,, , ,, kk ,, kk k, , , , ,, , ,k ,k ,k ,, k, ,k ,, ,k ,k k , kk k, ,, , k ,k kk k k , k, , k, , ,k k, k ,, ,, k, , kk ,, k ,, , k k kk kk k ,k , ,, , k k , kk , ,, kk ,, , ,k ,, kk k ,k ,k k, k ,, k, k ,k k, kk",
+        ",k kk ,, k, k, ,k ,k ,k ,k k, k, ,k ,k ,k k, k, ,k ,k k, k, ,k ,k k, ,k ,k ,k k, ,k k, ,k ,k ,k k, ,k k, ,k k, ,k ,k ,k ,k ,k ,k k, k, k, ,k ,k ,k ,k ,k ,k k, ,k k, ,k k, ,k k, ,k k, ,k ,k ,k k, ,k k, k, k, ,k k, k, ,k k, k, k, ,k k, ,k ,k ,k ,k k, ,k k, ,k k, ,k ,k k, ,k ,k ,k ,k k, k, k, ,k k, ,k ,k ,k k, ,k ,k ,k ,k k, ,k ,k ,k k, ,k k,",
+        ",k kk ,, k, k kk ,k , k, k, k ,k , , k , k , ,, , kk k ,, ,k k , , kk kk k, k k k kk ,k ,k ,k k, k , ,k kk k, ,, k, k ,k ,, ,k , k, k ,k , k, k , ,, kk k kk ,, ,, k ,k k kk k kk k k , k, ,k ,, k k kk ,k ,k k ,, k, , k , k kk ,, k k kk ,, kk k, ,, , k k , kk k k ,, ,, ,, kk ,k ,k ,, k, ,, , , k ,, , , ,k k, k , , k ,k ,, , kk , k , , ,, , k",
+      ],
+      difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-pd', stage: 3,
+      title: 'L and the Full Stop',
+      objective: 'Drill the right ring-finger column into punctuation: the full stop sits one row below L. Curl down, tap, and settle back on L.',
+      keys: ['.', 'l'], newKeys: ['.'],
+      passages: [
+        ".l ll .. l. .. .. .. ll .l .l l. ll .l ll ll ll ll l. .l l. .l l. ll .. .. .l .. ll .. .l .. ll ll .. .l ll .. .l ll .l .l .l .l .. .. .. l. .. .. ll ll ll ll ll ll .l ll .. .. .l .. .l .. ll ll .. .l l. l. .l .. l. ll .. .. .. ll .l .. .. ll .l .. .. .l .l .. l. .l ll l. .l .. ll ll ll .. ll .l .. ll .. .l ll .. .l .. .. l. l. l. ll l. .l",
+        ".l ll .. l. ll l. .l ll l. .l l ll l. . .l . l. l .. .. l. ll .l l .l l. .. ll .. . .. l . .l l ll l . l ll l ll .. l . l l l. ll .l l .l l ll . ll l. .. l .. .l .. .. . l. l. l . .l ll .l . ll .. . .l l. .. . .l . .l .. ll l .. .. l l. l . l. ll ll l .l l ll .. .l l . .. .l .. l . .. ll .. ll ll ll .l l. .. ll l l . l. l l . l l. ll l. l.",
+        ".l ll .. l. .l l. l. l. l. .l l. .l .l .l l. l. l. .l .l .l l. l. l. l. l. .l .l l. .l l. l. l. .l l. l. l. l. l. .l l. .l l. .l .l l. .l .l .l .l .l .l l. l. .l l. .l .l .l l. l. .l .l l. .l .l l. .l l. .l l. .l l. l. .l l. l. .l .l l. .l l. .l l. l. l. .l l. l. l. .l .l l. .l l. l. l. l. l. .l .l l. l. l. l. l. .l .l .l .l .l .l l. .l .l",
+        ".l ll .. l. . .l . l .. . l l .l l. . ll .. l l . . . l. . l l l .l .. . .l . .l l. l. ll .. . l l. l .. .l l l l l .l .l .. l .. l l .l . ll l . l .. .l l l l. ll .l . l. l. .. . l l. .l . l. . .l . l l. l. .l .. l . .l l .l . l l l l .l l. l ll . ll l .l l. . ll .l l .. .l l. l ll ll .. l .. l .. .l l. . . l. l . l. . l . . . l. . ll .l",
+      ],
+      difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-sl', stage: 3,
+      title: 'Semicolon and Slash',
+      objective: 'Drill the right pinky column into punctuation: the slash sits one row below the semicolon key. Reach down and return without looking.',
+      keys: ['/', ';'], newKeys: ['/'],
+      passages: [
+        "/; ;; // ;/ // // // // ;; // // ;; ;/ ;/ ;; /; // ;; ;; // ;/ // ;; // ;/ // /; // /; /; ;; ;; ;/ /; ;/ // ;; ;/ // /; // /; // /; /; ;; // ;; ;/ ;/ ;/ /; /; // // ;/ /; ;/ ;/ ;/ ;/ /; ;/ ;; ;/ ;; // ;/ ;; // /; // ;/ ;; ;; // ;/ ;/ ;/ /; /; /; /; ;/ // /; /; // // // // ;; ;/ ;/ ;/ // ;/ ;/ ;/ ;/ ;; // ;; // ;; /; ;/ // ;/ ;; /; ;/ ;; /;",
+        "/; ;; // ;/ ;/ ; ;/ // ;; / ;/ ; /; /; / ; ;; /; ;; ;; / // ; // ; ;/ /; // ;/ / ; ;/ ;; /; // /; ;/ / / / /; / / / // // ; ;/ // / /; ;; / // / / /; ;/ ;/ ;/ ;/ // // ;; ;; /; ;/ /; ;/ ;/ ;/ ;; ;; /; ;/ ; ;/ ;/ ; // ;; // / / /; / ; ; ;; /; // ;/ / /; /; // ;; ;; ;/ ; ;; ; ;; // /; /; / ; ; /; ;; // /; ;; / ;; /; ;/ // / ;; ;; /; / ; /; /",
+        "/; ;; // ;/ /; /; /; ;/ /; /; ;/ /; ;/ ;/ /; ;/ /; ;/ ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ ;/ /; /; /; ;/ ;/ /; ;/ /; /; ;/ ;/ ;/ ;/ /; ;/ ;/ /; ;/ ;/ ;/ /; /; /; ;/ ;/ /; /; ;/ /; ;/ ;/ /; /; /; ;/ /; /; /; /; /; ;/ /; /; /; ;/ /; ;/ ;/ ;/ /; /; /; /; /; ;/ /; /; ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ ;/ /; /; /; /; /; ;/ /; ;/ /; ;/ /;",
+        "/; ;; // ;/ ; ; ;/ / / // ; ; ; ; ;/ // / ; ; // / ; ;/ // ;/ / /; / ;; / ; / // ;/ / ; ; / /; ; ;; ; /; / ; // // ;; ;/ ;; ;; / ;/ /; /; ; ; / / ; /; /; ; ; ; ; // / ; ;/ ;; ;/ / / / ;/ // /; // ; // / / ;; / ; / ; // // // ;; // /; /; / / / ; /; / / /; ;/ ;; ;/ / /; ;; // // ;/ / / ;; // / ;/ // ; // ; / ; /; ;/ ; /; ; ; / ;/ /; ;; /; /",
+      ],
+      difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-01', stage: 3,
+      title: 'Z and M',
+      objective: 'Mix the two outside bottom keys across both hands: little fingers curl down on each side and return to their home keys.',
+      keys: ['z', 'm', 'a', ';'], newKeys: [],
+      passages: [
+        "mix the box then zip it then fix it too a busy zoo with a box and a zebra too fix the box then mix it then fax the box fix the box then mix it then fax it well a box and a map and a zip then fix it come and go and stay with a big box fix the box and zip it then mix it well we can move the box then fix",
+        "it then zip it the vet fixes the box then mixes it well mix the box then zip it then fix it too fix the box then mix it then fax the box fix six boxes then mix them then fax them the vet will fix the box and mix it well fix the box and zip it then mix it well a small box and a big zip then we mix it a zebra goes to the zoo with a box the",
+        "box is a big box with a small map a busy place with a box and a map and a zip fix the box then mix it then fax it well come go stay and do not complain about the mess mix the box then fix it then box it again the comic book was fun bring me six more fix the box then mix it then fax the box a box and a map and a zip and a fix then mix the box then fix it then zip the box a",
+        "small box and a big map then mix it zip the box then fix it then mix it well mix the box then zip it box it and fix it a big box then a small box then mix them the vet will fix the box and mix it well a small box and a big map then mix it buy a box and mix it with a big fax fix the box and zip it then mix it well a busy zoo with a box and",
+        "a zebra too fix the box then mix it then fax the box a small box and a big zip then we mix it a small box a big map and a quick zip come go stay then mix the box then fix it zip the box then fix it then mix it well a small box a big map and a quick zip we can fix the box then mix it then zip it a big zoo we can mix the map then zip it mix the box then zip it then fix it too we can mix and",
+      ],
+      difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-02', stage: 3,
+      title: 'X and the Comma',
+      objective: 'Mix the two ring-finger reaches into the bottom row: X with the left hand, the comma with the right.',
+      keys: ['x', ',', 's', 'l'], newKeys: [],
+      passages: [
+        "a small box and a big box and a map too come and go and stay with a big box buy six boxes then mix them with a fax a zebra goes to the zoo with a box mix the box then fix it then zip the box a big zoo we can mix the map then zip it a small box and a zip and a map then mix we can not move the box but",
+        "we can fix it come and go and stay with a big box we can not move but we can fix a box then a small box a big map and a quick zip mix the box then zip it then fix it too mix six boxes then fix the mix and fax it a small box and a big zip then we mix it a small box and a zip and a map then mix mix the box then zip it then fix it too fix",
+        "the box then mix it then fax the box the vet will fix the box and mix it well buy six boxes then fix them then mix them mix the box then zip it then fix it too a small box and a big box and a map too a big box and a small map then we mix it buy a box and a map and mix them well a box and a map and a zip then fix it mix the box then fix it then zip the box come go stay then",
+        "mix the box then fix it the zoo is a busy place so bring a big box buy a box and a map and mix them well a box and a map and a zip then fix it fix the box then mix it then fax the box mix six boxes then fix the mix and fax it we can move the box then fix it then zip it mix the box then fix it then box it again come go stay and do not complain",
+        "about the mess the comic book was fun with a box and a zip a zebra goes to the zoo with a box a big box and a small map then we mix it mix the box then fix it then box it again the vet fixes the box then mixes it well we can mix and fix the box then zip it buy six boxes then fix them then mix them buy six boxes then mix them with a fax the vet fixes the box then mixes it well we can not",
+      ],
+      difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-03', stage: 3,
+      title: 'C and the Full Stop',
+      objective: 'Mix the two middle-finger reaches into punctuation: C with the left hand, the full stop with the right.',
+      keys: ['c', '.', 'd', 'k'], newKeys: [],
+      passages: [
+        "a box and a map and a zip and a fix then a box and a map and a zip then fix it the box is over the zoo with a map too a busy place with a box and a map and a zip the comic book was fun bring me six more fix six boxes then mix them then fax them buy six boxes then fix them then mix them come go stay and",
+        "do not complain about the mess a busy place with a box and a map and a zip come and go and stay with a big box the vet will fix the box and mix it well mix the box then fix it then box it again a big zoo we can mix the map then zip it a busy zoo with a box and a zebra too a zebra goes to the zoo with a box we can mix the map then zip it",
+        "box it and fix it too zip the box then fix it then mix it well come go stay then mix the box then fix it a big box then a small box then mix them buy a box and a map and mix them well zip the box then fix it then mix it well buy a box and a map and mix them well come go stay and do not complain about the mess a busy place with a box and a map and a zip a small box and a big",
+        "zip then we mix it the comic book was fun bring me six more fix the box and zip it then mix it well a zebra and a zoo and a box then mix them the vet will fix the box and mix it well mix six boxes then fix them then fax them a box and a map and a zip and a fix then fix the box then mix it then fax it well the zoo is a busy place so bring",
+        "a big box a big box and a small map then we mix it a box and a map and a zip then fix it the comic book was fun bring me six more mix six boxes then fix them then fax them mix six boxes then fix them then fax them a box and a map then we mix them well come and go and stay with a big box mix six boxes then fix the mix and fax it a big box then a small box then mix them fix six boxes then",
+      ],
+      difficulty: 2, mastery: { wpm: 24, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-04', stage: 3,
+      title: 'V and the Slash',
+      objective: 'Mix the two index-finger reaches into punctuation: V with the left hand, the slash with the right.',
+      keys: ['v', '/', 'f', 'j'], newKeys: [],
+      passages: [
+        "fix the box then mix it then fax it well mix the box then zip it box it and fix it the comic book was fun bring me six more a box and a map and a zip then fix it mix the box then zip it then fix it too buy six boxes then mix them with a fax mix the box then zip it box it and fix it fix six boxes then",
+        "mix them then fax them we can move the box then fix it then zip it mix the box then zip it then fix it too come go stay with a box and a map too fix the box then mix it then fax it well the comic book was fun bring me six more fix six boxes then mix them then fax them the box is a big box with a small map come go stay then mix the box then",
+        "fix it the zoo is a busy place so bring a big box the box is a big box with a small map a box and a map and a zip and a fix then a busy place with a box and a map and a zip the box is a big box with a small map the zebra went over the zoo with a box a busy place with a box and a map and a zip a zebra goes to the zoo with a box we can not move but we can fix a box then zip",
+        "the box then fix it then mix it well a big zoo we can mix the map then zip it the box is a big box with a small map come and go and stay with a big box mix six boxes then fix the mix and fax it a big box and a small map then we mix it a small box and a big zip then we mix it mix the box then zip it then fix it too a zebra goes to the zoo",
+        "with a box a box and a map and a zip then fix it the box is over the zoo with a map too buy six boxes then mix them with a fax a big box then a small box then mix them come and go and stay with a big box the comic book was fun with a box and a zip zip the box then fix it then mix it well fix the box and zip it then mix it well a small box and a big zip then we mix it come and go and stay",
+      ],
+      difficulty: 2, mastery: { wpm: 24, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-05', stage: 3,
+      title: 'B and N',
+      objective: 'Mix the two diagonal index reaches at the bottom: B with the left hand, N with the right.',
+      keys: ['b', 'n', 'f', 'j'], newKeys: [],
+      passages: [
+        "a small box and a zip and a map then mix a busy zoo with a box and a zebra too a zebra goes to the zoo with a box a box and a map and a zip and a fix then come go stay with a box and a map too the comic book was fun with a box and a zip a zebra in a zoo with a box and a map fix the box then mix it then",
+        "fax it well the comic book was fun with a box and a zip we can not move but we can fix a box then a box and a map then we mix them well buy six boxes then fix them then mix them mix the box then zip it box it and fix it the comic book was fun bring me six more come go stay and do not complain about the mess the vet fixes the box then mixes",
+        "it well come and go and stay with a big box a box and a map and a zip then fix it a zebra goes to the zoo with a box a zebra and a zoo and a box then mix them we can not move but we can fix a small map the comic book was fun with a box and a zip mix the box then zip it then fix it too fix the box then mix it then fax it well we can not move but we can fix a box then a box",
+        "and a map and a zip then fix it fix six boxes then mix them then fax them the box is over the zoo with a map too a box and a map and a zip and a fix then the comic book was fun with a box and a zip fix the box and zip it then mix it well a zebra goes to the zoo with a box buy a box and a map and mix them well a zebra in a zoo with a box and",
+        "a map mix the box then fix it then box it again buy six boxes then mix them with a fax the zoo is a busy place so bring a big box a busy zoo with a box and a zebra too a small box and a big box and a map too we can not move but we can fix a small map a small box and a zip and a map then mix fix six boxes then mix them then fax them mix six boxes then fix the mix and fax it a busy pla",
+      ],
+      difficulty: 2, mastery: { wpm: 24, accuracy: 91 }
     }),
     mk({
       id: 's3-06', stage: 3,
