@@ -52,7 +52,8 @@ optional test and server scripts; the application itself never needs it.
 
 ## Features
 
-- **83 lessons** across 7 stages, from the F and J anchors to long-form prose.
+- **103 lessons** across 7 stages, from the F and J anchors to long-form prose,
+  including column drills that pair every key with its home-row partner.
 - **Guided lessons only** — one clear path through the curriculum, no time
   limit and no mode to choose.
 - **Live statistics** — net WPM, accuracy and a timer that counts up as you
@@ -78,8 +79,8 @@ that rule itself.
 | Stage | Name | What it covers |
 | --- | --- | --- |
 | 1 | Home Row | F and J as anchors, then D/K, S/L, A and `;`, G/H, full sweeps, words, phrases and a passage — using only `a s d f g h j k l ;` |
-| 2 | Top Row | Q/P, W/O, E/I, R/U, T/Y in pairs, full sweeps, vertical reaches, words, sentences and a passage |
-| 3 | Bottom Row | Z/M, X/comma, C/full stop, V/slash, B/N, sweeps, alternating rows, punctuation, sentences and a passage |
+| 2 | Top Row | Q/P, W/O, E/I, R/U, T/Y in pairs, plus a column drill for every single key against its home-row partner (aq, sw, ed, fr…), full sweeps, vertical reaches, words, sentences and a passage |
+| 3 | Bottom Row | Z/M, X/comma, C/full stop, V/slash, B/N, plus a column drill for every single key against its home-row partner (az, sx, dc, fv…), sweeps, alternating rows, punctuation, sentences and a passage |
 | 4 | Complete Alphabet | The whole alphabet, common letter pairs, the commonest words, long words, prefixes and suffixes, capitals and Shift, quotes, numbers |
 | 5 | Words & Sentences | Everyday sentences and vocabulary, longer sentences, paragraphs, capitalisation, numbers and symbols, dialogue, letters and email, natural prose |
 | 6 | Speed & Accuracy | Accuracy before speed, rhythm, short-word bursts, weak-finger drills, common words at speed, consistency, mistake recovery |
