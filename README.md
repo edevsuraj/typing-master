@@ -278,15 +278,18 @@ nothing to cache-bust.
 
 ## Downloads (offline desktop app)
 
-Two Windows `.exe` builds live in `downloads/`, refreshed automatically by
-`.github/workflows/build.yml` after every push:
+The site's single **Download app** button serves `downloads/TypingMaster.exe`:
+a standalone desktop application (native window, no browser) that runs fully
+offline — double-click it and typing starts, no installation step.
 
-- `TypingMaster.exe` — a standalone desktop application (native window, no
-  browser) that runs fully offline.
-- `TypingMasterInstaller.exe` — the small installer: it copies the app into
-  `%LOCALAPPDATA%\TypingMaster`, creates Start Menu and Desktop shortcuts, and
-  opens the installed copy in your default browser. The shortcuts keep working
-  from the installed folder afterwards.
+A second build, `downloads/TypingMasterInstaller.exe`, also exists in the
+repository for users who prefer an "installed" copy: it copies the app into
+`%LOCALAPPDATA%\TypingMaster`, creates Start Menu and Desktop shortcuts and
+opens the installed version in the default browser. It is simply not surfaced
+as a header button.
+
+Both files are refreshed automatically by `.github/workflows/build.yml` after
+every push.
 
 Because the `.exe` files are not code-signed, Windows SmartScreen may warn
 "Windows protected your PC". Click **More info → Run anyway** to launch them,
