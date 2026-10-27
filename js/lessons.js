@@ -1445,6 +1445,20 @@
       difficulty: 5, mastery: { wpm: 60, accuracy: 93 }
     }),
     mk({
+      id: 's7-pvw', stage: 7,
+      title: 'Proverbs and Wordplay',
+      objective: 'Proverbs, tongue-twisters and playful prose: doubled letters, apostrophes, quotes and numbers all together. Twisty text like this makes ordinary sentences feel easy afterwards.',
+      keys: [], newKeys: [],
+      passages: [
+        "\"The early bird catches the worm,\" said Grandma Rose, \"but a steady hand wins the day.\" She folded her apron, smiled, and added, \"You cannot count your chickens, dear — mind them instead.\" That evening three friends sat in the garden. One spoke of far roads; two stayed past midnight; none left wholly unimproved.",
+        "\"Six sleek swans swam swiftly southwards,\" she practiced, lips tight. \"Surely such silky shifts shear spring swells!\" Then, breathless: \"Peter Piper packed proper pillows today.\" Doubled letters stack slowly at first, but a steady rhythm keeps the tongue quiet and the fingers warm; slippery pairs smooth out with patience, one extra pass, and a small nod to the mirror.",
+        "Practice makes perfect, and patience makes practice pleasant. A rolling stone gathers no moss, yet a sitting stone grows nothing at all. Measure twice, cut once — that is the carpenter's rhythm, and the typist's too. Well begun is half finished, and small steps finish long roads. He who never stirs the soup still fusses; he who stirs gently watches everything.",
+        "In 1912 the mill's ledger listed 3 speeches, 2 oaths and 1 apology; by 1984 a typewriter's clatter filled the district's hall from 9 sharp to 5 o'clock. \"Verse isn't slang, madam,\" the clerk said, \"it's arithmetic you can hear.\" All 4 witnesses signed at 3:15, each noting the hour's small delay in a neat, slanted hand that favoured longer sentences.",
+        "The old typebar's shadow fell across the page. Long words gathered like weather above the desk: unaccountable, philosophical, notwithstanding. The writer's ring finger hesitated once, twice, then found its nerve; the sentence flowed unbroken at last. \"Anything worth typing is worth typing slowly,\" she thought — until, almost without warning, the slowness itself grew fast.",
+      ],
+      difficulty: 4, mastery: { wpm: 62, accuracy: 92 }
+    }),
+    mk({
       id: 's7-09', stage: 7,
       title: 'Full Speed Run',
       objective: 'Everything at once: mixed case, punctuation, numbers and unfamiliar words. Push the pace and keep corrections quick.',

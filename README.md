@@ -84,7 +84,7 @@ that rule itself.
 | 4 | Complete Alphabet | The whole alphabet, common letter pairs, the commonest words, long words, prefixes and suffixes, capitals and Shift, quotes, numbers |
 | 5 | Words & Sentences | Everyday sentences and vocabulary, longer sentences, paragraphs, capitalisation, numbers and symbols, dialogue, letters and email, natural prose |
 | 6 | Speed & Accuracy | Accuracy before speed, rhythm, row bursts for all three rows plus the full keyboard, weak-finger drills, common words at speed, sprint practice, consistency, mistake recovery |
-| 7 | Advanced | Long paragraphs, complex punctuation, numbers and symbols, proper nouns, advanced vocabulary, endurance runs, technical and literary prose |
+| 7 | Advanced | Long paragraphs, complex punctuation, numbers and symbols, proper nouns, advanced vocabulary, endurance runs, technical and literary prose, proverbs and wordplay |
 
 Each lesson records a `mastery` target — a speed and an accuracy that must both
 be met to mark the lesson as mastered. Completing a lesson records your result;
