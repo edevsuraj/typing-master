@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -16,10 +19,12 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install PyInstaller
-        run: pip install pyinstaller
+      # pywebview is required by tools/desktop.py (the desktop window) and it
+      # pulls in pythonnet and clr_loader on Windows automatically.
+      - name: Install build dependencies
+        run: pip install pyinstaller pywebview
 
-      - name: Build executable
+      - name: Build the desktop app
         run: |
           pyinstaller --noconsole --onefile --name TypingMaster `
             --icon tools/icon.ico `
@@ -30,11 +35,46 @@ jobs:
             --hidden-import "webview" --hidden-import "clr_loader" --hidden-import "pythonnet" `
             tools/desktop.py
 
-      - name: Upload artifact
+      - name: Build the installer
+        run: |
+          pyinstaller --noconsole --onefile --name TypingMasterInstaller `
+            --icon tools/icon.ico `
+            --add-data "index.html;." `
+            --add-data "css;css" `
+            --add-data "js;js" `
+            --add-data "assets;assets" `
+            --add-data "tools/icon.ico;icon.ico" `
+            tools/launcher.py
+
+      - name: Upload artifact — desktop app
         uses: actions/upload-artifact@v4
         with:
           name: TypingMaster
           path: dist/TypingMaster.exe
+
+      - name: Upload artifact — installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: TypingMasterInstaller
+          path: dist/TypingMasterInstaller.exe
+
+      # Keep downloads/ freshly built so the buttons on the site always point
+      # at the latest version. [skip ci] stops this commit from re-triggering
+      # the workflow itself.
+      - name: Refresh the downloads folder
+        run: |
+          Copy-Item dist/TypingMaster.exe downloads/TypingMaster.exe -Force
+          Copy-Item dist/TypingMasterInstaller.exe downloads/TypingMasterInstaller.exe -Force
+
+      - name: Commit refreshed builds
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add downloads/TypingMaster.exe downloads/TypingMasterInstaller.exe
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) { Write-Output 'Installers unchanged.'; exit 0 }
+          git commit -m "Refresh desktop installers [skip ci]"
+          git push
 
       # Optional: sign with SignPath (free for open-source projects).
       # 1. Make this repository public.
