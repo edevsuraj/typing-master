@@ -5,8 +5,7 @@
 
    Responsibilities
    ----------------
-   * Build a session for the chosen mode (guided / practice / timed /
-     accuracy / speed / weak-key / random).
+   * Build a guided-lesson session for the current lesson.
    * Render the passage character by character, move the caret, keep the
      current line in view.
    * Turn physical keystrokes into engine input, without stealing keys from
@@ -28,23 +27,11 @@
 
   /* ------------------------------------------------------------- config */
 
-  var MODES = {
-    guided:   { label: 'Guided lesson',   timed: false, countsAsLesson: true },
-    practice: { label: 'Free practice',    timed: false, countsAsLesson: false },
-    timed:    { label: 'Timed test',       timed: true,  countsAsLesson: false },
-    accuracy: { label: 'Accuracy focus',   timed: false, countsAsLesson: false },
-    speed:    { label: 'Speed challenge',  timed: true,  countsAsLesson: false },
-    weak:     { label: 'Weak-key practice',timed: false, countsAsLesson: false },
-    random:   { label: 'Random test',      timed: false, countsAsLesson: false }
-  };
-
   // Keys that scroll the page if they are not swallowed while typing.
   var SCROLL_KEYS = {
     ArrowUp: 1, ArrowDown: 1, ArrowLeft: 1, ArrowRight: 1,
     PageUp: 1, PageDown: 1, Home: 1, End: 1, ' ': 1
   };
-
-  var KEYBOARD_ROWS = ['qwertyuiop', 'asdfghjkl;', 'zxcvbnm,./'];
 
   /* -------------------------------------------------------------- state */
 
@@ -64,12 +51,9 @@
   var mistakeFlushTimer = null;
 
   var session = {
-    mode: 'guided',
     lessonId: null,
     passageIndex: 0,
-    timeLimitMs: 0,
-    text: '',
-    note: ''
+    text: ''
   };
 
   /* ================================================================ boot */
@@ -95,7 +79,7 @@
     // Restore the last lesson the user was on, or recommend the next one.
     var resumeId = Store.get().progress.lastLessonId;
     var lesson = (resumeId && L.getLesson(resumeId)) || L.nextLesson(Store.completedIds());
-    startSession({ mode: Store.setting('mode'), lessonId: lesson ? lesson.id : L.LESSONS[0].id });
+    startSession({ lessonId: lesson ? lesson.id : L.LESSONS[0].id });
 
     renderProgressView();
 
@@ -109,11 +93,6 @@
   function cacheDom() {
     var id = function (x) { return doc.getElementById(x); };
     Object.assign(dom, {
-      modeSelect: id('mode-select'),
-      durationSelect: id('duration-select'),
-      durationField: id('duration-field'),
-      difficultySelect: id('difficulty-select'),
-      difficultyField: id('difficulty-field'),
       restartBtn: id('restart-btn'),
       homeBtn: id('home-btn'),
       lessonsBtn: id('lessons-btn'),
@@ -151,8 +130,6 @@
       weakList: id('weak-list'),
       weakEmpty: id('weak-empty'),
       themeSelect: id('theme-select'),
-      defaultDuration: id('default-duration'),
-      defaultDifficulty: id('default-difficulty'),
       caretSelect: id('caret-select'),
       liveStats: id('live-stats'),
       resetBtn: id('reset-btn'),
@@ -184,22 +161,6 @@
   }
 
   function bindEvents() {
-    dom.modeSelect.addEventListener('change', function () {
-      var mode = dom.modeSelect.value;
-      Store.setting('mode', mode);
-      startSession({ mode: mode, lessonId: session.lessonId });
-    });
-
-    dom.durationSelect.addEventListener('change', function () {
-      Store.setting('duration', parseInt(dom.durationSelect.value, 10));
-      if (MODES[session.mode].timed) startSession({ mode: session.mode, lessonId: session.lessonId });
-    });
-
-    dom.difficultySelect.addEventListener('change', function () {
-      Store.setting('difficulty', parseInt(dom.difficultySelect.value, 10));
-      if (session.mode === 'random') startSession({ mode: session.mode, lessonId: session.lessonId });
-    });
-
     if (dom.restartBtn) dom.restartBtn.addEventListener('click', restart);
     dom.homeBtn.addEventListener('click', goHome);
     var reloadBtn = doc.querySelector('.btn-reload');
@@ -284,14 +245,6 @@
       applyTheme(dom.themeSelect.value);
       Store.setting('theme', dom.themeSelect.value);
     });
-    dom.defaultDuration.addEventListener('change', function () {
-      Store.setting('duration', parseInt(dom.defaultDuration.value, 10));
-      syncControlsFromSettings();
-    });
-    dom.defaultDifficulty.addEventListener('change', function () {
-      Store.setting('difficulty', parseInt(dom.defaultDifficulty.value, 10));
-      syncControlsFromSettings();
-    });
     dom.caretSelect.addEventListener('change', function () {
       Store.setting('caret', dom.caretSelect.value);
       applyCaretStyle();
@@ -307,7 +260,7 @@
     dom.rNext.addEventListener('click', function () {
       var next = L.nextAfter(session.lessonId);
       closeResults();
-      startSession({ mode: 'guided', lessonId: next ? next.id : session.lessonId });
+      startSession({ lessonId: next ? next.id : session.lessonId });
     });
     dom.rReview.addEventListener('click', function () { showReview(true); });
     dom.reviewBack.addEventListener('click', function () { showReview(false); });
@@ -320,295 +273,72 @@
 
   function syncControlsFromSettings() {
     var s = Store.get().settings;
-    if (dom.modeSelect.value !== s.mode && MODES[s.mode]) dom.modeSelect.value = s.mode;
-    dom.durationSelect.value = String(s.duration);
-    dom.defaultDuration.value = String(s.duration);
-    dom.difficultySelect.value = String(s.difficulty);
-    dom.defaultDifficulty.value = String(s.difficulty);
     dom.themeSelect.value = s.theme;
     dom.caretSelect.value = s.caret;
     dom.liveStats.checked = !!s.liveStats;
     dom.statbar.classList.toggle('is-hidden', !s.liveStats);
-    updateModeFields(s.mode);
-  }
-
-  function updateModeFields(mode) {
-    dom.durationField.hidden = !MODES[mode].timed;
-    dom.difficultyField.hidden = mode !== 'random';
   }
 
   /* ============================================================ sessions */
 
   /**
-   * Build and start a session.
-   * @param {object} opts { mode, lessonId, passageIndex }
+   * Build and start a guided session.
+   * @param {object} opts { lessonId, passageIndex }
    */
   function startSession(opts) {
     opts = opts || {};
-    var mode = MODES[opts.mode] ? opts.mode : 'guided';
     var lesson = L.getLesson(opts.lessonId) || L.getLesson(session.lessonId) || L.LESSONS[0];
-    var settings = Store.get().settings;
 
-    var built = buildText(mode, lesson, settings, opts);
+    var built = buildText(lesson, opts);
     var text = built.text;
 
-    session.mode = mode;
     session.lessonId = lesson.id;
     session.passageIndex = built.passageIndex || opts.passageIndex || 0;
     session.text = text;
-    session.note = built.note || '';
-    session.timeLimitMs = MODES[mode].timed ? settings.duration * 1000 : 0;
 
     engine.load(text, {
-      mode: mode,
-      timeLimitMs: session.timeLimitMs,
       lessonId: lesson.id,
       lessonTitle: lesson.title,
-      mastery: MODES[mode].countsAsLesson ? lesson.mastery : null
+      mastery: lesson.mastery
     });
 
     Store.setLastLesson(lesson.id);
-    if (dom.modeSelect.value !== mode) dom.modeSelect.value = mode;
-    updateModeFields(mode);
 
-    paintHeader(lesson, mode, built);
+    paintHeader(lesson);
     renderPassage(text);
-    paintStatus(lesson, mode);
+    paintStatus(lesson);
     updateStats(engine.stats());
     startTicker();
     focusCapture();
     markCurrentLessonRow();
   }
 
-  /** Choose the text for a mode. Returns { text, note, passageIndex }. */
-  function buildText(mode, lesson, settings, opts) {
+  /** The passage to type for a lesson. Returns { text, passageIndex }. */
+  function buildText(lesson, opts) {
     opts = opts || {};
-    switch (mode) {
-      case 'practice':
-        return { text: lesson.passages[0], passageIndex: 0, note: 'Free practice — nothing is marked as lesson progress.' };
-
-      case 'accuracy':
-        return {
-          text: longestPassage(lesson),
-          note: 'Accuracy focus. Fix mistakes immediately and keep going.'
-        };
-
-      case 'random': {
-        var pool = L.lessonsForLevel(settings.difficulty);
-        var pick = pool[Math.floor(Math.random() * pool.length)];
-        return {
-          text: pick.passages[Math.floor(Math.random() * pick.passages.length)],
-          note: 'Random passage from level ' + settings.difficulty + ' · ' + pick.label + '.',
-          sourceLesson: pick
-        };
-      }
-
-      case 'weak': {
-        var drill = buildWeakDrill();
-        if (drill) return { text: drill, note: 'Drill built from your recorded mistakes.' };
-        return {
-          text: lesson.passages.slice(0, 2).join(' '),
-          note: 'No mistakes recorded yet, so here is a solid drill instead. Weak-key drills appear once there are some slips to work on.'
-        };
-      }
-
-      case 'timed':
-      case 'speed':
-        return {
-          text: buildTimedText(settings.duration, settings.difficulty),
-          note: mode === 'speed'
-            ? settings.duration + '-second sprint. Your best is ' + Math.round(Store.get().stats.bestWpm) + ' wpm.'
-            : settings.duration + '-second test. The clock starts with your first keystroke.'
-        };
-
-      default: {
-        var idx = (opts.passageIndex || 0) % lesson.passages.length;
-        return { text: lesson.passages[idx], passageIndex: idx, note: '' };
-      }
-    }
-  }
-
-  function longestPassage(lesson) {
-    var best = lesson.passages[0];
-    lesson.passages.forEach(function (p) { if (p.length > best.length) best = p; });
-    return best;
-  }
-
-  /**
-   * Timed modes need more text than any single lesson passage provides, so the
-   * text is assembled from a pool of passages that suit the chosen level.
-   */
-  function buildTimedText(seconds, level) {
-    var target = Math.min(2800, Math.max(400, seconds * 9));
-    var pool = [];
-    L.lessonsForLevel(level).forEach(function (lesson) {
-      lesson.passages.forEach(function (p) { if (p.length >= 80) pool.push(p); });
-    });
-    if (!pool.length) {
-      L.LESSONS.forEach(function (lesson) {
-        lesson.passages.forEach(function (p) { if (p.length >= 80) pool.push(p); });
-      });
-    }
-
-    var parts = [];
-    var length = 0;
-    var i = 0;
-    while (length < target && i < pool.length * 4) {
-      parts.push(pool[i % pool.length]);
-      length += pool[i % pool.length].length + 1;
-      i += 1;
-    }
-    var text = parts.join(' ');
-    if (text.length > target) {
-      // Trim to the last whole word so the passage never ends mid-word.
-      text = text.slice(0, target);
-      var cut = text.lastIndexOf(' ');
-      if (cut > target * 0.6) text = text.slice(0, cut);
-    }
-    return text;
-  }
-
-  /**
-   * Build a drill from the characters the user has actually got wrong:
-   * each one paired with its neighbours on the same row, alternated with a
-   * partner, doubled, and finally mixed into real words that contain them.
-   */
-  function buildWeakDrill() {
-    var weak = Store.weakKeys(6);
-    if (!weak.length) return null;
-
-    // Space and Return are drilled with words, not with neighbour pairs.
-    var wantsSpace = weak.some(function (w) { return w.char === ' '; });
-    var chars = weak
-      .map(function (w) { return w.char; })
-      .filter(function (ch) { return ch !== ' ' && ch !== '\n'; });
-
-    var lines = [];
-
-    if (chars.length) {
-      var pairs = [];
-      chars.forEach(function (ch) {
-        neighboursOf(ch).forEach(function (n) {
-          pairs.push(ch + n, n + ch, ch + ' ' + n);
-        });
-      });
-      if (pairs.length) lines.push(pairs.join(' '));
-
-      var alternation = [];
-      chars.forEach(function (ch, i) {
-        var n = neighboursOf(ch);
-        var partner = n.length ? n[i % n.length] : 'f';
-        alternation.push(ch + ' ' + partner + ' ' + ch + ' ' + partner);
-      });
-      lines.push(alternation.join(' '));
-    }
-
-    if (wantsSpace) {
-      lines.push('a as at it in is on or to be he we my by so do if no up us');
-      lines.push('the and for but not you all can had one our out day get has');
-    }
-
-    var words = wordsContaining(chars.concat(wantsSpace ? [' '] : []), 16);
-    if (words.length) lines.push(words.join(' '));
-
-    if (chars.length) {
-      lines.push(chars.map(function (ch) { return ch + ch + ' ' + ch + ch; }).join(' '));
-    }
-
-    return lines.join('\n');
-  }
-
-  /** Left and right neighbours of a key on its row (never across rows). */
-  function neighboursOf(ch) {
-    if (ch === ' ' || ch === '\n') return [];
-    for (var r = 0; r < KEYBOARD_ROWS.length; r++) {
-      var row = KEYBOARD_ROWS[r];
-      var i = row.indexOf(ch);
-      if (i === -1) continue;
-      var out = [];
-      if (i > 0) out.push(row[i - 1]);
-      if (i < row.length - 1) out.push(row[i + 1]);
-      return out;
-    }
-    return ['f', 'j'];
-  }
-
-  /** Short, real words from the early curriculum that contain the given keys. */
-  function wordsContaining(chars, limit) {
-    var seen = {};
-    var out = [];
-    for (var i = 0; i < L.LESSONS.length && out.length < limit; i++) {
-      var lesson = L.LESSONS[i];
-      if (lesson.stage > 4) break;
-      for (var p = 0; p < lesson.passages.length && out.length < limit; p++) {
-        var tokens = lesson.passages[p].toLowerCase().split(/[^a-z']+/);
-        for (var t = 0; t < tokens.length && out.length < limit; t++) {
-          var word = tokens[t];
-          if (word.length < 3 || word.length > 9 || seen[word]) continue;
-          var hit = chars.some(function (c) { return word.indexOf(c) >= 0; });
-          if (!hit) continue;
-          seen[word] = true;
-          out.push(word);
-        }
-      }
-    }
-    return out;
+    var idx = (opts.passageIndex || 0) % lesson.passages.length;
+    return { text: lesson.passages[idx], passageIndex: idx };
   }
 
   /* =============================================================== paint */
 
-  function paintHeader(lesson, mode, built) {
-    var shown = (mode === 'guided') ? lesson : modeLesson(lesson, built, mode);
-    dom.lessonLabel.textContent = (mode === 'guided') ? lesson.label : MODES[mode].label;
-    dom.lessonTitle.textContent = shown.title;
-    dom.objective.textContent = shown.objective;
+  function paintHeader(lesson) {
+    dom.lessonLabel.textContent = lesson.label;
+    dom.lessonTitle.textContent = lesson.title;
+    dom.objective.textContent = lesson.objective;
 
     dom.keyChips.innerHTML = '';
-    var keys = (mode === 'guided' ? lesson.keys : shown.keys) || [];
-    var fresh = (mode === 'guided' ? lesson.newKeys : shown.newKeys) || [];
-    keys.slice(0, 22).forEach(function (k) {
+    (lesson.keys || []).slice(0, 22).forEach(function (k) {
       var li = doc.createElement('li');
-      li.className = 'key-chip' + (fresh.indexOf(k) >= 0 ? ' is-new' : '');
+      li.className = 'key-chip' + ((lesson.newKeys || []).indexOf(k) >= 0 ? ' is-new' : '');
       li.textContent = k === 'Shift' ? 'shift' : k;
       dom.keyChips.appendChild(li);
     });
   }
 
-  /** Modes other than "guided" still need a sensible headline. */
-  function modeLesson(lesson, built, mode) {
-    if (built && built.sourceLesson) {
-      return {
-        title: built.sourceLesson.title,
-        objective: built.sourceLesson.objective,
-        keys: built.sourceLesson.keys,
-        newKeys: []
-      };
-    }
-    var notes = {
-      practice: { title: 'Free Practice', objective: 'Type the passage at your own pace. Nothing here changes your lesson progress.' },
-      accuracy: { title: 'Accuracy Focus', objective: 'One job: hit every key correctly. Slow down until the mistakes stop, then let the speed come back.' },
-      weak: { title: 'Weak-Key Practice', objective: 'A drill built from the characters you miss most often, with their neighbours on the same row.' },
-      timed: { title: 'Timed Test', objective: 'A timed run. The clock starts with your first keystroke and stops when the time is up.' },
-      speed: { title: 'Speed Challenge', objective: 'Go as fast as you can without letting accuracy collapse. Your best is ' + Math.round(Store.get().stats.bestWpm) + ' wpm.' },
-      random: { title: 'Random Test', objective: 'A passage picked at random from your chosen level.' }
-    };
-    var n = notes[mode] || null;
-    return {
-      title: (n ? n.title : lesson.title),
-      objective: (n ? n.objective : lesson.objective),
-      keys: [],
-      newKeys: []
-    };
-  }
-
-  function paintStatus(lesson, mode) {
-    var bits = [];
-    if (session.note) bits.push(session.note);
-    if (mode === 'guided') {
-      bits.push('Passage ' + (session.passageIndex + 1) + ' of ' + lesson.passages.length +
-                ' · mastery ' + lesson.mastery.wpm + ' wpm at ' + lesson.mastery.accuracy + '% accuracy');
-    }
-    dom.statusLine.textContent = bits.join(' · ');
+  function paintStatus(lesson) {
+    dom.statusLine.textContent = 'Passage ' + (session.passageIndex + 1) + ' of ' + lesson.passages.length +
+      ' · mastery ' + lesson.mastery.wpm + ' wpm at ' + lesson.mastery.accuracy + '% accuracy';
   }
 
   /** Render the passage as one span per character. */
@@ -823,13 +553,8 @@
     if (!stats) return;
     dom.statWpm.textContent = String(Math.round(stats.netWpm));
     dom.statAcc.textContent = String(Math.round(stats.accuracy));
-    if (session.timeLimitMs > 0) {
-      dom.timeLabel.textContent = 'remaining';
-      dom.statTime.textContent = formatClock(stats.remainingMs, true);
-    } else {
-      dom.timeLabel.textContent = 'elapsed';
-      dom.statTime.textContent = formatClock(stats.elapsedMs, false);
-    }
+    dom.timeLabel.textContent = 'elapsed';
+    dom.statTime.textContent = formatClock(stats.elapsedMs, false);
     dom.progressBar.style.width = (stats.progress * 100).toFixed(1) + '%';
   }
 
@@ -855,14 +580,11 @@
   function onEngineComplete(result, reason) {
     flushMistakes();
     var previousBest = Store.get().stats.bestWpm;
-    var mode = MODES[session.mode] || MODES.guided;
     var lesson = L.getLesson(session.lessonId) || L.LESSONS[0];
-    var mastery = mode.countsAsLesson ? lesson.mastery : null;
 
     var record = {
-      lessonId: mode.countsAsLesson ? lesson.id : '',
+      lessonId: lesson.id,
       lessonTitle: lesson.title,
-      mode: session.mode,
       netWpm: result.netWpm,
       grossWpm: result.grossWpm,
       accuracy: result.accuracy,
@@ -871,26 +593,26 @@
       typed: result.typed,
       durationMs: result.durationMs,
       completed: result.completed,
-      mastery: mastery
+      mastery: lesson.mastery
     };
 
     var saved = null;
     if (result.typed > 0) saved = Store.recordSession(record);
 
-    showResults(result, reason, saved, previousBest, lesson, mode);
+    showResults(result, reason, saved, previousBest, lesson);
     buildLessonList();
     renderProgressView();
     markCurrentLessonRow();
   }
 
-  function showResults(result, reason, saved, previousBest, lesson, mode) {
+  function showResults(result, reason, saved, previousBest, lesson) {
     var titles = {
       finished: result.completed ? 'Passage complete' : 'Session ended',
       time: 'Time is up',
       aborted: 'Session ended'
     };
 
-    dom.resultsKicker.textContent = mode.countsAsLesson ? lesson.label : MODES[session.mode].label;
+    dom.resultsKicker.textContent = lesson.label;
     dom.resultsTitle.textContent = titles[reason] || 'Session ended';
 
     // A handful of characters in well under a second cannot produce a
@@ -915,7 +637,7 @@
       dom.rBest.textContent = Math.round(bestNow) + ' wpm';
     }
 
-    dom.rMessage.textContent = buildMessage(result, saved, lesson, mode);
+    dom.rMessage.textContent = buildMessage(result, saved, lesson);
 
     // Which keys were missed, most frequent first.
     dom.rMistakes.textContent = '';
@@ -937,7 +659,7 @@
       });
     }
 
-    var next = mode.countsAsLesson ? L.nextAfter(lesson.id) : null;
+    var next = L.nextAfter(lesson.id);
     dom.rNext.hidden = !next;
     if (next) dom.rNext.textContent = 'Next · ' + next.label;
 
@@ -947,9 +669,9 @@
   }
 
   /** A short, honest, constructive comment. Never claims progress it cannot prove. */
-  function buildMessage(result, saved, lesson, mode) {
+  function buildMessage(result, saved, lesson) {
     var parts = [];
-    var mastery = mode.countsAsLesson ? lesson.mastery : null;
+    var mastery = lesson.mastery;
     var slips = result.mistakesMade || 0;
 
     if (result.typed === 0) {
@@ -961,10 +683,6 @@
     }
 
     if (saved && saved.newBestWpm) parts.push('New personal best.');
-
-    if (!result.completed && MODES[session.mode].timed) {
-      parts.push('The clock beat you to the end of the passage, which is expected for a timed run.');
-    }
 
     if (result.accuracy < 85) {
       parts.push('Accuracy comes first: you slipped on ' + slips + ' character' + (slips === 1 ? '' : 's') +
@@ -989,15 +707,15 @@
       } else {
         parts.push('That meets the lesson target.');
       }
-    } else if (!mode.countsAsLesson && result.accuracy >= 97 && slips === 0) {
+    } else if (result.accuracy >= 97 && slips === 0) {
       parts.push('Very accurate. If you can hold this, the next step is simply a little more speed.');
     }
 
-    if (mode.countsAsLesson && saved && saved.masteryEligible === false && result.completed) {
+    if (saved && saved.masteryEligible === false && result.completed) {
       parts.push('Typed too quickly to count towards mastery — type it once more at an even pace and the lesson will be marked.');
     }
 
-    if (mode.countsAsLesson && saved && saved.masteredNow) {
+    if (saved && saved.masteredNow) {
       parts.push('Marked as mastered in your progress.');
     }
     return parts.join(' ');
@@ -1118,7 +836,7 @@
         row.appendChild(meta);
         row.addEventListener('click', function () {
           closePanel();
-          startSession({ mode: 'guided', lessonId: lesson.id, passageIndex: 0 });
+          startSession({ lessonId: lesson.id, passageIndex: 0 });
         });
         list.appendChild(row);
       });
@@ -1165,7 +883,7 @@
     recent.forEach(function (r) {
       var li = doc.createElement('li');
       var what = doc.createElement('span');
-      what.textContent = r.lessonTitle || (MODES[r.mode] ? MODES[r.mode].label : r.mode);
+      what.textContent = r.lessonTitle || 'Practice';
       var numbers = doc.createElement('span');
       numbers.textContent = Math.round(r.wpm) + ' wpm · ' + Math.round(r.accuracy) + '%';
       li.appendChild(what);
@@ -1210,7 +928,7 @@
     buildLessonList();
     renderProgressView();
     var lesson = L.nextLesson(Store.completedIds()) || L.LESSONS[0];
-    startSession({ mode: Store.setting('mode'), lessonId: lesson.id });
+    startSession({ lessonId: lesson.id });
     toast('Saved progress cleared. Back to the first lesson.');
   }
 
@@ -1290,11 +1008,11 @@
    */
   function goHome() {
     var lesson = L.nextLesson(Store.completedIds()) || L.LESSONS[0];
-    startSession({ mode: Store.setting('mode'), lessonId: lesson.id });
+    startSession({ lessonId: lesson.id });
   }
 
   function restart() {
-    startSession({ mode: session.mode, lessonId: session.lessonId, passageIndex: session.passageIndex });
+    startSession({ lessonId: session.lessonId, passageIndex: session.passageIndex });
   }
 
   function formatClock(ms, roundUp) {

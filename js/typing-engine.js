@@ -65,7 +65,7 @@
     /**
      * Start a session.
      * @param {string} text     the passage to type
-     * @param {object} opts     { mode, timeLimitMs, lessonId, lessonTitle, mastery }
+     * @param {object} opts     { timeLimitMs, lessonId, lessonTitle, mastery }
      */
     load: function (text, opts) {
       opts = opts || {};
@@ -73,7 +73,6 @@
       this.states = new Array(this.text.length);
       for (var i = 0; i < this.states.length; i++) this.states[i] = PENDING;
 
-      this.mode = opts.mode || 'guided';
       this.timeLimitMs = opts.timeLimitMs || 0;
       this.lessonId = opts.lessonId || '';
       this.lessonTitle = opts.lessonTitle || '';
@@ -101,7 +100,6 @@
       this.states = new Array(this.text.length);
       for (var i = 0; i < this.states.length; i++) this.states[i] = PENDING;
 
-      this.mode = 'guided';
       this.timeLimitMs = 0;
       this.lessonId = '';
       this.lessonTitle = '';
@@ -286,8 +284,7 @@
         remainingMs: this.remainingMs(),
         progress: this.text.length ? Math.min(1, this.index / this.text.length) : 0,
         finished: this.finished,
-        started: this.started,
-        mode: this.mode
+        started: this.started
       };
     },
 
@@ -301,7 +298,6 @@
       return {
         lessonId: this.lessonId,
         lessonTitle: this.lessonTitle,
-        mode: this.mode,
         netWpm: s.netWpm,
         grossWpm: s.grossWpm,
         accuracy: s.accuracy,

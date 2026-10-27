@@ -28,9 +28,6 @@
       version: SCHEMA_VERSION,
       settings: {
         theme: 'system',        // 'system' | 'light' | 'dark'
-        mode: 'guided',         // default practice mode
-        duration: 30,           // seconds, for timed modes
-        difficulty: 3,          // 1..5, used by Random Test
         caret: 'block',         // 'block' | 'line' | 'underline' | 'none'
         liveStats: true         // show the live WPM / accuracy row while typing
       },
@@ -96,9 +93,6 @@
 
     var s = isObject(src.settings) ? src.settings : {};
     d.settings.theme = ['system', 'light', 'dark'].indexOf(s.theme) >= 0 ? s.theme : 'system';
-    d.settings.mode = str(s.mode, 'guided');
-    d.settings.duration = [15, 30, 60, 120].indexOf(num(s.duration, 0)) >= 0 ? num(s.duration, 30) : 30;
-    d.settings.difficulty = clamp(s.difficulty, 1, 5, 3);
     d.settings.caret = ['block', 'line', 'underline', 'none'].indexOf(s.caret) >= 0 ? s.caret : 'block';
     d.settings.liveStats = s.liveStats !== false;
 
@@ -137,7 +131,6 @@
           at: num(r.at, 0),
           lessonId: str(r.lessonId, ''),
           lessonTitle: str(r.lessonTitle, ''),
-          mode: str(r.mode, 'practice'),
           wpm: num(r.wpm, 0),
           grossWpm: num(r.grossWpm, num(r.wpm, 0)),
           accuracy: num(r.accuracy, 0),
@@ -304,7 +297,7 @@
     /* -------------------------------------------------------------- stats */
     /**
      * Record a finished session.
-     * `result` = { lessonId, lessonTitle, mode, netWpm, grossWpm, accuracy,
+     * `result` = { lessonId, lessonTitle, netWpm, grossWpm, accuracy,
      *              correct, incorrect, typed, durationMs, completed, mastery }
      * Returns { newBestWpm, newBestAccuracy, lessonImproved, masteredNow }.
      */
@@ -369,7 +362,6 @@
           at: Date.now(),
           lessonId: str(result.lessonId, ''),
           lessonTitle: str(result.lessonTitle, ''),
-          mode: str(result.mode, 'practice'),
           wpm: num(result.netWpm, 0),
           grossWpm: num(result.grossWpm, 0),
           accuracy: num(result.accuracy, 0),

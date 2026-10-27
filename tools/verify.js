@@ -84,7 +84,7 @@ console.log('--- speed ---');
   // 11 / 5 = 2.2 "words" in 1/6 minute -> 13.2 wpm
   clock = 1000;
   const e = new TypingEngine();
-  e.load('hello world', { mode: 'practice' });
+  e.load('hello world', {});
   e.press('h');                                   // clock starts here
   typeString(e, 'ello world', 1000);              // 10 more keys, 1s apart
   const s = e.stats();
@@ -98,7 +98,7 @@ console.log('--- speed ---');
   // 60 keystrokes over one minute, one left uncorrected.
   clock = 1000;
   const e = new TypingEngine();
-  e.load('a'.repeat(60), { mode: 'practice' });
+  e.load('a'.repeat(60), {});
   e.press('a');
   for (let i = 1; i < 60; i++) {
     e.press(i === 30 ? 'x' : 'a');
@@ -185,7 +185,7 @@ console.log('--- timing ---');
   clock = 1000;
   let reason = null;
   const e = new TypingEngine({ onComplete: (r, why) => { reason = why; } });
-  e.load('abcdefghij', { mode: 'timed', timeLimitMs: 15000 });
+  e.load('abcdefghij', { timeLimitMs: 15000 });
   e.press('a');
   clock = 11000;                                   // 10s in
   e.tick();
@@ -196,12 +196,12 @@ console.log('--- timing ---');
   check('timed test ends when the clock runs out', e.finished === true && reason === 'time');
   check('a timed test that never starts never ends', (function () {
     const f = new TypingEngine();
-    f.load('abcdefghij', { mode: 'timed', timeLimitMs: 1000 });
+    f.load('abcdefghij', { timeLimitMs: 1000 });
     clock += 5000;
     f.tick();
     return f.finished === false && f.remainingMs() === 1000;
   })());
-  check('untimed modes never report a countdown', new TypingEngine().remainingMs() === 0);
+  check('untimed sessions never report a countdown', new TypingEngine().remainingMs() === 0);
 }
 
 /* ======================================================================== */
@@ -325,7 +325,7 @@ console.log('--- storage ---');
   // Old schema, wrong field types
   global.localStorage.setItem('typingmaster.progress.v1', JSON.stringify({
     version: 1,
-    settings: { theme: 'neon', duration: 999, caret: 'blob', difficulty: 42 },
+    settings: { theme: 'neon', caret: 'blob' },
     progress: { completed: { 's1-01': { bestWpm: '12', bestAccuracy: null, attempts: -3, mastered: 'yes' } } },
     stats: { bestWpm: 'fast', sessions: 'lots', daily: { 'not-a-date': 5, '2024-01-02': 'x' } },
     recent: 'nope',
@@ -336,9 +336,8 @@ console.log('--- storage ---');
   const Store3 = global.TypingMasterStore;
   const s3 = Store3.get();
   check('an old schema is migrated forward', s3.version === 2);
-  check('invalid settings fall back to defaults or clamp',
-    s3.settings.theme === 'system' && s3.settings.duration === 30 &&
-    s3.settings.caret === 'block' && s3.settings.difficulty === 5);   // 42 clamps to 5
+  check('invalid settings fall back to defaults',
+    s3.settings.theme === 'system' && s3.settings.caret === 'block');
   check('invalid numbers are repaired', s3.stats.bestWpm === 0 && s3.stats.sessions === 0 &&
     s3.progress.completed['s1-01'].bestWpm === 0 && s3.progress.completed['s1-01'].attempts === 0);
   check('a malformed daily log is dropped',

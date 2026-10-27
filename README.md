@@ -15,7 +15,6 @@ every keystroke.
 - [Quick start](#quick-start)
 - [Features](#features)
 - [The curriculum](#the-curriculum)
-- [Practice modes](#practice-modes)
 - [How the numbers are calculated](#how-the-numbers-are-calculated)
 - [What gets saved, and where](#what-gets-saved-and-where)
 - [Keyboard shortcuts](#keyboard-shortcuts)
@@ -54,16 +53,15 @@ optional test and server scripts; the application itself never needs it.
 ## Features
 
 - **83 lessons** across 7 stages, from the F and J anchors to long-form prose.
-- **Seven practice modes**: guided lessons, free practice, timed tests,
-  accuracy focus, speed challenge, weak-key practice and random tests.
-- **Live statistics** — net WPM, accuracy and a timer that counts up or down
-  depending on the mode.
+- **Guided lessons only** — one clear path through the curriculum, no time
+  limit and no mode to choose.
+- **Live statistics** — net WPM, accuracy and a timer that counts up as you
+  type.
 - **Character-by-character feedback** with a caret, wrong-character marking and
   automatic scrolling that keeps your current line in view.
 - **Results card** with net WPM, gross WPM, accuracy, character counts,
   duration, an honest comparison with your personal best, and a passage review
   that lists every key you missed with its surrounding text.
-- **Weak-key drills** generated from the characters you actually get wrong.
 - **Light and dark themes**, plus "match system".
 - **Progress saved in the browser**, with a two-step reset.
 - **Works on a phone**, with an explanation that a physical keyboard is
@@ -98,20 +96,6 @@ they are taught, and — most importantly — that every passage is between 300
 and 400 characters inclusive (`passage.length >= 300 &&
 passage.length <= 400`), so every typing exercise from Lesson 1 onward meets
 the minimum length requirement.
-
----
-
-## Practice modes
-
-| Mode | What it does |
-| --- | --- |
-| **Guided lesson** | The current lesson, no time limit. Finishing it records progress and unlocks the mastery mark. |
-| **Free practice** | The same text with no pressure and no effect on lesson progress. |
-| **Timed test** | 15, 30, 60 or 120 seconds. The text is assembled from passages that suit your chosen level, and the clock starts with your first keystroke. |
-| **Accuracy focus** | The longest passage of the lesson, scored for mistakes rather than speed. |
-| **Speed challenge** | A timed sprint aimed at beating your stored personal best. |
-| **Weak-key practice** | A drill generated from the characters you miss most, paired with their neighbours on the same row and mixed into real words. Falls back to a foundation drill until there is something to work on. |
-| **Random test** | A random passage from the level you choose (1–5). |
 
 ---
 
@@ -157,9 +141,8 @@ one versioned JSON object:
 - best WPM, best accuracy, session count, total characters, total practice time
 - a daily practice log (last 120 days)
 - your last 25 sessions
-- per-character mistake counts, used by weak-key practice
-- preferences: theme, mode, test length, random-test level, caret style, and
-  whether the live statistics row is shown
+- per-character mistake counts, shown in the panel as "keys to practise"
+- preferences: theme, caret style, and whether the live statistics row is shown
 
 **Your progress is stored in this browser only.** It does not sync between
 browsers, devices or private windows, and clearing site data deletes it.
@@ -202,8 +185,7 @@ Browser shortcuts (`Ctrl`+`R`, `Ctrl`+`Tab`, …) are deliberately left alone.
 - Keystrokes are only captured while that field has focus, so buttons, selects
   and dialogs never lose a keypress.
 - Visible focus rings on every interactive element, a skip link to the typing
-  text, live status text for mode changes, and contrast that meets WCAG AA in
-  both themes.
+  text, and contrast that meets WCAG AA in both themes.
 - `prefers-reduced-motion` disables the caret blink and all transitions.
 - Returns to the tab re-focus the typing field automatically when no dialog is
   open, and the cursor is never trapped: `Tab` inserts spaces inside the text,
@@ -259,9 +241,9 @@ passage, input after completion being ignored, countdown expiry, and mistake
 bookkeeping.
 
 Manually, the useful things to try are: typing a lesson start to finish;
-making a mistake and correcting it with Backspace; switching every mode; running
-a 15-second test; pressing `Escape` and `Ctrl`+`Enter`; switching themes;
-resizing the window mid-passage; and resetting progress after a warning.
+making a mistake and correcting it with Backspace; pressing `Escape` and
+`Ctrl`+`Enter`; switching themes; resizing the window mid-passage; and resetting
+progress after a warning.
 
 ---
 

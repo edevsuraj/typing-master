@@ -33,40 +33,6 @@
   </div>
 
   <div class="controls" role="group" aria-label="Practice controls">
-    <span class="field">
-      <label class="field-label" for="mode-select">Mode</label>
-      <select id="mode-select" autocomplete="off">
-        <option value="guided">Guided lesson</option>
-        <option value="practice">Free practice</option>
-        <option value="timed">Timed test</option>
-        <option value="accuracy">Accuracy focus</option>
-        <option value="speed">Speed challenge</option>
-        <option value="weak">Weak-key practice</option>
-        <option value="random">Random test</option>
-      </select>
-    </span>
-
-    <span class="field" id="duration-field">
-      <label class="field-label" for="duration-select">Time</label>
-      <select id="duration-select" autocomplete="off">
-        <option value="15">15s</option>
-        <option value="30">30s</option>
-        <option value="60">60s</option>
-        <option value="120">120s</option>
-      </select>
-    </span>
-
-    <span class="field" id="difficulty-field" hidden>
-      <label class="field-label" for="difficulty-select">Level</label>
-      <select id="difficulty-select" autocomplete="off">
-        <option value="1">1 · home row</option>
-        <option value="2">2 · easy words</option>
-        <option value="3">3 · full alphabet</option>
-        <option value="4">4 · sentences</option>
-        <option value="5">5 · advanced</option>
-      </select>
-    </span>
-
     <button type="button" id="lessons-btn" class="btn" aria-haspopup="dialog" aria-expanded="false">Lessons</button>
     <button type="button" id="theme-btn" class="btn btn-icon" aria-label="Switch between dark and light theme">
       <span class="theme-glyph" aria-hidden="true"></span>
@@ -166,25 +132,6 @@
             <option value="system">Match system</option>
             <option value="dark">Dark</option>
             <option value="light">Light</option>
-          </select>
-        </span>
-        <span class="field">
-          <label class="field-label" for="default-duration">Default test length</label>
-          <select id="default-duration">
-            <option value="15">15 seconds</option>
-            <option value="30">30 seconds</option>
-            <option value="60">60 seconds</option>
-            <option value="120">120 seconds</option>
-          </select>
-        </span>
-        <span class="field">
-          <label class="field-label" for="default-difficulty">Random test level</label>
-          <select id="default-difficulty">
-            <option value="1">1 · home row only</option>
-            <option value="2">2 · easy words</option>
-            <option value="3">3 · full alphabet</option>
-            <option value="4">4 · sentences</option>
-            <option value="5">5 · advanced</option>
           </select>
         </span>
         <span class="field">
