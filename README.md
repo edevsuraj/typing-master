@@ -83,7 +83,7 @@ that rule itself.
 | 3 | Bottom Row | Z/M, X/comma, C/full stop, V/slash, B/N, plus a column drill for every single key against its home-row partner (az, sx, dc, fv…), sweeps, alternating rows, punctuation, sentences and a passage |
 | 4 | Complete Alphabet | The whole alphabet, common letter pairs, the commonest words, long words, prefixes and suffixes, capitals and Shift, quotes, numbers |
 | 5 | Words & Sentences | Everyday sentences and vocabulary, longer sentences, paragraphs, capitalisation, numbers and symbols, dialogue, letters and email, natural prose |
-| 6 | Speed & Accuracy | Accuracy before speed, rhythm, short-word bursts, weak-finger drills, common words at speed, consistency, mistake recovery |
+| 6 | Speed & Accuracy | Accuracy before speed, rhythm, row bursts for all three rows plus the full keyboard, weak-finger drills, common words at speed, sprint practice, consistency, mistake recovery |
 | 7 | Advanced | Long paragraphs, complex punctuation, numbers and symbols, proper nouns, advanced vocabulary, endurance runs, technical and literary prose |
 
 Each lesson records a `mastery` target — a speed and an accuracy that must both

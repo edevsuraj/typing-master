@@ -1251,12 +1251,14 @@
     mk({
       id: 's6-05', stage: 6,
       title: 'Home Row Bursts',
-      objective: 'Twenty seconds of pure home-row movement. Ideal as a warm-up before a timed test.',
+      objective: 'Pure home-row movement in short fast bursts: doubled keys, neighbour hops, then real home-row words such as flash and glass. An ideal warm-up that teaches the fingers to move without hesitating.',
       keys: [], newKeys: [],
       passages: [
-        "Measure the room four point five metres by three point two metres. They build habits that are fast but uneven over many years. Send any corrections by Thursday afternoon to the office please. That takes minutes not hours. Outside the market opened as usual and nobody on the street knew. Promising safer",
-        "streets for cyclists and more space for local shops. A useful way to practise is to divide text into lines. There is no trick to touch typing. Did you bring the keys with you to the door this morning. Your hands stop thinking about it. There is no substitute for it either. All right she replied and closed the door behind her quietly. She read the letter",
-        "twice then folded it away carefully. Dear Sam thank you for the book you lent me recently. Keep your fingers curved your wrists still. It is about removing the reason you had to look. Call between nine o clock and seventeen thirty hours please. The same two keys give them trouble for years without practice. I will return it next week with my thanks and best wishes. Send any corrections b",
+        "at dg ff jj ss io ff jj ;f ri ti k; kk h; hk hl fh dg fs dl ti la ks oo kk ri dg ff da hh dj nd jd en ee la da gj la aj st se er ri he dd ar al hh ff hk ti en io ha sg jg at kf at fd jd te ss ha ar at ne hh fl io lk ss in ee dj hl ll ri ee ds dj nd dd it ti ti an kf gh lj la dd ar dd it hh ja ri te h; nd fl at gs ar en ll te th it ss ka tt sa la he lg f; sg kk gg ee ll an or ;; ll jf",
+        "gg dad he half sf ne dash or hj ds ka tt or glad dd halls jl sad fall lf flask dk salad ll hands ag an half lash glass ga it man eyes st dad st glad or sk flasks jl gals their on sad dad gash write ti ra asks k; th gg en gash halls ;; hall fad se ne ri data f; at an te en palm j; ;g dh th kj af an js fall add glad add flag sf lad hj es lag gd te hash van hash rusty salad ti dh ;f la",
+        "lad as ss flasks kd add sf ag gg ah flasks lag flasks jj dd glass hd flag ou lag gk s; re lad ;l hh lg fad ha hash h; ;a flask ag fad flasks hall salads dad glass in lass java adds aa flash lads sure an ar nd oo flask flash dash salad sa aj en flasks asks super ask their gash ll half hh s; aa flasks oo io gg ;l gash fall glad tt jg lass ff alas nd hash lad kj lag steady kk sure ss route",
+        "er kj re ff jg s; gs aa ri lg dh kj dd jd ag fg ag dd ff ff ;a gg oo ff lh th hh fj ti er he an dh hf ld j; da ha hk k; kk ;a re ;l hk dd ah gl te ri kh sf a; ;j hf lg ee io sj lh st ll an f; en la ff ti fd hh aj tt fa er dh gh sl fl he ;g ll dg fa da ;g hh ne ar gg ar ti kj kh hh kk hk kk dd al ee ff er lj ga l; ee kl ff nd aj dd jf la es ;g l; ne j; ;l ;l k; st da g; ad hl aa as la",
+        "lad ff hh ll shah fj lad flash trust salad al es ri ff g; salad ss kj io sf flag kk eyes la glad es salads half speed ff io ll an lass in flag ar lass alas ne salads ll kk se ss ra java fad lads and ff io te nd hh al dash jj flash se ne twist ;j flag ff ff lf fg gg data salad lash ;f flags on flash fl ;k dash fg lass in shah ri nd on jf flask ss ;; dd glad hh jf lad ri ti salads ks halls",
       ],
       difficulty: 4, mastery: { wpm: 50, accuracy: 95 }
     }),
@@ -1266,11 +1268,41 @@
       objective: 'The same idea on the top row, where the little fingers do most of the work.',
       keys: [], newKeys: [],
       passages: [
-        "She read the letter twice then folded it away carefully. Accuracy comes before speed. Beginners are told to look at the keyboard. Rain began softly and the sound of it made the room feel calm. I will return it next week with my thanks and best wishes. The sun is warm today and the sky is blue. Someone",
-        "had left a light on above the printer in the hall. Everything after that is deciding how fast you want to go. Then one afternoon without noticing you will stop looking down. They will come back soon with the news from town. A short structured course avoids all of that. The teacher asked the class to read quietly. Most people learn to type by accident.",
-        "Your hands stop thinking about it. Keep your eyes on the text. The training is not really about moving faster. Speed arrives when accuracy is calm. She opened the window and let the fresh air in. She had never seen a sky quite that colour before. Type one line at a time reading the next line. A useful way to practise is to divide text into lines. When a key slips fix it immediately and carr",
+        "ii oo at la tt pe rq tp ar ww ww ot io pw al yw rr ll yp qp oo th oo ip re an ww io ru ra ee tt ra rr re qq on oo yy ri ri tt se ss te ti ou er an oo it se es ir ff ne oo al it ui uu ew tp oo ue ti ru he po it ee ow ou st ll yr qo in it ry en ll ro oi or yq ie ll qr op he at ru ss ii rr ty ss qr ee ou qq ar oo pt qq rr iq it in ee ii te ar te he tt he ss ie ww tq yq en wi pt he yp an",
+        "tr tours oq wr your true ff pp nd text es tours twists he se tu re roost route tryst yr ra oo tops da th ropes ii iu ee ll ee ry in wt trust st en eq st super st twists tp an rt we da power sure steady asset ropes qr trust ll routes tryst iw rusty route text ww wt or issue ti ey ee the uy he rusts quota wi asset asset twist ti ii ll yes tiers an and ropes wrist on or yours he route nd",
+        "tours step rust potato it writes th quiet ti typing quiet ropes spree super type et ii pp es ee oo eyes steps issue ww ou on south true purse tt spree wu ei uq yt qp io rusty uu flash qq issues type es oo la ww es er yes tours yo rr te ye ty power route type and route he pt it ou ee qe ue en tryst wp spree quietly qq trust steady es se twists tiers rope yes we rhythm ss th steep or en",
+        "iw ui ii ri qp it at qq ip qe qq al ue es uu ii pp yy yo he th ti rr op pp yr on th yo al ww eq er se qq ou io te ss pp uw rr ww qt ri qq nd oo pi at ti wr ou se ii pq pt ti da ri rt rr nd eq uy qo er qq up oi iu qu ti io wi pp yy uu ii qq ra se wi an to ar rt uu ei te qw ey yo se ra pp wr rr iu qi he ot pp tt ww al yy ne ro oo ww ep tr rp ow oo io po an io ow st pp uu ow st ww st er",
+        "io pp quota la palm sure eyes ss tops io rp uu ri eyes issues la quietly quota data steps er st calm uy true purse er sure pours al and rope nd ra ii ww it south speed steep an asset sure he type ei steps ee issue ru pour ne eyes an la super ee uu pr rusts issue pp er twist et ll and wp ra twist step oo es spree ii tiers rusty ar ri pr qq an pour ww on ri ss tp ww twist io rp en it ra",
       ],
       difficulty: 5, mastery: { wpm: 50, accuracy: 94 }
+    }),
+    mk({
+      id: 's6-bb', stage: 6,
+      title: 'Bottom Row Bursts',
+      objective: 'The burst idea for the bottom row, where every finger has to curl under. Short real words and clean repeated groups, with no thinking between keys.',
+      keys: ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'], newKeys: [],
+      passages: [
+        "nn nc en xx x. ,, nn // bb bx n. /b vv ra xm on te es x/ nm /n zb .v bv st mm la he bv zb in ne bb nx ./ ee tt ., er ri it es .. bb th or se tt on ar .v th cv da n, at ss /z he ./ bc tt an al cc vb v/ ri it // al m, ri ou bb io er en ne vm ,b oo z/ er ,/ bb nn er es cx ti nb zx nm n/ it ti ne an se vx mn al ll or v. vv oo bx ,, nx es it zn m/ zz oo ff vv st he al se cb re cn cc en re",
+        "canal your bans zax nx nab /b text ,b it nab write nab mama ou vv ar balm cx te canal mama se type at an c/ man st nab er calms calms nn vans bb xx or ban nd er re vv canal /z /m typing zz mm sure it ff vans balm /z it nd practice x/ bans balm route b. bb calms zax ,z ar vans java ., re ou it balm bans potato .v wrist // cv v/ cm nab or ri en sure zz // bb balm mm can te mama can th",
+        ".. java bb la mama bb al st mama cans // cans mama xb cans canal text canal ban ee canal ra la mx n. zz zz ban ar ee canal nana /m balm can ll cans m/ b/ ban canal rusty la cc vx cans twist or en se ff zz ll er ee al or bz cc nab ri cc nb nabs for nana balm ban speed ar .c la ll balm cz cz bans ou cz tt bans balm ri th ,/ c. mm /z bb canal zax mm da ,x zx canal .n ,z zz mc cams vans",
+        "ou nn ss mn nn da ll nn c, bb ee vv al ll cc bz ll ou mm mb z/ /z nn on x, la on cb zc // ,, zc /m cc ., an at nn ,. ar ,, re x. bb io vv b, xm ll ff an bx zc bx la xn .m vv /. cc xx /b x/ ,n .. /v xx c. mx es st vv la vv xx oo mc in en bz nz nv tt nx xx mm ,, ,m ra ou nx bb mm // x. ff ,c tt ra on bn x. .b mx .. ee oo vv m. cb /b .b .x mn cx z. io th vv /z mm cc mm zx mx .n mn ti se",
+        "super th canal nz nd zv ll canal nn nabs zm cm van cams man calm vans en at /z mn calm cn cans in bans canal mama er cans mama ll cans quiet cans ban vans bans calm cb cc cans cans ne nm st at nabs ., van .m xz x/ java vans bans mama nn re zax nabs da can at re ,, balm typing or in there ff bans mb vans ff ban ,m nana cans nana or al nn nab v, hands es calms cans java vm vans in st in",
+      ],
+      difficulty: 5, mastery: { wpm: 50, accuracy: 94 }
+    }),
+    mk({
+      id: 's6-fkb', stage: 6,
+      title: 'Full Keyboard Bursts',
+      objective: 'All three rows in one continuous burst. Trust your hands, keep the eyes one line ahead, and let the words flow without pauses between rows.',
+      keys: [], newKeys: [],
+      passages: [
+        "uu ll ;f ad tp ra xm cn sk in mm // v, m. es ,, iq ou mv dd la we ss ri ss /v yp zx ll ar z. se ww /, .. ha wi sd ra v/ nd vm ff rr er he cm te ff gl te da nn cc vv re .. ,. l; mn ar ra ey tt ey ww th ;a ii rr it mm wi x. xv wr zc tt se ei it bb ss ja al .x df ff eq nn gg kk aa ne mv pi it es la kk al ka s; ww ff ss // // hj pu uo sl tt vv hg ww ei ff hh gg cz ee ww kk tw zz sg /. es",
+        ",, it eyes nm /n ask he yy ks ll potato oo d; potato yw burst es hands man practice ak super steady /. typing glass ur oy your man van a; rusty hands your ou rhythm hands hands hands qu yt uu tt sure z/ aa on super gf ee zx rusty oo practice data qw data calm ra eyes for trust rusty ut la st ask there flash type cc kk and dd in al their ru xx x/ eyes you ff an ga gl pq practice pp write",
+        "you ee tp cc ti rhythm java eyes burst ey qp flash oe mv .m super on ,m /x st quiet man ,/ ri /. or kf b, quiet uq potato aj issue se rusty to data gl v, potato ll at man iq quiet their ,n and ss ,n ne ti for .. twist xx oo yy for bc typing van ee kk rr flash trust pt ou da data pq ,, ll calm pw potato man power /, quiet ti or or kj in gj their kk route speed cc type ee you .c th bc",
+        "in ee xx c/ oo te jh ,, it z, yr hh pq ;; jk dd po cb xx ru er lj h; hd .v pp io er ri /. yy gg tt yy on yi fa da vv bc yy yo gh nd kl ., ty v. at xm qt ;a ir /x tq tt ha xx pp ks kk yu .x pp pw qu ei fs rq fg yy at wt ;l bb fl hj nn jj qo x. nz zz .v it rr ut eq or m, mm jj yy ee df oo tt zm ry jj ee oi ,. la kl kg sj oy at ri ty rr zz qq l; tt rr uu rw ll tt ll ,, hh ne ot jj b, ah",
+        "van yp palm bb you b. the sure iw zx their xn qe nd jf hg java ar calm yy power wr sure ,b ee ty route oo super kk at hl oo af n/ sg at ww er ll // burst b/ hs issue rt ri yi oo super ep zz jj nd and for palm gg java ti their he glass j; wr gg rr // x/ ,, ar nc ff write aa van sk x, cc on van da power wrist super ,, gl super calm twist la mz route da van ey bc tt te ii wrist wi type",
+      ],
+      difficulty: 5, mastery: { wpm: 52, accuracy: 94 }
     }),
     mk({
       id: 's6-07', stage: 6,
@@ -1296,8 +1328,8 @@
     }),
     mk({
       id: 's6-09', stage: 6,
-      title: 'Timed Test Preparation',
-      objective: 'A timed-length block of natural text with nothing unusual in it. Use this to warm up before a real timed run.',
+      title: 'Sprint Practice',
+      objective: 'A full block of clean natural text with nothing unusual in it. Push the pace through the whole passage and watch the timer in the stat bar — this is where rhythm becomes speed.',
       keys: [], newKeys: [],
       passages: [
         "There is no substitute for it either. The training is not really about moving faster. The same two keys give them trouble for years without practice. Your hands stop thinking about it. Our flight leaves at zero six forty five on the third of May. Everything after that is simply deciding how fast you",

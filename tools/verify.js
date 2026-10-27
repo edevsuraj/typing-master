@@ -55,7 +55,7 @@ function typeString(engine, str, msPerChar) {
 console.log('--- curriculum ---');
 const curriculumErrors = L.validateCurriculum();
 check('curriculum validates', curriculumErrors.length === 0, curriculumErrors.slice(0, 8).join(' | '));
-check('103 lessons present', L.COUNT === 103, 'got ' + L.COUNT);
+check('105 lessons present', L.COUNT === 105, 'got ' + L.COUNT);
 check('every stage has lessons',
   L.STAGES.every(s => L.lessonsForStage(s.id).length >= 8),
   L.STAGES.map(s => s.id + ':' + L.lessonsForStage(s.id).length).join(' '));
