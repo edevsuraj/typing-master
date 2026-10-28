@@ -437,7 +437,12 @@
     // caret's line is fully visible and the passage still begins and ends
     // where it should. Without this clamp the opening line of a long passage
     // scrolls straight out of sight, so the opening words cannot be read.
-    var desired = lineTop - (viewportHeight / 2) + (caretLineHeight / 2);
+    // Aim the caret line at the vertical centre of the window. With the caret
+    // centred, the line you are ABOUT to type is already fully on screen —
+    // text is never revealed only after the keystroke that needs it.
+    // (The target offset is negative-going: it says how far to shift the
+    // passage up. The clamps then keep the passage itself honest.)
+    var desired = (viewportHeight - caretLineHeight) / 2 - lineTop;
     var lowest = Math.max(-(contentHeight - viewportHeight), -lineTop);   // end of passage / caret at the top
     var highest = Math.min(0, viewportHeight - lineTop - caretLineHeight); // start of passage / caret at the bottom
     var y = Math.max(lowest, Math.min(highest, desired));
@@ -632,7 +637,7 @@
     global.clearTimeout(wobbleTimer);
     wobbleTimer = global.setTimeout(function () {
       vp.classList.remove('is-wobble');
-    }, 220);
+    }, 180);
   }
 
   /**
