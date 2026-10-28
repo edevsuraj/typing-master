@@ -62,6 +62,34 @@ check('every stage has lessons',
 check('no duplicate ids', new Set(L.LESSONS.map(l => l.id)).size === L.COUNT);
 check('every lesson has an objective', L.LESSONS.every(l => l.objective && l.objective.length > 20));
 check('every lesson has passages', L.LESSONS.every(l => l.passages.length >= 2));
+check('pair titles match their data (title keys actually typed)',
+  L.LESSONS.every(l => titleClaims(l.title).every(c => l.passages.join('').includes(c))),
+  L.LESSONS.filter(l => {
+    const claims = titleClaims(l.title), all = l.passages.join('');
+    return !claims.every(c => all.includes(c));
+  }).map(l => l.id + ' "' + l.title + '" -> ' + titleClaims(l.title).filter(c => !l.passages.join('').includes(c)).join('')).join(', '));
+
+function titleClaims(title) {
+  const t = title.toLowerCase();
+  const claims = [];
+  if (t.includes(' and ')) {
+    t.split(' and ')[0].trim().split(/\s*·/)[0].split(' ')
+      .forEach(w => { if (/^[a-z]$/.test(w)) claims.push(w); });
+  }
+  if (t.includes('semicolon')) claims.push(';');
+  if (t.includes('comma')) claims.push(',');
+  if (t.includes('full stop')) claims.push('.');
+  if (/\bslash\b/.test(t)) claims.push('/');
+  return [...new Set(claims)];
+}
+check('declared keys all occur in passages (descriptive keys like Shift exempt)',
+  L.LESSONS.every(l => {
+    const all = l.passages.join('');
+    return l.keys.concat(l.newKeys.filter(k => k !== '0-9'))
+      .every(k => k.length !== 1 || all.includes(k));
+  }) &&
+  (L.getLesson('s4-09').passages.join('').includes('0') &&
+   L.getLesson('s4-09').passages.join('').includes('9')));
 check('mastery targets are sane', L.LESSONS.every(l => l.mastery.wpm >= 5 && l.mastery.accuracy >= 80 && l.mastery.accuracy <= 100));
 check('nextLesson skips completed work',
   L.nextLesson({}) === L.LESSONS[0] &&
