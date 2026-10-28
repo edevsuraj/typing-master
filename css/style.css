@@ -693,27 +693,6 @@ dialog::backdrop { background: rgba(6, 9, 13, 0.62); }
 .review-list mark { background: var(--wrong-soft); color: var(--wrong); border-radius: 3px; padding: 0 2px; }
 .review #review-back { margin-top: 16px; }
 
-/* ------------------------------------------------------------- toast */
-.toast {
-  position: fixed;
-  left: 50%;
-  bottom: 26px;
-  transform: translate(-50%, 14px);
-  z-index: 40;
-  max-width: min(420px, calc(100vw - 32px));
-  padding: 10px 16px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--panel);
-  box-shadow: var(--shadow);
-  color: var(--text);
-  font-size: 0.8rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 160ms var(--ease), transform 160ms var(--ease);
-}
-.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
-
 /* ------------------------------------------------------------- footer */
 .site-footer {
   flex-shrink: 0;
@@ -793,6 +772,6 @@ dialog::backdrop { background: rgba(6, 9, 13, 0.62); }
 }
 
 @media print {
-  .topbar, .progress, .toast, .panel, .results, .site-footer { display: none !important; }
+  .topbar, .progress, .panel, .results, .site-footer { display: none !important; }
   body { background: #fff; color: #000; }
 }

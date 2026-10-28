@@ -46,7 +46,6 @@
   var contentHeight = 0;
   var viewportHeight = 0;
   var tickTimer = null;
-  var toastTimer = null;
   var capsOn = false;
 
   // Preferences for this visit only. They are never written anywhere.
@@ -150,9 +149,7 @@
       reviewTitle: id('review-title'),
       reviewText: id('review-text'),
       reviewList: id('review-list'),
-      reviewBack: id('review-back'),
-
-      toast: id('toast')
+      reviewBack: id('review-back')
     });
   }
 
@@ -672,7 +669,7 @@
     var slips = result.mistakesMade || 0;
 
     if (result.typed === 0) {
-      return 'No characters were typed, so nothing was recorded.';
+      return 'No characters were typed, so there is nothing to score.';
     }
     if (result.durationMs < 1000) {
       return 'Only ' + result.typed + ' characters, typed in under a second — too short to measure speed or accuracy. ' +
@@ -920,15 +917,6 @@
     var m = Math.floor(total / 60);
     var s = total % 60;
     return m + 'm ' + (s < 10 ? '0' : '') + s + 's';
-  }
-
-  function toast(message) {
-    dom.toast.textContent = message;
-    dom.toast.classList.add('is-visible');
-    global.clearTimeout(toastTimer);
-    toastTimer = global.setTimeout(function () {
-      dom.toast.classList.remove('is-visible');
-    }, 3200);
   }
 
   /* ================================================================ go */
