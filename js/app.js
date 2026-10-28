@@ -84,6 +84,7 @@
     engine = new Engine({
       onUpdate: onEngineUpdate,
       onComplete: onEngineComplete,
+      onMistake: onTypingMistake,
       onFirstInput: onFirstInput
     });
 
@@ -580,11 +581,58 @@
 
   function updateStats(stats) {
     if (!stats) return;
-    dom.statWpm.textContent = String(Math.round(stats.netWpm));
-    dom.statAcc.textContent = String(Math.round(stats.accuracy));
+    rollNumber(dom.statWpm, Math.round(stats.netWpm), 160);
+    rollNumber(dom.statAcc, Math.round(stats.accuracy), 160);
     dom.timeLabel.textContent = 'elapsed';
     dom.statTime.textContent = formatClock(stats.elapsedMs, false);
     dom.progressBar.style.width = (stats.progress * 100).toFixed(1) + '%';
+  }
+
+  /* ---------------------------------------------------------------------
+     Motion helpers. Every animated number and every shake respects the
+     user's reduced-motion preference: with it set, things update instantly. */
+  var motionQuery = global.matchMedia ? global.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  function motionReduced() {
+    return !!(motionQuery && motionQuery.matches);
+  }
+
+  /**
+   * Roll a numeric readout from its currently shown value to `target`. The
+   * ease-out curve makes small live-stat changes feel fluid without ever
+   * lagging behind fast typing.
+   */
+  function rollNumber(el, target, duration) {
+    var from = parseFloat(el.textContent);
+    if (!isFinite(from)) from = 0;
+    if (el._rollRaf) { global.cancelAnimationFrame(el._rollRaf); el._rollRaf = null; }
+    if (motionReduced() || Math.round(from) === Math.round(target)) {
+      el.textContent = String(Math.round(target));
+      return;
+    }
+    var started = null;
+    var step = function (ts) {
+      if (started === null) started = ts;
+      var t = Math.min(1, (ts - started) / duration);
+      var eased = 1 - Math.pow(1 - t, 3);          // ease-out cubic
+      el.textContent = String(Math.round(from + (target - from) * eased));
+      el._rollRaf = t < 1 ? global.requestAnimationFrame(step) : null;
+    };
+    el._rollRaf = global.requestAnimationFrame(step);
+  }
+
+  /* A wrong key nudges the passage sideways for a blink — enough to feel the
+     mistake without pulling the eyes away from the text. */
+  var wobbleTimer = null;
+  function onTypingMistake() {
+    if (motionReduced()) return;
+    var vp = dom.viewport;
+    vp.classList.remove('is-wobble');
+    void vp.offsetWidth;                     // restart the animation
+    vp.classList.add('is-wobble');
+    global.clearTimeout(wobbleTimer);
+    wobbleTimer = global.setTimeout(function () {
+      vp.classList.remove('is-wobble');
+    }, 220);
   }
 
   /**
@@ -625,8 +673,9 @@
     // A handful of characters in well under a second cannot produce a
     // meaningful speed, so the app says so rather than printing a silly number.
     var tooShortToMeasure = result.durationMs < 1000;
-    dom.rWpm.textContent = tooShortToMeasure ? '—' : String(Math.round(result.netWpm));
-    dom.rAcc.textContent = String(Math.round(result.accuracy));
+    if (tooShortToMeasure) dom.rWpm.textContent = '\u2014';
+    else rollNumber(dom.rWpm, Math.round(result.netWpm), 650);
+    rollNumber(dom.rAcc, Math.round(result.accuracy), 650);
     dom.rGross.textContent = tooShortToMeasure ? 'too short to measure' : Math.round(result.grossWpm) + ' wpm';
     dom.rChars.textContent = result.correct + ' correct · ' + result.incorrect + ' wrong';
     dom.rDuration.textContent = formatDuration(result.durationMs);
