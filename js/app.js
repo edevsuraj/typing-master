@@ -40,6 +40,8 @@
   var spans = [];
   var currentIndex = -1;
   var caretLineHeight = 0;
+  var caretCharWidth = 0;
+  var floatingCaret = null;
   var contentHeight = 0;
   var viewportHeight = 0;
   var tickTimer = null;
@@ -248,6 +250,7 @@
     dom.caretSelect.addEventListener('change', function () {
       Store.setting('caret', dom.caretSelect.value);
       applyCaretStyle();
+      placeFloatingCaret(true);
     });
     dom.liveStats.addEventListener('change', function () {
       Store.setting('liveStats', dom.liveStats.checked);
@@ -360,22 +363,74 @@
     measureCaret();
     measureText();
     setCaret(0);
+    placeFloatingCaret(true); // rest the gliding caret at the start without a sweep
   }
 
   function setCaret(index) {
     if (currentIndex >= 0 && spans[currentIndex]) {
-      spans[currentIndex].classList.remove('is-current', 'caret-blink');
+      spans[currentIndex].classList.remove('is-current');
     }
     currentIndex = index;
     var span = spans[index];
     if (!span) {
+      hideFloatingCaret();
       syncScroll();
       return;
     }
     span.classList.add('is-current');
-    if (engine && !engine.isStarted()) span.classList.add('caret-blink');
+    placeFloatingCaret(false);
+    if (engine && !engine.isStarted()) floatingCaret && floatingCaret.classList.add('caret-blink');
     syncScroll();
   }
+
+  /* ---------------------------------------------------------------------
+     The floating caret: a small accent bar that GLIDES from character to
+     character (and wraps between lines) instead of teleporting. The current
+     character keeps its colour change for instant feedback; the glide itself
+     is the smoothness the typist feels. */
+  function ensureFloatingCaret() {
+    if (!doc.createElement) return;
+    if (floatingCaret && floatingCaret.parentNode === dom.text) return;
+    // A fresh passage wipes the container, so rebuild the caret whenever the
+    // old element is no longer attached.
+    if (floatingCaret && floatingCaret.parentNode) {
+      floatingCaret.parentNode.removeChild(floatingCaret);
+    }
+    floatingCaret = doc.createElement('div');
+    floatingCaret.className = 'float-caret';
+    dom.text.appendChild(floatingCaret);
+    floatingCaret.style.display = '';
+  }
+  function caretStyle() { return Store.setting('caret'); }
+
+  function placeFloatingCaret(instant) {
+    var style = caretStyle();
+    if (style === 'none') { hideFloatingCaret(); return; }
+    ensureFloatingCaret();
+    var span = spans[currentIndex];
+    if (!span) { hideFloatingCaret(); return; }    var lineTop = Math.round(span.offsetTop / caretLineHeight) * caretLineHeight;
+    var left = span.offsetLeft;
+    var w = caretCharWidth, h = caretLineHeight - 4, top = lineTop + 2;
+    floatingCaret.className = 'float-caret is-' + style;
+    if (style === 'line') { w = 2; left = span.offsetLeft - 2; }
+    else if (style === 'underline') { h = 2; top = lineTop + caretLineHeight - 3; }
+    floatingCaret.style.width = w + 'px';
+    floatingCaret.style.height = h + 'px';
+    if (instant) {
+      // Reposition without a glide (fresh passage, resize, theme rebuild):
+      floatingCaret.style.transition = 'none';
+      floatingCaret.style.transform = 'translate(' + Math.round(left) + 'px, ' + Math.round(top) + 'px)';
+      void floatingCaret.offsetWidth; // flush, then re-enable the glide
+      floatingCaret.style.transition = '';
+    } else {
+      floatingCaret.style.transform = 'translate(' + Math.round(left) + 'px, ' + Math.round(top) + 'px)';
+    }
+  }
+
+  function hideFloatingCaret() {
+    if (floatingCaret) floatingCaret.style.display = 'none';
+  }
+
 
   /** Keep the line being typed inside the viewport, centred when possible. */
   function syncScroll() {
@@ -405,6 +460,12 @@
   function measureCaret() {
     var lineHeight = parseFloat(global.getComputedStyle(dom.text).lineHeight);
     if (lineHeight && isFinite(lineHeight)) caretLineHeight = lineHeight;
+    // Monospace type: the horizontal rhythm of any two adjacent characters
+    // gives the width one caret block should cover.
+    if (spans.length > 1) {
+      var w = spans[1].offsetLeft - spans[0].offsetLeft;
+      if (w > 0 && isFinite(w)) caretCharWidth = w;
+    }
   }
 
   /** Cache the two layout numbers the caret maths needs, so that moving the
@@ -421,6 +482,7 @@
     measureCaret();
     measureText();
     syncScroll();
+    placeFloatingCaret(true);
   }
 
   /* =============================================================== input */
@@ -476,7 +538,8 @@
   }
 
   function onFirstInput() {
-    if (spans[currentIndex]) spans[currentIndex].classList.remove('caret-blink');
+    placeFloatingCaret(false); // run the active style, without the idle blink
+    if (floatingCaret) floatingCaret.classList.remove('caret-blink');
     dom.textHint.textContent = 'Backspace fixes a mistake. Ctrl + Enter restarts.';
   }
 
