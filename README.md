@@ -52,8 +52,9 @@ optional test and server scripts; the application itself never needs it.
 
 ## Features
 
-- **103 lessons** across 7 stages, from the F and J anchors to long-form prose,
-  including column drills that pair every key with its home-row partner.
+- **106 lessons** across 8 stages, from the F and J anchors to long-form prose,
+  including a dedicated Key Drills stage that pairs every key with its
+  home-row partner.
 - **Guided lessons only** — one clear path through the curriculum, no time
   limit and no mode to choose.
 - **Live statistics** — net WPM, accuracy and a timer that counts up as you
@@ -79,12 +80,13 @@ that rule itself.
 | Stage | Name | What it covers |
 | --- | --- | --- |
 | 1 | Home Row | F and J as anchors, then D/K, S/L, A and `;`, G/H, full sweeps, words, phrases and a passage — using only `a s d f g h j k l ;` |
-| 2 | Top Row | Q/P, W/O, E/I, R/U, T/Y in pairs, plus a column drill for every single key against its home-row partner (aq, sw, ed, fr…), full sweeps, vertical reaches, words, sentences and a passage |
-| 3 | Bottom Row | Z/M, X/comma, C/full stop, V/slash, B/N, plus a column drill for every single key against its home-row partner (az, sx, dc, fv…), sweeps, alternating rows, punctuation, sentences and a passage |
-| 4 | Complete Alphabet | The whole alphabet, common letter pairs, the commonest words, long words, prefixes and suffixes, capitals and Shift, quotes, numbers |
-| 5 | Words & Sentences | Everyday sentences and vocabulary, longer sentences, paragraphs, capitalisation, numbers and symbols, dialogue, letters and email, natural prose |
-| 6 | Speed & Accuracy | Accuracy before speed, rhythm, row bursts for all three rows plus the full keyboard, weak-finger drills, common words at speed, sprint practice, consistency, mistake recovery |
-| 7 | Advanced | Long paragraphs, complex punctuation, numbers and symbols, proper nouns, advanced vocabulary, endurance runs, technical and literary prose, proverbs and wordplay |
+| 2 | Key Drills | All 20 key column drills in one place: every top-row key (aq, sw, ed, fr, gt, hy, ju, ki, lo, p;) and every bottom-row key (az, sx, dc, fv, gb, hn, jm, k,, l., ;/) drilled against its home-row partner |
+| 3 | Top Row | Blending practice for the drilled top-row keys: pairs like Q/P, W/O, E/I, R/U, T/Y, hand sweeps, alternating reaches, words, phrases, sentences and a passage |
+| 4 | Bottom Row | Blending practice for the bottom row: Z/M, X/comma, C/full stop, V/slash, B/N, alternating rows, full-alphabet words, punctuation and a three-row passage |
+| 5 | Complete Alphabet | The whole alphabet, common letter pairs, the commonest words, long words, prefixes and suffixes, capitals and Shift, quotes, numbers |
+| 6 | Words & Sentences | Everyday sentences and vocabulary, longer sentences, paragraphs, capitalisation, numbers and symbols, dialogue, letters and email, natural prose |
+| 7 | Speed & Accuracy | Accuracy before speed, rhythm, row bursts for all three rows plus the full keyboard, weak-finger drills, common words at speed, sprint practice, consistency, mistake recovery |
+| 8 | Advanced | Long paragraphs, complex punctuation, numbers and symbols, proper nouns, advanced vocabulary, endurance runs, technical and literary prose, proverbs and wordplay |
 
 Each lesson records a `mastery` target — a speed and an accuracy that must both
 be met to mark the lesson as mastered. Completing a lesson records your result;

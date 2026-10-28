@@ -6,7 +6,7 @@
    Lesson shape
    ------------
    id        : string, stable and unique ("s1-07")
-   stage     : 1..7 (see STAGES)
+   stage     : 1..8 (see STAGES)
    title     : short lesson name
    objective : one sentence describing the learning goal
    keys      : every key the drill is designed to exercise
@@ -30,12 +30,13 @@
   /* ---------------------------------------------------------------- stages */
   var STAGES = [
     { id: 1, name: 'Home Row', summary: 'Build the foundation on the ten home keys, starting from the two index anchors.' },
-    { id: 2, name: 'Top Row', summary: 'Add the ten top-row keys, two at a time, drill each against its home-key partner, then blend every row.' },
-    { id: 3, name: 'Bottom Row', summary: 'Complete the alphabet with the bottom row, pair every key with its home-key partner, then bring in commas, full stops and slashes.' },
-    { id: 4, name: 'Complete Alphabet', summary: 'Every key, plus capitals, numbers, quotes and the punctuation you meet in real writing.' },
-    { id: 5, name: 'Words & Sentences', summary: 'Natural English: everyday vocabulary, sentences, paragraphs, letters and email.' },
-    { id: 6, name: 'Speed & Accuracy', summary: 'Accuracy first, then rhythm, common-word bursts and targeted drills.' },
-    { id: 7, name: 'Advanced', summary: 'Longer text, complex punctuation, technical and literary writing, endurance runs.' }
+    { id: 2, name: 'Key Drills', summary: 'Meet every outer key one at a time, drilled against its home-key partner - top row first, then the bottom row, ending with comma, full stop and slash.' },
+    { id: 3, name: 'Top Row', summary: 'Blend the top-row keys you drilled with your home keys, then move on to words, phrases and sentences.' },
+    { id: 4, name: 'Bottom Row', summary: 'Blend the bottom row with everything you know: sweeps, alternating rows, punctuation, words, sentences and a full-alphabet passage.' },
+    { id: 5, name: 'Complete Alphabet', summary: 'Every key, plus capitals, numbers, quotes and the punctuation you meet in real writing.' },
+    { id: 6, name: 'Words & Sentences', summary: 'Natural English: everyday vocabulary, sentences, paragraphs, letters and email.' },
+    { id: 7, name: 'Speed & Accuracy', summary: 'Accuracy first, then rhythm, common-word bursts and targeted drills.' },
+    { id: 8, name: 'Advanced', summary: 'Longer text, complex punctuation, technical and literary writing, endurance runs.' }
   ];
 
   /* ---------------------------------------------------------------- helpers */
@@ -266,8 +267,9 @@
   ];
 
   /* =======================================================================
-     STAGE 2 — TOP ROW
-     ======================================================================= */
+     STAGE 2 — KEY COLUMN DRILLS (TOP ROW, THEN BOTTOM ROW)
+     ====================================================================== */
+
   var STAGE2 = [
     mk({
       id: 's2-aq', stage: 2,
@@ -398,9 +400,145 @@
         "p; ;; pp ;p ; p ;p ;p p pp p p p; p ; p p; p p; ; p p pp p; p p pp ;; ;p ;; ; p pp pp ; ; p; ;; p ; p; ; ;p ;; ; pp ; p; pp ; pp ;; pp ; p ; p ; ; p p p p p p; p p; ; ; pp p p ;p ;p ; ; ; ; p; p; p; p ; ; ; p ;; p ; p; ;p p; pp p ; p pp ;p p; p; ;p p; p ;; ;p p ;p ;; p ; pp p; ;; ;p p; ;p pp p ;; p p p ;; pp ;p ; ; p; pp ; p ; ;; ; pp ; ;;",
       ],
       difficulty: 2, mastery: { wpm: 19, accuracy: 92 }
+    }),    mk({
+      id: 's3-az', stage: 2,
+      title: 'A and Z',
+      objective: 'Drill the left pinky column downward: Z sits one row below A. Curl the little finger a little further, type, and return to A.',
+      keys: ['z', 'a'], newKeys: ['z'],
+      passages: [
+        "za aa zz az aa az az zz za zz zz aa aa az zz zz za aa aa az az za az za za zz aa az zz aa za aa az aa az aa za aa zz za az za az za az aa aa az za az za az az az az az az zz az aa za az aa za za zz az za az aa aa za za aa az az aa zz za za za aa aa zz aa az zz zz zz za aa zz zz az zz zz zz aa zz aa za aa aa az za zz za aa aa zz zz aa za aa",
+        "za aa zz az zz az z aa aa za az aa az zz a a a aa za aa a az zz aa zz za aa a a za zz aa za a a a aa z z az za z za aa zz z az aa zz za z az zz aa aa a az zz aa za zz aa zz aa a z a za az az aa a az z az az az zz az a z z zz az za aa aa aa aa az a aa a za a az zz z zz za a za aa z a aa az za z aa z aa zz aa a a zz zz aa a aa az z zz zz z aa",
+        "za aa zz az za za az za az az az za az za za za za az za za za za za az az za az za za az az az za az az za za za za za az az az za za za az za za za za za az az az az za za az za za az za za za za az az za az az za az az az az az za az za za za za za za za za za za za az az az za az az za za az az za az az za az az az za az za az az za za",
+        "za aa zz az za z z a za aa az a a za az zz a za z a z zz z aa aa za z a z aa az z z az aa z az za z zz aa a aa a z az aa a zz az zz z a zz a a a za a a aa zz az aa z aa aa zz zz zz aa a z az zz zz a a za za aa az zz a aa aa z az a a zz az za a z zz a z a a za z az az za az aa a za az a z az z az zz z a za z az za a aa a z aa zz za z za a z",
+      ],
+      difficulty: 2, mastery: { wpm: 19, accuracy: 91 }
     }),
     mk({
-      id: 's2-01', stage: 2,
+      id: 's3-sx', stage: 2,
+      title: 'S and X',
+      objective: 'Drill the left ring-finger column: X sits one row below S. Curl the ring finger straight down and come straight home.',
+      keys: ['x', 's'], newKeys: ['x'],
+      passages: [
+        "xs ss xx sx sx xs xx xs ss ss xs xx ss sx xs sx xx xs xs xs sx ss sx sx ss xx sx xx sx sx xx xx xx xx xx sx sx xs ss xs xs xs ss xs ss ss ss ss sx sx sx xx ss sx ss xs xs xs xx sx sx xs ss ss xs xx xx xx sx ss sx ss sx xx xx xs sx ss sx sx ss sx sx sx ss xs ss xx xx ss xs xs xx xx sx sx xs xs xx sx sx ss sx xx xx xs xx ss ss sx ss xs xx ss",
+        "xs ss xx sx xs xx ss sx sx s s xs xx xs x ss xx xs xs x xs sx s xx ss s ss xx sx s s sx ss ss x xx xx ss xs sx xx xx xs ss ss sx x ss s xx x s s xs xs ss s ss s x xx x xs ss sx xx ss xs x xs xs sx s ss xx xs ss xx s s ss s x ss xs xx sx x s x xx ss xs x x ss xx s ss ss ss xs sx xx s ss xs xx xs xs s xs xs x xs s xs sx xs s xx sx ss sx xs sx",
+        "xs ss xx sx xs sx xs xs xs xs xs xs xs sx xs sx sx sx xs xs sx xs sx sx xs xs sx xs xs sx xs xs sx xs xs sx sx xs xs xs xs sx sx sx xs xs sx xs xs sx sx sx xs xs xs xs xs sx sx xs xs xs xs xs sx xs xs sx xs sx xs sx sx sx sx xs xs xs sx xs sx xs xs xs xs xs xs xs xs xs xs xs sx xs xs sx xs sx xs xs xs sx sx xs xs xs sx sx sx sx sx xs xs sx",
+        "xs ss xx sx x sx s s ss sx s x xs xs s s ss s ss xx s ss x x xx ss s s xx s ss sx xs x s s s s s x s ss xs ss x s s x ss xs x xx xx s s xs xs sx xx xx sx s s sx xx x sx xx sx s xx s s s xx s x x sx s sx s x x ss sx x ss xs s x xs xx s xx xx s sx x xx s xs s s ss s s ss xs ss x s sx xs xs x xs s xs x xs sx x s x ss xx sx ss x s xx xs s ss s",
+      ],
+      difficulty: 2, mastery: { wpm: 20, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-dc', stage: 2,
+      title: 'D and C',
+      objective: 'Drill the left middle-finger column: C sits one row below D. Middle fingers curl down and return without disturbing the hand.',
+      keys: ['c', 'd'], newKeys: ['c'],
+      passages: [
+        "cd dd cc dc cd cd dc dc cd cc dd cc dc dc dc dc cc dd dc dd cc cc dc dd cd cc dc dd dc cc dc cc cc dc cd cd dd cd dd cc cd dd dc dc cc dc dc cc cd dc dd cd dd cc cc dd dd cc dc dd cc dd dd dd dd cc dd cc cc dc dd cc cc dc cc cd cd dc cc dd dc cc cd dd cc dc cc cc dc dc cc cd cc dc dd dc cc cd cd dc dd dd cd dd dd cc dc dc dc cd cc dd cc dd",
+        "cd dd cc dc d d d cc cd d cc c dc cd c cd dc cc cc d cd cd d d cc cc c c dc cd d cc cd d cd dd cc d c dd c dd d cc cd d cc dc dc dd c dd dd cd dd dd cd d d dd d dc c dd dd dc cd cd c cd cc d c dc cd cc cd dc dc d cd cc c dc cd cc dc dc dc cd dd dd c dd d cc cd c c c d dd dc cd dd cc dd d d d d d c d d dc cc dd cd c dc cc d d d cc dd cc dc",
+        "cd dd cc dc dc dc cd dc cd cd dc cd cd dc dc dc dc cd cd dc cd cd cd dc dc cd dc dc dc dc dc cd cd cd cd dc dc cd cd cd cd dc cd dc cd cd cd dc dc cd cd dc dc cd dc cd cd cd dc cd cd cd cd dc dc cd cd cd cd cd dc dc dc dc cd dc dc dc cd dc cd cd cd dc cd cd cd cd dc cd dc cd dc dc dc dc dc dc dc dc dc cd dc dc dc cd dc dc cd dc cd cd cd cd",
+        "cd dd cc dc d dc cd d dc d d d dc c cc cd dc c dd d d dd c cc cc cc cd dc d dc d d c c dd cd c d cc d d cd d d c c d cc cd d d d cd c c d d dc c d dc dd d dd c d c d c dd cd dd dd dc cd cd dc d c c cd cd dc c d c c cd dd cd c d c cd cc dd d c d cd dc c cc d dc dc cc dd c c cd dc c c d c dd d cc d cd d cd dc c cc cc c dc cc c cd cc c d dc dd",
+      ],
+      difficulty: 2, mastery: { wpm: 20, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-fv', stage: 2,
+      title: 'F and V',
+      objective: 'Drill the left index column downward: V sits one row below F. Curl the index finger under, type, and rest back on its anchor.',
+      keys: ['v', 'f'], newKeys: ['v'],
+      passages: [
+        "vf ff vv fv fv vv fv fv ff vv fv vv vv vf fv ff ff fv fv ff fv ff fv vv vf ff ff ff vv ff vv vf vf vf vv vv vf ff fv fv ff vv fv fv vf fv ff ff vf vv vv ff vv vv vv fv fv vf vv vv ff ff vv vv fv vv vv fv vf fv fv vv vv vf vv fv ff vv ff fv vf vv vv vf vv fv fv ff fv vf ff vv fv fv vv fv vf ff ff ff vf fv ff ff ff ff vf vf vf fv vv ff fv fv",
+        "vf ff vv fv ff vv v ff v vv vv v ff fv vf f f fv fv v vf f fv ff vv v vv ff fv ff fv v f ff f vv f vf v vf vf vf fv vf v fv fv vf fv fv v f fv v vv fv ff f v fv f vv vf vv v f f v ff f vf vv f vf vf vf ff vf fv f f v vv vv vv f ff f fv f ff fv ff v fv vv fv vf vf v v vv vv v vv fv f v f vv vv vv ff f ff v vv v vv vf v v vf fv vv vf f fv vv",
+        "vf ff vv fv vf fv fv fv vf fv fv vf vf vf fv vf vf vf vf fv fv fv fv vf fv vf fv fv vf vf vf fv fv fv fv vf vf vf vf vf fv fv fv vf fv fv vf fv fv fv fv fv fv vf fv vf vf fv fv vf fv vf vf fv vf vf vf fv fv fv vf fv vf fv vf vf vf vf vf vf fv vf fv vf fv vf vf fv vf fv fv vf fv vf vf fv fv fv vf fv vf fv fv fv fv fv vf fv fv fv vf fv fv vf",
+        "vf ff vv fv v v f v v vv vf vf v v ff v f f vv vf ff v vf v v v v f f f ff vv f f fv vv f v vf fv f f v vf v vf v v f f f fv vf v vf v vf f v vv v v ff f v fv f f fv v f vv v f ff ff vv f fv v vf f vf fv v vv f f vv f vv vf f v fv v ff f f vv vf v f f fv fv vf fv v f f fv v ff fv vv f f v fv vv ff v vf v f v v f vv ff vf vv vf vv f v v f vf",
+      ],
+      difficulty: 2, mastery: { wpm: 21, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-gb', stage: 2,
+      title: 'G and B',
+      objective: 'Drill the deep left stretch: B sits diagonally below G. Rock the index finger down for each B and back up to G.',
+      keys: ['b', 'g'], newKeys: ['b'],
+      passages: [
+        "bg gg bb gb bb gb bb bb gg bg bg gg bg bg bb gg gg gg gb gb bg gb bg gg gb bb bg gg gg bg bb gb bg gb bg gg bg gb bb bg bg bg bg gb bg bg gg gb bg bb gb bb bb gg bb bg bb bb bb gg gb bg gg gb bg bg gg bb bb gb gb bg bb bb bb bg gb bb bg bg bg gb gb bg gb gg gb gg gg bg gb gb bb gg bb gg gg bb gb gb gg bg gg bb gg bb bb bb bg bg gb bg gg bb",
+        "bg gg bb gb bb g gg bb g bg g g gb bg g b gg b g bb g g bb b b gb bb bb g b bb gb gb gb b gb bb bb gb bb b g gg gg gg g gg bb gb bb bb gb g bg gb gg b b g g bb gb g gg bg bb bg b b gb g b g gb gg g g bb gg g b b bg gg bg b g gb gg bg b bb g g gb gg gg gb gb gb b bg b b bg gg gg bg gb gb gg bb g bb bg b g gg gg gb b g gb gb bg b gg gb gg bb",
+        "bg gg bb gb gb gb bg bg bg gb gb bg bg gb gb bg gb gb bg gb bg gb bg bg bg bg gb bg gb gb gb gb bg bg gb gb bg bg bg gb bg bg gb bg gb gb gb gb bg gb gb bg bg bg bg gb bg gb gb bg bg bg gb bg gb bg gb gb gb gb bg bg bg bg gb gb bg bg gb bg gb bg bg bg gb gb gb gb gb gb gb bg gb gb gb bg bg gb gb bg bg gb gb gb gb gb gb bg gb bg bg bg bg gb",
+        "bg gg bb gb gb bg g bb b g gb bg gg b bb g b gb gg bg b bg b g bb b b g b bb b g g gb bg b gg b gb bb g gg bg g bg gb g b b gg bb g g g gg gb g b b b bb bg bg g bg bb g gb bg b b bg gb bb b bg b b b b g b g b b bb g g b bb g gb b b bg b b gg g b gb b b bb gg gg b b g b bg gb g gg bb b g b b bg g g b g gb gg gb bb gg g gb b bb gg b g g gg gg",
+      ],
+      difficulty: 2, mastery: { wpm: 21, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-hn', stage: 2,
+      title: 'H and N',
+      objective: 'Drill the right index column downward: N sits one row below H. Pivot the finger under, type, and settle it back on H.',
+      keys: ['n', 'h'], newKeys: ['n'],
+      passages: [
+        "nh hh nn hn hn hh hn hn hh hh hn nn nn nh nh nn nh nh hh nn hh hh hh hh nn hh nh nn nh nh nh nh nh hn hh hh nn nh hn hh hh nh nn hn nh nh nh hn nh nn nn nn nh hh nn nh nh hh hn nh nn hh nh hh hh nh hh nn hn hh hh hh hh hh hn hn hn nn nh hh nh nh nn nn nn nh hn nh hh nh nn hn nn nh hh nn hh nh hh nn nh nh hh hh hn nn nn nn hn hh hn nh hn hh",
+        "nh hh nn hn h nn h nn h n n nh h nh n n h nh hh hn nh nn nn h n hh nh hn h h h h n h nh nh h hh hn nh n hh n n hh nh n hn n h nn hh hn hn n hh h nn nn nn nh nh hn n hh h nn n n hh nh nn h n nh n hn n hn h h nn n nn hn hh h hn nh hh h h hn h hn n nh nh hn hn n nh hn hn nh hh hn nh n hn nh nh hh hn hn hh hn n nh nn h nh h nh nn nh nh nn n hn",
+        "nh hh nn hn nh nh nh nh hn nh hn hn nh hn nh hn hn nh nh nh hn nh nh nh hn nh hn nh nh hn nh nh nh hn nh hn hn nh nh hn nh nh hn hn hn nh hn nh nh nh hn nh hn nh nh nh hn hn hn hn hn nh hn nh nh nh nh hn nh hn hn nh nh hn nh nh nh nh nh hn hn hn hn nh nh hn hn hn nh nh hn nh nh hn nh hn hn hn nh hn nh nh nh nh nh nh nh nh hn hn hn hn hn hn",
+        "nh hh nn hn h hh n hh n hn nh hn n nn hn n h n n n n hh h hh h h hh nh nh n nh h nn nn hn nn nh hh h n hh nh n hn hn hn hn h h n hh n h nh n hn nh hh hn hh nn nh n n nh h hn nh nh nn nh h nh h n h hh hn n h hh nh nn h n nn hh n nn nh n h nh h hh n h n n n hn n hh h hh n hh h h nn nn n n nh hn nh hn h nn h h hn n h hh hn hn hn h h h nh nn h",
+      ],
+      difficulty: 2, mastery: { wpm: 22, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-jm', stage: 2,
+      title: 'J and M',
+      objective: 'Drill the right middle-finger column downward: M sits one row below J. Curl down, type, and drop back home without looking.',
+      keys: ['m', 'j'], newKeys: ['m'],
+      passages: [
+        "mj jj mm jm mm jm mj mm jm mm jj jm jj mj mm jm mm mm mm jm jm jm mm mm jj jm mm jj mm jj jj jm mm jm jj mj mj jm mm mm jj jj mj mj jj mj jj jj mm mj mm jj mj mm mj jj mm jm jm mm jj mm jj mm jj jm mj mj mm mj jj mm mm mm jm mm mm jj jm jm mj jj jm mj jj mj mm jj mm mm mj mj mm mm jj jj mj jm jj mm jj mm mm jj jj jj jm mj jj jm mj jm mj jm",
+        "mj jj mm jm j j jm jj m mm j mj mm mj mj jm mm jm m j jj jm mm mj jj m jm j m mm mj mj mm jj j mj jm jm j m jj jj m m j mj mj jj jm jj jj m jm jm mm mj mj jm jj jm m mj j j jj m mm mj mj jm mm mm jm mj jj j mm mj m j mm mm m jj mj j j j mm j j jj j j mm m jm m mm mm jj jm m m mm jm j j jj jm m mj mm jj mj mj j mj m jj mj m jj mm mj j j m jm",
+        "mj jj mm jm jm mj mj jm mj mj mj mj jm mj jm jm jm jm jm jm mj mj jm mj mj jm jm mj jm jm mj mj mj jm jm jm mj mj jm jm mj jm mj mj jm mj mj mj jm jm mj mj jm jm mj jm jm jm mj mj jm mj jm jm jm mj jm mj jm jm mj jm mj jm jm jm mj jm mj mj jm mj jm mj jm jm jm mj mj jm mj mj jm mj mj mj jm jm jm mj jm mj jm mj jm jm mj jm mj mj jm mj mj jm",
+        "mj jj mm jm jm j m m mj jm jj mj m mj j j jm m jm mm mm mm mj jm j j jm m j jm mj jm mm j j m m m mm mj m j j j j j m mj m jm jm jj j m jm j m mj m m j jj j j m jm mm jm jm m j m m j jj m mj jj j mm m jm mj j m jj jj mm jm j m j jm m jj mj jm mm mj mm m m jj jj mj mm mj mm m j jj jj m j jj mm j m mj j mj jj j j m j jj jj m m j jm mj mm jm",
+      ],
+      difficulty: 2, mastery: { wpm: 22, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-cm', stage: 2,
+      title: 'K and the Comma',
+      objective: 'Drill the right-hand column into punctuation: the comma sits one row below K. Curl the middle finger down and return.',
+      keys: [',', 'k'], newKeys: [','],
+      passages: [
+        ",k kk ,, k, k, kk kk ,k kk ,, kk ,k k, k, k, kk kk ,k ,k k, k, kk ,k ,k k, ,, ,, k, ,, ,, ,, ,k kk ,, k, ,k ,, ,, kk ,k k, k, k, ,, ,, k, ,k ,k k, ,, ,, ,, k, ,, kk ,k kk ,k kk ,, k, ,k kk ,k ,k ,k k, kk kk ,k ,k kk ,k ,k ,k ,k ,k ,k ,k k, ,k k, k, ,, kk ,, ,, k, ,, kk ,, kk ,, ,k ,k kk k, k, ,k ,k k, ,k kk k, ,k ,, k, ,k ,, ,k kk k, k, ,k",
+        ",k kk ,, k, ,, ,, ,, k, k k k ,, , , kk kk , ,, ,k k, k, ,k , ,, ,k ,k k, ,k , k, kk ,, ,k , k kk ,k , kk ,k , ,, , ,, ,k k ,, ,k ,, , ,, kk ,, kk k, , , , ,, , ,k ,k ,k ,, k, ,k ,, ,k ,k k , kk k, ,, , k ,k kk k k , k, , k, , ,k k, k ,, ,, k, , kk ,, k ,, , k k kk kk k ,k , ,, , k k , kk , ,, kk ,, , ,k ,, kk k ,k ,k k, k ,, k, k ,k k, kk",
+        ",k kk ,, k, k, ,k ,k ,k ,k k, k, ,k ,k ,k k, k, ,k ,k k, k, ,k ,k k, ,k ,k ,k k, ,k k, ,k ,k ,k k, ,k k, ,k k, ,k ,k ,k ,k ,k ,k k, k, k, ,k ,k ,k ,k ,k ,k k, ,k k, ,k k, ,k k, ,k k, ,k ,k ,k k, ,k k, k, k, ,k k, k, ,k k, k, k, ,k k, ,k ,k ,k ,k k, ,k k, ,k k, ,k ,k k, ,k ,k ,k ,k k, k, k, ,k k, ,k ,k ,k k, ,k ,k ,k ,k k, ,k ,k ,k k, ,k k,",
+        ",k kk ,, k, k kk ,k , k, k, k ,k , , k , k , ,, , kk k ,, ,k k , , kk kk k, k k k kk ,k ,k ,k k, k , ,k kk k, ,, k, k ,k ,, ,k , k, k ,k , k, k , ,, kk k kk ,, ,, k ,k k kk k kk k k , k, ,k ,, k k kk ,k ,k k ,, k, , k , k kk ,, k k kk ,, kk k, ,, , k k , kk k k ,, ,, ,, kk ,k ,k ,, k, ,, , , k ,, , , ,k k, k , , k ,k ,, , kk , k , , ,, , k",
+      ],
+      difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-pd', stage: 2,
+      title: 'L and the Full Stop',
+      objective: 'Drill the right ring-finger column into punctuation: the full stop sits one row below L. Curl down, tap, and settle back on L.',
+      keys: ['.', 'l'], newKeys: ['.'],
+      passages: [
+        ".l ll .. l. .. .. .. ll .l .l l. ll .l ll ll ll ll l. .l l. .l l. ll .. .. .l .. ll .. .l .. ll ll .. .l ll .. .l ll .l .l .l .l .. .. .. l. .. .. ll ll ll ll ll ll .l ll .. .. .l .. .l .. ll ll .. .l l. l. .l .. l. ll .. .. .. ll .l .. .. ll .l .. .. .l .l .. l. .l ll l. .l .. ll ll ll .. ll .l .. ll .. .l ll .. .l .. .. l. l. l. ll l. .l",
+        ".l ll .. l. ll l. .l ll l. .l l ll l. . .l . l. l .. .. l. ll .l l .l l. .. ll .. . .. l . .l l ll l . l ll l ll .. l . l l l. ll .l l .l l ll . ll l. .. l .. .l .. .. . l. l. l . .l ll .l . ll .. . .l l. .. . .l . .l .. ll l .. .. l l. l . l. ll ll l .l l ll .. .l l . .. .l .. l . .. ll .. ll ll ll .l l. .. ll l l . l. l l . l l. ll l. l.",
+        ".l ll .. l. .l l. l. l. l. .l l. .l .l .l l. l. l. .l .l .l l. l. l. l. l. .l .l l. .l l. l. l. .l l. l. l. l. l. .l l. .l l. .l .l l. .l .l .l .l .l .l l. l. .l l. .l .l .l l. l. .l .l l. .l .l l. .l l. .l l. .l l. l. .l l. l. .l .l l. .l l. .l l. l. l. .l l. l. l. .l .l l. .l l. l. l. l. l. .l .l l. l. l. l. l. .l .l .l .l .l .l l. .l .l",
+        ".l ll .. l. . .l . l .. . l l .l l. . ll .. l l . . . l. . l l l .l .. . .l . .l l. l. ll .. . l l. l .. .l l l l l .l .l .. l .. l l .l . ll l . l .. .l l l l. ll .l . l. l. .. . l l. .l . l. . .l . l l. l. .l .. l . .l l .l . l l l l .l l. l ll . ll l .l l. . ll .l l .. .l l. l ll ll .. l .. l .. .l l. . . l. l . l. . l . . . l. . ll .l",
+      ],
+      difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
+    }),
+    mk({
+      id: 's3-sl', stage: 2,
+      title: 'Semicolon and Slash',
+      objective: 'Drill the right pinky column into punctuation: the slash sits one row below the semicolon key. Reach down and return without looking.',
+      keys: ['/', ';'], newKeys: ['/'],
+      passages: [
+        "/; ;; // ;/ // // // // ;; // // ;; ;/ ;/ ;; /; // ;; ;; // ;/ // ;; // ;/ // /; // /; /; ;; ;; ;/ /; ;/ // ;; ;/ // /; // /; // /; /; ;; // ;; ;/ ;/ ;/ /; /; // // ;/ /; ;/ ;/ ;/ ;/ /; ;/ ;; ;/ ;; // ;/ ;; // /; // ;/ ;; ;; // ;/ ;/ ;/ /; /; /; /; ;/ // /; /; // // // // ;; ;/ ;/ ;/ // ;/ ;/ ;/ ;/ ;; // ;; // ;; /; ;/ // ;/ ;; /; ;/ ;; /;",
+        "/; ;; // ;/ ;/ ; ;/ // ;; / ;/ ; /; /; / ; ;; /; ;; ;; / // ; // ; ;/ /; // ;/ / ; ;/ ;; /; // /; ;/ / / / /; / / / // // ; ;/ // / /; ;; / // / / /; ;/ ;/ ;/ ;/ // // ;; ;; /; ;/ /; ;/ ;/ ;/ ;; ;; /; ;/ ; ;/ ;/ ; // ;; // / / /; / ; ; ;; /; // ;/ / /; /; // ;; ;; ;/ ; ;; ; ;; // /; /; / ; ; /; ;; // /; ;; / ;; /; ;/ // / ;; ;; /; / ; /; /",
+        "/; ;; // ;/ /; /; /; ;/ /; /; ;/ /; ;/ ;/ /; ;/ /; ;/ ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ ;/ /; /; /; ;/ ;/ /; ;/ /; /; ;/ ;/ ;/ ;/ /; ;/ ;/ /; ;/ ;/ ;/ /; /; /; ;/ ;/ /; /; ;/ /; ;/ ;/ /; /; /; ;/ /; /; /; /; /; ;/ /; /; /; ;/ /; ;/ ;/ ;/ /; /; /; /; /; ;/ /; /; ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ ;/ /; /; /; /; /; ;/ /; ;/ /; ;/ /;",
+        "/; ;; // ;/ ; ; ;/ / / // ; ; ; ; ;/ // / ; ; // / ; ;/ // ;/ / /; / ;; / ; / // ;/ / ; ; / /; ; ;; ; /; / ; // // ;; ;/ ;; ;; / ;/ /; /; ; ; / / ; /; /; ; ; ; ; // / ; ;/ ;; ;/ / / / ;/ // /; // ; // / / ;; / ; / ; // // // ;; // /; /; / / / ; /; / / /; ;/ ;; ;/ / /; ;; // // ;/ / / ;; // / ;/ // ; // ; / ; /; ;/ ; /; ; ; / ;/ /; ;; /; /",
+      ],
+      difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
+    }),
+  ];
+
+  /* =======================================================================
+     STAGE 3 — TOP ROW MIXING AND WORDS
+     ====================================================================== */
+
+  var STAGE3 = [
+    mk({
+      id: 's2-01', stage: 3,
       title: 'Q and P',
       objective: 'Mix the two outside top keys across both hands: little fingers stretch up in turn, one on each side, and return straight to their home keys.',
       keys: ['q', 'p', 'a', ';'], newKeys: [],
@@ -414,7 +552,7 @@
       difficulty: 2, mastery: { wpm: 20, accuracy: 92 }
     }),
     mk({
-      id: 's2-02', stage: 2,
+      id: 's2-02', stage: 3,
       title: 'W and O',
       objective: 'Mix the two ring-finger reaches: W with the left hand, O with the right, alternating without moving the wrists.',
       keys: ['w', 'o', 'q', 'p'], newKeys: [],
@@ -428,7 +566,7 @@
       difficulty: 2, mastery: { wpm: 20, accuracy: 92 }
     }),
     mk({
-      id: 's2-03', stage: 2,
+      id: 's2-03', stage: 3,
       title: 'E and I',
       objective: 'Mix the two middle-finger reaches: E with the left hand, I with the right. These keys appear in a large share of English words.',
       keys: ['e', 'i', 'd', 'k'], newKeys: [],
@@ -442,7 +580,7 @@
       difficulty: 2, mastery: { wpm: 21, accuracy: 92 }
     }),
     mk({
-      id: 's2-04', stage: 2,
+      id: 's2-04', stage: 3,
       title: 'R and U',
       objective: 'Mix the two index-finger reaches above the anchors: R with the left hand, U with the right.',
       keys: ['r', 'u', 'f', 'j'], newKeys: [],
@@ -456,7 +594,7 @@
       difficulty: 2, mastery: { wpm: 21, accuracy: 92 }
     }),
     mk({
-      id: 's2-05', stage: 2,
+      id: 's2-05', stage: 3,
       title: 'T and Y',
       objective: 'Mix the long index reaches: T with the left hand, Y with the right — the furthest stretches on the top row.',
       keys: ['t', 'y', 'g', 'h'], newKeys: [],
@@ -470,7 +608,7 @@
       difficulty: 2, mastery: { wpm: 22, accuracy: 92 }
     }),
     mk({
-      id: 's2-06', stage: 2,
+      id: 's2-06', stage: 3,
       title: 'Top Row · Left Hand',
       objective: 'Sweep the five left-hand top keys Q W E R T forwards and back. The right hand keeps its position on the home row.',
       keys: ['q', 'w', 'e', 'r', 't'], newKeys: [],
@@ -485,7 +623,7 @@
       difficulty: 3, mastery: { wpm: 22, accuracy: 91 }
     }),
     mk({
-      id: 's2-07', stage: 2,
+      id: 's2-07', stage: 3,
       title: 'Top Row · Right Hand',
       objective: 'Sweep Y U I O P forwards and back. Watch that the right hand does not drift to the right as you reach.',
       keys: ['y', 'u', 'i', 'o', 'p'], newKeys: [],
@@ -500,7 +638,7 @@
       difficulty: 3, mastery: { wpm: 22, accuracy: 91 }
     }),
     mk({
-      id: 's2-08', stage: 2,
+      id: 's2-08', stage: 3,
       title: 'Top and Home · Alternating',
       objective: 'Pair each top-row key with the home key beneath it. This vertical reach is the core of comfortable touch typing.',
       keys: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'], newKeys: [],
@@ -515,7 +653,7 @@
       difficulty: 3, mastery: { wpm: 24, accuracy: 91 }
     }),
     mk({
-      id: 's2-09', stage: 2,
+      id: 's2-09', stage: 3,
       title: 'Top Row Words',
       objective: 'Words made from the top row plus everything you already know. Let the fingers follow the familiar pattern.',
       keys: ['t', 'y', 'p', 'r', 'i', 'q', 'e', 'o', 'w', 'u'], newKeys: [],
@@ -532,7 +670,7 @@
       difficulty: 3, mastery: { wpm: 26, accuracy: 91 }
     }),
     mk({
-      id: 's2-10', stage: 2,
+      id: 's2-10', stage: 3,
       title: 'Top Row Phrases',
       objective: 'Short phrases with a comfortable rhythm. Keep your eyes a little ahead of your fingers and trust the pattern.',
       keys: ['w', 't', 'y', 'p', 'r', 'i', 'q', 'e', 'o', 'u', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'], newKeys: [],
@@ -548,7 +686,7 @@
       difficulty: 3, mastery: { wpm: 28, accuracy: 91 }
     }),
     mk({
-      id: 's2-11', stage: 2,
+      id: 's2-11', stage: 3,
       title: 'Top Row Sentences',
       objective: 'Whole sentences, still without capitals, so attention stays on letters, spaces and word endings. Slow is fine.',
       keys: ['w', 't', 'y', 'p', 'r', 'i', 'q', 'e', 'o', 'u'], newKeys: [],
@@ -563,7 +701,7 @@
       difficulty: 4, mastery: { wpm: 30, accuracy: 90 }
     }),
     mk({
-      id: 's2-12', stage: 2,
+      id: 's2-12', stage: 3,
       title: 'Top and Home Passage',
       objective: 'A longer passage using the top row and the home row together. Read a phrase ahead and let your hands follow it.',
       keys: ['w', 't', 'y', 'p', 'r', 'i', 'q', 'e', 'o', 'u'], newKeys: [],
@@ -576,141 +714,12 @@
   ];
 
   /* =======================================================================
-     STAGE 3 — BOTTOM ROW
-     ======================================================================= */
-  var STAGE3 = [
+     STAGE 4 — BOTTOM ROW MIXING AND WORDS
+     ====================================================================== */
+
+  var STAGE4 = [
     mk({
-      id: 's3-az', stage: 3,
-      title: 'A and Z',
-      objective: 'Drill the left pinky column downward: Z sits one row below A. Curl the little finger a little further, type, and return to A.',
-      keys: ['z', 'a'], newKeys: ['z'],
-      passages: [
-        "za aa zz az aa az az zz za zz zz aa aa az zz zz za aa aa az az za az za za zz aa az zz aa za aa az aa az aa za aa zz za az za az za az aa aa az za az za az az az az az az zz az aa za az aa za za zz az za az aa aa za za aa az az aa zz za za za aa aa zz aa az zz zz zz za aa zz zz az zz zz zz aa zz aa za aa aa az za zz za aa aa zz zz aa za aa",
-        "za aa zz az zz az z aa aa za az aa az zz a a a aa za aa a az zz aa zz za aa a a za zz aa za a a a aa z z az za z za aa zz z az aa zz za z az zz aa aa a az zz aa za zz aa zz aa a z a za az az aa a az z az az az zz az a z z zz az za aa aa aa aa az a aa a za a az zz z zz za a za aa z a aa az za z aa z aa zz aa a a zz zz aa a aa az z zz zz z aa",
-        "za aa zz az za za az za az az az za az za za za za az za za za za za az az za az za za az az az za az az za za za za za az az az za za za az za za za za za az az az az za za az za za az za za za za az az za az az za az az az az az za az za za za za za za za za za za za az az az za az az za za az az za az az za az az az za az za az az za za",
-        "za aa zz az za z z a za aa az a a za az zz a za z a z zz z aa aa za z a z aa az z z az aa z az za z zz aa a aa a z az aa a zz az zz z a zz a a a za a a aa zz az aa z aa aa zz zz zz aa a z az zz zz a a za za aa az zz a aa aa z az a a zz az za a z zz a z a a za z az az za az aa a za az a z az z az zz z a za z az za a aa a z aa zz za z za a z",
-      ],
-      difficulty: 2, mastery: { wpm: 19, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-sx', stage: 3,
-      title: 'S and X',
-      objective: 'Drill the left ring-finger column: X sits one row below S. Curl the ring finger straight down and come straight home.',
-      keys: ['x', 's'], newKeys: ['x'],
-      passages: [
-        "xs ss xx sx sx xs xx xs ss ss xs xx ss sx xs sx xx xs xs xs sx ss sx sx ss xx sx xx sx sx xx xx xx xx xx sx sx xs ss xs xs xs ss xs ss ss ss ss sx sx sx xx ss sx ss xs xs xs xx sx sx xs ss ss xs xx xx xx sx ss sx ss sx xx xx xs sx ss sx sx ss sx sx sx ss xs ss xx xx ss xs xs xx xx sx sx xs xs xx sx sx ss sx xx xx xs xx ss ss sx ss xs xx ss",
-        "xs ss xx sx xs xx ss sx sx s s xs xx xs x ss xx xs xs x xs sx s xx ss s ss xx sx s s sx ss ss x xx xx ss xs sx xx xx xs ss ss sx x ss s xx x s s xs xs ss s ss s x xx x xs ss sx xx ss xs x xs xs sx s ss xx xs ss xx s s ss s x ss xs xx sx x s x xx ss xs x x ss xx s ss ss ss xs sx xx s ss xs xx xs xs s xs xs x xs s xs sx xs s xx sx ss sx xs sx",
-        "xs ss xx sx xs sx xs xs xs xs xs xs xs sx xs sx sx sx xs xs sx xs sx sx xs xs sx xs xs sx xs xs sx xs xs sx sx xs xs xs xs sx sx sx xs xs sx xs xs sx sx sx xs xs xs xs xs sx sx xs xs xs xs xs sx xs xs sx xs sx xs sx sx sx sx xs xs xs sx xs sx xs xs xs xs xs xs xs xs xs xs xs sx xs xs sx xs sx xs xs xs sx sx xs xs xs sx sx sx sx sx xs xs sx",
-        "xs ss xx sx x sx s s ss sx s x xs xs s s ss s ss xx s ss x x xx ss s s xx s ss sx xs x s s s s s x s ss xs ss x s s x ss xs x xx xx s s xs xs sx xx xx sx s s sx xx x sx xx sx s xx s s s xx s x x sx s sx s x x ss sx x ss xs s x xs xx s xx xx s sx x xx s xs s s ss s s ss xs ss x s sx xs xs x xs s xs x xs sx x s x ss xx sx ss x s xx xs s ss s",
-      ],
-      difficulty: 2, mastery: { wpm: 20, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-dc', stage: 3,
-      title: 'D and C',
-      objective: 'Drill the left middle-finger column: C sits one row below D. Middle fingers curl down and return without disturbing the hand.',
-      keys: ['c', 'd'], newKeys: ['c'],
-      passages: [
-        "cd dd cc dc cd cd dc dc cd cc dd cc dc dc dc dc cc dd dc dd cc cc dc dd cd cc dc dd dc cc dc cc cc dc cd cd dd cd dd cc cd dd dc dc cc dc dc cc cd dc dd cd dd cc cc dd dd cc dc dd cc dd dd dd dd cc dd cc cc dc dd cc cc dc cc cd cd dc cc dd dc cc cd dd cc dc cc cc dc dc cc cd cc dc dd dc cc cd cd dc dd dd cd dd dd cc dc dc dc cd cc dd cc dd",
-        "cd dd cc dc d d d cc cd d cc c dc cd c cd dc cc cc d cd cd d d cc cc c c dc cd d cc cd d cd dd cc d c dd c dd d cc cd d cc dc dc dd c dd dd cd dd dd cd d d dd d dc c dd dd dc cd cd c cd cc d c dc cd cc cd dc dc d cd cc c dc cd cc dc dc dc cd dd dd c dd d cc cd c c c d dd dc cd dd cc dd d d d d d c d d dc cc dd cd c dc cc d d d cc dd cc dc",
-        "cd dd cc dc dc dc cd dc cd cd dc cd cd dc dc dc dc cd cd dc cd cd cd dc dc cd dc dc dc dc dc cd cd cd cd dc dc cd cd cd cd dc cd dc cd cd cd dc dc cd cd dc dc cd dc cd cd cd dc cd cd cd cd dc dc cd cd cd cd cd dc dc dc dc cd dc dc dc cd dc cd cd cd dc cd cd cd cd dc cd dc cd dc dc dc dc dc dc dc dc dc cd dc dc dc cd dc dc cd dc cd cd cd cd",
-        "cd dd cc dc d dc cd d dc d d d dc c cc cd dc c dd d d dd c cc cc cc cd dc d dc d d c c dd cd c d cc d d cd d d c c d cc cd d d d cd c c d d dc c d dc dd d dd c d c d c dd cd dd dd dc cd cd dc d c c cd cd dc c d c c cd dd cd c d c cd cc dd d c d cd dc c cc d dc dc cc dd c c cd dc c c d c dd d cc d cd d cd dc c cc cc c dc cc c cd cc c d dc dd",
-      ],
-      difficulty: 2, mastery: { wpm: 20, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-fv', stage: 3,
-      title: 'F and V',
-      objective: 'Drill the left index column downward: V sits one row below F. Curl the index finger under, type, and rest back on its anchor.',
-      keys: ['v', 'f'], newKeys: ['v'],
-      passages: [
-        "vf ff vv fv fv vv fv fv ff vv fv vv vv vf fv ff ff fv fv ff fv ff fv vv vf ff ff ff vv ff vv vf vf vf vv vv vf ff fv fv ff vv fv fv vf fv ff ff vf vv vv ff vv vv vv fv fv vf vv vv ff ff vv vv fv vv vv fv vf fv fv vv vv vf vv fv ff vv ff fv vf vv vv vf vv fv fv ff fv vf ff vv fv fv vv fv vf ff ff ff vf fv ff ff ff ff vf vf vf fv vv ff fv fv",
-        "vf ff vv fv ff vv v ff v vv vv v ff fv vf f f fv fv v vf f fv ff vv v vv ff fv ff fv v f ff f vv f vf v vf vf vf fv vf v fv fv vf fv fv v f fv v vv fv ff f v fv f vv vf vv v f f v ff f vf vv f vf vf vf ff vf fv f f v vv vv vv f ff f fv f ff fv ff v fv vv fv vf vf v v vv vv v vv fv f v f vv vv vv ff f ff v vv v vv vf v v vf fv vv vf f fv vv",
-        "vf ff vv fv vf fv fv fv vf fv fv vf vf vf fv vf vf vf vf fv fv fv fv vf fv vf fv fv vf vf vf fv fv fv fv vf vf vf vf vf fv fv fv vf fv fv vf fv fv fv fv fv fv vf fv vf vf fv fv vf fv vf vf fv vf vf vf fv fv fv vf fv vf fv vf vf vf vf vf vf fv vf fv vf fv vf vf fv vf fv fv vf fv vf vf fv fv fv vf fv vf fv fv fv fv fv vf fv fv fv vf fv fv vf",
-        "vf ff vv fv v v f v v vv vf vf v v ff v f f vv vf ff v vf v v v v f f f ff vv f f fv vv f v vf fv f f v vf v vf v v f f f fv vf v vf v vf f v vv v v ff f v fv f f fv v f vv v f ff ff vv f fv v vf f vf fv v vv f f vv f vv vf f v fv v ff f f vv vf v f f fv fv vf fv v f f fv v ff fv vv f f v fv vv ff v vf v f v v f vv ff vf vv vf vv f v v f vf",
-      ],
-      difficulty: 2, mastery: { wpm: 21, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-gb', stage: 3,
-      title: 'G and B',
-      objective: 'Drill the deep left stretch: B sits diagonally below G. Rock the index finger down for each B and back up to G.',
-      keys: ['b', 'g'], newKeys: ['b'],
-      passages: [
-        "bg gg bb gb bb gb bb bb gg bg bg gg bg bg bb gg gg gg gb gb bg gb bg gg gb bb bg gg gg bg bb gb bg gb bg gg bg gb bb bg bg bg bg gb bg bg gg gb bg bb gb bb bb gg bb bg bb bb bb gg gb bg gg gb bg bg gg bb bb gb gb bg bb bb bb bg gb bb bg bg bg gb gb bg gb gg gb gg gg bg gb gb bb gg bb gg gg bb gb gb gg bg gg bb gg bb bb bb bg bg gb bg gg bb",
-        "bg gg bb gb bb g gg bb g bg g g gb bg g b gg b g bb g g bb b b gb bb bb g b bb gb gb gb b gb bb bb gb bb b g gg gg gg g gg bb gb bb bb gb g bg gb gg b b g g bb gb g gg bg bb bg b b gb g b g gb gg g g bb gg g b b bg gg bg b g gb gg bg b bb g g gb gg gg gb gb gb b bg b b bg gg gg bg gb gb gg bb g bb bg b g gg gg gb b g gb gb bg b gg gb gg bb",
-        "bg gg bb gb gb gb bg bg bg gb gb bg bg gb gb bg gb gb bg gb bg gb bg bg bg bg gb bg gb gb gb gb bg bg gb gb bg bg bg gb bg bg gb bg gb gb gb gb bg gb gb bg bg bg bg gb bg gb gb bg bg bg gb bg gb bg gb gb gb gb bg bg bg bg gb gb bg bg gb bg gb bg bg bg gb gb gb gb gb gb gb bg gb gb gb bg bg gb gb bg bg gb gb gb gb gb gb bg gb bg bg bg bg gb",
-        "bg gg bb gb gb bg g bb b g gb bg gg b bb g b gb gg bg b bg b g bb b b g b bb b g g gb bg b gg b gb bb g gg bg g bg gb g b b gg bb g g g gg gb g b b b bb bg bg g bg bb g gb bg b b bg gb bb b bg b b b b g b g b b bb g g b bb g gb b b bg b b gg g b gb b b bb gg gg b b g b bg gb g gg bb b g b b bg g g b g gb gg gb bb gg g gb b bb gg b g g gg gg",
-      ],
-      difficulty: 2, mastery: { wpm: 21, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-hn', stage: 3,
-      title: 'H and N',
-      objective: 'Drill the right index column downward: N sits one row below H. Pivot the finger under, type, and settle it back on H.',
-      keys: ['n', 'h'], newKeys: ['n'],
-      passages: [
-        "nh hh nn hn hn hh hn hn hh hh hn nn nn nh nh nn nh nh hh nn hh hh hh hh nn hh nh nn nh nh nh nh nh hn hh hh nn nh hn hh hh nh nn hn nh nh nh hn nh nn nn nn nh hh nn nh nh hh hn nh nn hh nh hh hh nh hh nn hn hh hh hh hh hh hn hn hn nn nh hh nh nh nn nn nn nh hn nh hh nh nn hn nn nh hh nn hh nh hh nn nh nh hh hh hn nn nn nn hn hh hn nh hn hh",
-        "nh hh nn hn h nn h nn h n n nh h nh n n h nh hh hn nh nn nn h n hh nh hn h h h h n h nh nh h hh hn nh n hh n n hh nh n hn n h nn hh hn hn n hh h nn nn nn nh nh hn n hh h nn n n hh nh nn h n nh n hn n hn h h nn n nn hn hh h hn nh hh h h hn h hn n nh nh hn hn n nh hn hn nh hh hn nh n hn nh nh hh hn hn hh hn n nh nn h nh h nh nn nh nh nn n hn",
-        "nh hh nn hn nh nh nh nh hn nh hn hn nh hn nh hn hn nh nh nh hn nh nh nh hn nh hn nh nh hn nh nh nh hn nh hn hn nh nh hn nh nh hn hn hn nh hn nh nh nh hn nh hn nh nh nh hn hn hn hn hn nh hn nh nh nh nh hn nh hn hn nh nh hn nh nh nh nh nh hn hn hn hn nh nh hn hn hn nh nh hn nh nh hn nh hn hn hn nh hn nh nh nh nh nh nh nh nh hn hn hn hn hn hn",
-        "nh hh nn hn h hh n hh n hn nh hn n nn hn n h n n n n hh h hh h h hh nh nh n nh h nn nn hn nn nh hh h n hh nh n hn hn hn hn h h n hh n h nh n hn nh hh hn hh nn nh n n nh h hn nh nh nn nh h nh h n h hh hn n h hh nh nn h n nn hh n nn nh n h nh h hh n h n n n hn n hh h hh n hh h h nn nn n n nh hn nh hn h nn h h hn n h hh hn hn hn h h h nh nn h",
-      ],
-      difficulty: 2, mastery: { wpm: 22, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-jm', stage: 3,
-      title: 'J and M',
-      objective: 'Drill the right middle-finger column downward: M sits one row below J. Curl down, type, and drop back home without looking.',
-      keys: ['m', 'j'], newKeys: ['m'],
-      passages: [
-        "mj jj mm jm mm jm mj mm jm mm jj jm jj mj mm jm mm mm mm jm jm jm mm mm jj jm mm jj mm jj jj jm mm jm jj mj mj jm mm mm jj jj mj mj jj mj jj jj mm mj mm jj mj mm mj jj mm jm jm mm jj mm jj mm jj jm mj mj mm mj jj mm mm mm jm mm mm jj jm jm mj jj jm mj jj mj mm jj mm mm mj mj mm mm jj jj mj jm jj mm jj mm mm jj jj jj jm mj jj jm mj jm mj jm",
-        "mj jj mm jm j j jm jj m mm j mj mm mj mj jm mm jm m j jj jm mm mj jj m jm j m mm mj mj mm jj j mj jm jm j m jj jj m m j mj mj jj jm jj jj m jm jm mm mj mj jm jj jm m mj j j jj m mm mj mj jm mm mm jm mj jj j mm mj m j mm mm m jj mj j j j mm j j jj j j mm m jm m mm mm jj jm m m mm jm j j jj jm m mj mm jj mj mj j mj m jj mj m jj mm mj j j m jm",
-        "mj jj mm jm jm mj mj jm mj mj mj mj jm mj jm jm jm jm jm jm mj mj jm mj mj jm jm mj jm jm mj mj mj jm jm jm mj mj jm jm mj jm mj mj jm mj mj mj jm jm mj mj jm jm mj jm jm jm mj mj jm mj jm jm jm mj jm mj jm jm mj jm mj jm jm jm mj jm mj mj jm mj jm mj jm jm jm mj mj jm mj mj jm mj mj mj jm jm jm mj jm mj jm mj jm jm mj jm mj mj jm mj mj jm",
-        "mj jj mm jm jm j m m mj jm jj mj m mj j j jm m jm mm mm mm mj jm j j jm m j jm mj jm mm j j m m m mm mj m j j j j j m mj m jm jm jj j m jm j m mj m m j jj j j m jm mm jm jm m j m m j jj m mj jj j mm m jm mj j m jj jj mm jm j m j jm m jj mj jm mm mj mm m m jj jj mj mm mj mm m j jj jj m j jj mm j m mj j mj jj j j m j jj jj m m j jm mj mm jm",
-      ],
-      difficulty: 2, mastery: { wpm: 22, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-cm', stage: 3,
-      title: 'K and the Comma',
-      objective: 'Drill the right-hand column into punctuation: the comma sits one row below K. Curl the middle finger down and return.',
-      keys: [',', 'k'], newKeys: [','],
-      passages: [
-        ",k kk ,, k, k, kk kk ,k kk ,, kk ,k k, k, k, kk kk ,k ,k k, k, kk ,k ,k k, ,, ,, k, ,, ,, ,, ,k kk ,, k, ,k ,, ,, kk ,k k, k, k, ,, ,, k, ,k ,k k, ,, ,, ,, k, ,, kk ,k kk ,k kk ,, k, ,k kk ,k ,k ,k k, kk kk ,k ,k kk ,k ,k ,k ,k ,k ,k ,k k, ,k k, k, ,, kk ,, ,, k, ,, kk ,, kk ,, ,k ,k kk k, k, ,k ,k k, ,k kk k, ,k ,, k, ,k ,, ,k kk k, k, ,k",
-        ",k kk ,, k, ,, ,, ,, k, k k k ,, , , kk kk , ,, ,k k, k, ,k , ,, ,k ,k k, ,k , k, kk ,, ,k , k kk ,k , kk ,k , ,, , ,, ,k k ,, ,k ,, , ,, kk ,, kk k, , , , ,, , ,k ,k ,k ,, k, ,k ,, ,k ,k k , kk k, ,, , k ,k kk k k , k, , k, , ,k k, k ,, ,, k, , kk ,, k ,, , k k kk kk k ,k , ,, , k k , kk , ,, kk ,, , ,k ,, kk k ,k ,k k, k ,, k, k ,k k, kk",
-        ",k kk ,, k, k, ,k ,k ,k ,k k, k, ,k ,k ,k k, k, ,k ,k k, k, ,k ,k k, ,k ,k ,k k, ,k k, ,k ,k ,k k, ,k k, ,k k, ,k ,k ,k ,k ,k ,k k, k, k, ,k ,k ,k ,k ,k ,k k, ,k k, ,k k, ,k k, ,k k, ,k ,k ,k k, ,k k, k, k, ,k k, k, ,k k, k, k, ,k k, ,k ,k ,k ,k k, ,k k, ,k k, ,k ,k k, ,k ,k ,k ,k k, k, k, ,k k, ,k ,k ,k k, ,k ,k ,k ,k k, ,k ,k ,k k, ,k k,",
-        ",k kk ,, k, k kk ,k , k, k, k ,k , , k , k , ,, , kk k ,, ,k k , , kk kk k, k k k kk ,k ,k ,k k, k , ,k kk k, ,, k, k ,k ,, ,k , k, k ,k , k, k , ,, kk k kk ,, ,, k ,k k kk k kk k k , k, ,k ,, k k kk ,k ,k k ,, k, , k , k kk ,, k k kk ,, kk k, ,, , k k , kk k k ,, ,, ,, kk ,k ,k ,, k, ,, , , k ,, , , ,k k, k , , k ,k ,, , kk , k , , ,, , k",
-      ],
-      difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-pd', stage: 3,
-      title: 'L and the Full Stop',
-      objective: 'Drill the right ring-finger column into punctuation: the full stop sits one row below L. Curl down, tap, and settle back on L.',
-      keys: ['.', 'l'], newKeys: ['.'],
-      passages: [
-        ".l ll .. l. .. .. .. ll .l .l l. ll .l ll ll ll ll l. .l l. .l l. ll .. .. .l .. ll .. .l .. ll ll .. .l ll .. .l ll .l .l .l .l .. .. .. l. .. .. ll ll ll ll ll ll .l ll .. .. .l .. .l .. ll ll .. .l l. l. .l .. l. ll .. .. .. ll .l .. .. ll .l .. .. .l .l .. l. .l ll l. .l .. ll ll ll .. ll .l .. ll .. .l ll .. .l .. .. l. l. l. ll l. .l",
-        ".l ll .. l. ll l. .l ll l. .l l ll l. . .l . l. l .. .. l. ll .l l .l l. .. ll .. . .. l . .l l ll l . l ll l ll .. l . l l l. ll .l l .l l ll . ll l. .. l .. .l .. .. . l. l. l . .l ll .l . ll .. . .l l. .. . .l . .l .. ll l .. .. l l. l . l. ll ll l .l l ll .. .l l . .. .l .. l . .. ll .. ll ll ll .l l. .. ll l l . l. l l . l l. ll l. l.",
-        ".l ll .. l. .l l. l. l. l. .l l. .l .l .l l. l. l. .l .l .l l. l. l. l. l. .l .l l. .l l. l. l. .l l. l. l. l. l. .l l. .l l. .l .l l. .l .l .l .l .l .l l. l. .l l. .l .l .l l. l. .l .l l. .l .l l. .l l. .l l. .l l. l. .l l. l. .l .l l. .l l. .l l. l. l. .l l. l. l. .l .l l. .l l. l. l. l. l. .l .l l. l. l. l. l. .l .l .l .l .l .l l. .l .l",
-        ".l ll .. l. . .l . l .. . l l .l l. . ll .. l l . . . l. . l l l .l .. . .l . .l l. l. ll .. . l l. l .. .l l l l l .l .l .. l .. l l .l . ll l . l .. .l l l l. ll .l . l. l. .. . l l. .l . l. . .l . l l. l. .l .. l . .l l .l . l l l l .l l. l ll . ll l .l l. . ll .l l .. .l l. l ll ll .. l .. l .. .l l. . . l. l . l. . l . . . l. . ll .l",
-      ],
-      difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-sl', stage: 3,
-      title: 'Semicolon and Slash',
-      objective: 'Drill the right pinky column into punctuation: the slash sits one row below the semicolon key. Reach down and return without looking.',
-      keys: ['/', ';'], newKeys: ['/'],
-      passages: [
-        "/; ;; // ;/ // // // // ;; // // ;; ;/ ;/ ;; /; // ;; ;; // ;/ // ;; // ;/ // /; // /; /; ;; ;; ;/ /; ;/ // ;; ;/ // /; // /; // /; /; ;; // ;; ;/ ;/ ;/ /; /; // // ;/ /; ;/ ;/ ;/ ;/ /; ;/ ;; ;/ ;; // ;/ ;; // /; // ;/ ;; ;; // ;/ ;/ ;/ /; /; /; /; ;/ // /; /; // // // // ;; ;/ ;/ ;/ // ;/ ;/ ;/ ;/ ;; // ;; // ;; /; ;/ // ;/ ;; /; ;/ ;; /;",
-        "/; ;; // ;/ ;/ ; ;/ // ;; / ;/ ; /; /; / ; ;; /; ;; ;; / // ; // ; ;/ /; // ;/ / ; ;/ ;; /; // /; ;/ / / / /; / / / // // ; ;/ // / /; ;; / // / / /; ;/ ;/ ;/ ;/ // // ;; ;; /; ;/ /; ;/ ;/ ;/ ;; ;; /; ;/ ; ;/ ;/ ; // ;; // / / /; / ; ; ;; /; // ;/ / /; /; // ;; ;; ;/ ; ;; ; ;; // /; /; / ; ; /; ;; // /; ;; / ;; /; ;/ // / ;; ;; /; / ; /; /",
-        "/; ;; // ;/ /; /; /; ;/ /; /; ;/ /; ;/ ;/ /; ;/ /; ;/ ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ ;/ /; /; /; ;/ ;/ /; ;/ /; /; ;/ ;/ ;/ ;/ /; ;/ ;/ /; ;/ ;/ ;/ /; /; /; ;/ ;/ /; /; ;/ /; ;/ ;/ /; /; /; ;/ /; /; /; /; /; ;/ /; /; /; ;/ /; ;/ ;/ ;/ /; /; /; /; /; ;/ /; /; ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ /; ;/ ;/ ;/ ;/ /; /; /; /; /; ;/ /; ;/ /; ;/ /;",
-        "/; ;; // ;/ ; ; ;/ / / // ; ; ; ; ;/ // / ; ; // / ; ;/ // ;/ / /; / ;; / ; / // ;/ / ; ; / /; ; ;; ; /; / ; // // ;; ;/ ;; ;; / ;/ /; /; ; ; / / ; /; /; ; ; ; ; // / ; ;/ ;; ;/ / / / ;/ // /; // ; // / / ;; / ; / ; // // // ;; // /; /; / / / ; /; / / /; ;/ ;; ;/ / /; ;; // // ;/ / / ;; // / ;/ // ; // ; / ; /; ;/ ; /; ; ; / ;/ /; ;; /; /",
-      ],
-      difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
-    }),
-    mk({
-      id: 's3-01', stage: 3,
+      id: 's3-01', stage: 4,
       title: 'Z and M',
       objective: 'Mix the two outside bottom keys across both hands: little fingers curl down on each side and return to their home keys.',
       keys: ['z', 'm', 'a', ';'], newKeys: [],
@@ -724,7 +733,7 @@
       difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
     }),
     mk({
-      id: 's3-02', stage: 3,
+      id: 's3-02', stage: 4,
       title: 'X and the Comma',
       objective: 'Mix the two ring-finger reaches into the bottom row: X with the left hand, the comma with the right.',
       keys: ['x', ',', 's', 'l'], newKeys: [],
@@ -738,7 +747,7 @@
       difficulty: 2, mastery: { wpm: 23, accuracy: 91 }
     }),
     mk({
-      id: 's3-03', stage: 3,
+      id: 's3-03', stage: 4,
       title: 'C and the Full Stop',
       objective: 'Mix the two middle-finger reaches into punctuation: C with the left hand, the full stop with the right.',
       keys: ['c', '.', 'd', 'k'], newKeys: [],
@@ -752,7 +761,7 @@
       difficulty: 2, mastery: { wpm: 24, accuracy: 91 }
     }),
     mk({
-      id: 's3-04', stage: 3,
+      id: 's3-04', stage: 4,
       title: 'V and the Slash',
       objective: 'Mix the two index-finger reaches into punctuation: V with the left hand, the slash with the right.',
       keys: ['v', '/', 'f', 'j'], newKeys: [],
@@ -766,7 +775,7 @@
       difficulty: 2, mastery: { wpm: 24, accuracy: 91 }
     }),
     mk({
-      id: 's3-05', stage: 3,
+      id: 's3-05', stage: 4,
       title: 'B and N',
       objective: 'Mix the two diagonal index reaches at the bottom: B with the left hand, N with the right.',
       keys: ['b', 'n', 'f', 'j'], newKeys: [],
@@ -780,7 +789,7 @@
       difficulty: 2, mastery: { wpm: 24, accuracy: 91 }
     }),
     mk({
-      id: 's3-06', stage: 3,
+      id: 's3-06', stage: 4,
       title: 'Bottom Row · Left Hand',
       objective: 'Sweep Z X C V B and back. This is the widest stretch of the left hand, so slide the whole hand slightly closer to the desk edge.',
       keys: ['z', 'x', 'c', 'v', 'b'], newKeys: [],
@@ -794,7 +803,7 @@
       difficulty: 3, mastery: { wpm: 24, accuracy: 90 }
     }),
     mk({
-      id: 's3-07', stage: 3,
+      id: 's3-07', stage: 4,
       title: 'Bottom Row · Right Hand',
       objective: 'Sweep N M , . / and back, keeping the hand from drifting right as you reach the slash.',
       keys: ['n', 'm', ',', '.', '/'], newKeys: [],
@@ -808,7 +817,7 @@
       difficulty: 3, mastery: { wpm: 24, accuracy: 90 }
     }),
     mk({
-      id: 's3-08', stage: 3,
+      id: 's3-08', stage: 4,
       title: 'All Three Rows',
       objective: 'Move vertically between all three rows. Slower than fast: every key should still land first time.',
       keys: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'], newKeys: [],
@@ -822,7 +831,7 @@
       difficulty: 3, mastery: { wpm: 26, accuracy: 90 }
     }),
     mk({
-      id: 's3-09', stage: 3,
+      id: 's3-09', stage: 4,
       title: 'Full Alphabet Words',
       objective: 'Ordinary words that need the complete alphabet. Return to rest position between every word.',
       keys: [], newKeys: [],
@@ -838,7 +847,7 @@
       difficulty: 4, mastery: { wpm: 32, accuracy: 90 }
     }),
     mk({
-      id: 's3-10', stage: 3,
+      id: 's3-10', stage: 4,
       title: 'Comma and Full Stop Practice',
       objective: 'Short sentences where every pause is typed. A comma is a quick tap; a full stop is a tap and a small breath.',
       keys: [',', '.'], newKeys: [],
@@ -853,7 +862,7 @@
       difficulty: 3, mastery: { wpm: 30, accuracy: 90 }
     }),
     mk({
-      id: 's3-11', stage: 3,
+      id: 's3-11', stage: 4,
       title: 'Bottom Row Sentences',
       objective: 'Real sentences using bottom-row letters. The whole alphabet is available now, so let the words flow.',
       keys: [], newKeys: [],
@@ -867,7 +876,7 @@
       difficulty: 4, mastery: { wpm: 36, accuracy: 90 }
     }),
     mk({
-      id: 's3-12', stage: 3,
+      id: 's3-12', stage: 4,
       title: 'Three Row Passage',
       objective: 'A longer paragraph across all three rows. Notice the moments your hands stop moving while you think about the next word.',
       keys: [], newKeys: [],
@@ -880,11 +889,12 @@
   ];
 
   /* =======================================================================
-     STAGE 4 — COMPLETE ALPHABET (capitals, numbers, punctuation)
-     ======================================================================= */
-  var STAGE4 = [
+     STAGE 5 — COMPLETE ALPHABET (capitals, numbers, punctuation)
+     ====================================================================== */
+
+  var STAGE5 = [
     mk({
-      id: 's4-01', stage: 4,
+      id: 's4-01', stage: 5,
       title: 'The Whole Alphabet',
       objective: 'Every letter in order, then the pangrams that use all of them. The last mechanical drill before real writing.',
       keys: [], newKeys: [],
@@ -897,7 +907,7 @@
       difficulty: 3, mastery: { wpm: 40, accuracy: 92 }
     }),
     mk({
-      id: 's4-02', stage: 4,
+      id: 's4-02', stage: 5,
       title: 'Common Letter Pairs',
       objective: 'The most frequent two-letter groups in English. Treating them as units is what makes typing fast rather than careful.',
       keys: [], newKeys: [],
@@ -910,7 +920,7 @@
       difficulty: 4, mastery: { wpm: 45, accuracy: 92 }
     }),
     mk({
-      id: 's4-03', stage: 4,
+      id: 's4-03', stage: 5,
       title: 'The Commonest Words',
       objective: 'The words that make up a large share of ordinary written English. Type them from memory as far as you can, then check.',
       keys: [], newKeys: [],
@@ -923,7 +933,7 @@
       difficulty: 4, mastery: { wpm: 50, accuracy: 92 }
     }),
     mk({
-      id: 's4-04', stage: 4,
+      id: 's4-04', stage: 5,
       title: 'Longer Words',
       objective: 'Multi-syllable words built from the same patterns. Say the word quietly to yourself as you type it.',
       keys: [], newKeys: [],
@@ -935,7 +945,7 @@
       difficulty: 4, mastery: { wpm: 48, accuracy: 91 }
     }),
     mk({
-      id: 's4-05', stage: 4,
+      id: 's4-05', stage: 5,
       title: 'Prefixes and Suffixes',
       objective: 'Word building blocks: un-, re-, pre-, mis-, and -ly, -ing, -ness. Learn a block once and it appears in hundreds of words.',
       keys: [], newKeys: [],
@@ -949,7 +959,7 @@
       difficulty: 4, mastery: { wpm: 48, accuracy: 91 }
     }),
     mk({
-      id: 's4-06', stage: 4,
+      id: 's4-06', stage: 5,
       title: 'Capital Letters',
       objective: 'Hold the opposite Shift key whenever you need a capital: the left Shift for most letters, the right Shift for Q and P. Use the hand that is not typing the letter.',
       keys: [], newKeys: ['Shift'],
@@ -962,7 +972,7 @@
       difficulty: 4, mastery: { wpm: 45, accuracy: 90 }
     }),
     mk({
-      id: 's4-07', stage: 4,
+      id: 's4-07', stage: 5,
       title: 'Mixed Case Sentences',
       objective: 'Capitals where English actually puts them: the first word, names, days and the pronoun I.',
       keys: [], newKeys: [],
@@ -976,7 +986,7 @@
       difficulty: 4, mastery: { wpm: 45, accuracy: 90 }
     }),
     mk({
-      id: 's4-08', stage: 4,
+      id: 's4-08', stage: 5,
       title: 'Quotes and Punctuation',
       objective: 'The marks that punctuate ordinary speech. Shift gives you the double quote; the apostrophe sits beside the semicolon key.',
       keys: [], newKeys: [],
@@ -990,7 +1000,7 @@
       difficulty: 5, mastery: { wpm: 42, accuracy: 89 }
     }),
     mk({
-      id: 's4-09', stage: 4,
+      id: 's4-09', stage: 5,
       title: 'Numbers',
       objective: 'The number row sits under your middle fingers. Learn where the symbols live too, so you are not hunting for them later.',
       keys: [], newKeys: ['0-9'],
@@ -1004,7 +1014,7 @@
       difficulty: 5, mastery: { wpm: 40, accuracy: 89 }
     }),
     mk({
-      id: 's4-10', stage: 4,
+      id: 's4-10', stage: 5,
       title: 'Common Words · Speed Drill',
       objective: 'Short common words at a slightly faster pace. A small accuracy dip is normal, but do not let it run away.',
       keys: [], newKeys: [],
@@ -1016,7 +1026,7 @@
       difficulty: 5, mastery: { wpm: 60, accuracy: 90 }
     }),
     mk({
-      id: 's4-11', stage: 4,
+      id: 's4-11', stage: 5,
       title: 'Full Keyboard Flow',
       objective: 'Dense text with capitals and punctuation. Let the fingers move while your eyes read a full line ahead.',
       keys: [], newKeys: [],
@@ -1027,7 +1037,7 @@
       difficulty: 5, mastery: { wpm: 55, accuracy: 90 }
     }),
     mk({
-      id: 's4-12', stage: 4,
+      id: 's4-12', stage: 5,
       title: 'Review and Consolidate',
       objective: 'A calm passage reviewing everything so far. Aim for a clean run without rushed corrections.',
       keys: [], newKeys: [],
@@ -1041,11 +1051,12 @@
   ];
 
   /* =======================================================================
-     STAGE 5 — WORDS AND SENTENCE PRACTICE
-     ======================================================================= */
-  var STAGE5 = [
+     STAGE 6 — WORDS AND SENTENCE PRACTICE
+     ====================================================================== */
+
+  var STAGE6 = [
     mk({
-      id: 's5-01', stage: 5,
+      id: 's5-01', stage: 6,
       title: 'Short Everyday Sentences',
       objective: 'Plain sentences of the kind you meet in an ordinary day. Keep the pace relaxed and watch the commas and full stops.',
       keys: [], newKeys: [],
@@ -1060,7 +1071,7 @@
       difficulty: 4, mastery: { wpm: 40, accuracy: 94 }
     }),
     mk({
-      id: 's5-02', stage: 5,
+      id: 's5-02', stage: 6,
       title: 'Everyday Vocabulary',
       objective: 'Objects you can picture. Naming the item as you type it speeds up the whole word.',
       keys: [], newKeys: [],
@@ -1072,7 +1083,7 @@
       difficulty: 4, mastery: { wpm: 42, accuracy: 94 }
     }),
     mk({
-      id: 's5-03', stage: 5,
+      id: 's5-03', stage: 6,
       title: 'Frequent Letter Patterns',
       objective: 'Words that share the same interior letters, so your hands settle into a pattern instead of deciding every key again.',
       keys: [], newKeys: [],
@@ -1084,7 +1095,7 @@
       difficulty: 4, mastery: { wpm: 50, accuracy: 94 }
     }),
     mk({
-      id: 's5-04', stage: 5,
+      id: 's5-04', stage: 6,
       title: 'Longer Sentences',
       objective: 'Full sentences with clauses. Read the whole line first and then type; your hands will find most of it without you.',
       keys: [], newKeys: [],
@@ -1097,7 +1108,7 @@
       difficulty: 5, mastery: { wpm: 45, accuracy: 93 }
     }),
     mk({
-      id: 's5-05', stage: 5,
+      id: 's5-05', stage: 6,
       title: 'Paragraphs With Punctuation',
       objective: 'Multi-sentence paragraphs with commas, semicolons and full stops. Breathe at the punctuation without stopping entirely.',
       keys: [], newKeys: [],
@@ -1108,7 +1119,7 @@
       difficulty: 5, mastery: { wpm: 45, accuracy: 92 }
     }),
     mk({
-      id: 's5-06', stage: 5,
+      id: 's5-06', stage: 6,
       title: 'Capitalisation Practice',
       objective: 'Lowercase sentences that need capitals: the first word, names, days, months and I.',
       keys: [], newKeys: [],
@@ -1122,7 +1133,7 @@
       difficulty: 5, mastery: { wpm: 45, accuracy: 92 }
     }),
     mk({
-      id: 's5-07', stage: 5,
+      id: 's5-07', stage: 6,
       title: 'Numbers and Symbols',
       objective: 'Prices, times and measurements. Shift for the symbols and keep the rhythm of the digits steady.',
       keys: [], newKeys: [],
@@ -1136,7 +1147,7 @@
       difficulty: 5, mastery: { wpm: 40, accuracy: 90 }
     }),
     mk({
-      id: 's5-08', stage: 5,
+      id: 's5-08', stage: 6,
       title: 'Dialogue',
       objective: 'Conversation with quotation marks and a new line for each speaker. Keep the Shift presses tidy.',
       keys: [], newKeys: [],
@@ -1147,7 +1158,7 @@
       difficulty: 5, mastery: { wpm: 42, accuracy: 90 }
     }),
     mk({
-      id: 's5-09', stage: 5,
+      id: 's5-09', stage: 6,
       title: 'Letters and Email',
       objective: 'Practical business writing: greetings, short paragraphs, sign-offs and single line breaks.',
       keys: [], newKeys: [],
@@ -1158,7 +1169,7 @@
       difficulty: 5, mastery: { wpm: 45, accuracy: 92 }
     }),
     mk({
-      id: 's5-10', stage: 5,
+      id: 's5-10', stage: 6,
       title: 'News and Reports',
       objective: 'Formal reporting style with long clauses and semicolons. The sentences are long, so keep your eyes two lines ahead.',
       keys: [], newKeys: [],
@@ -1169,7 +1180,7 @@
       difficulty: 5, mastery: { wpm: 48, accuracy: 91 }
     }),
     mk({
-      id: 's5-11', stage: 5,
+      id: 's5-11', stage: 6,
       title: 'Mixed Difficulty Passages',
       objective: 'Long words, commas, full stops and quotes in the same block. This is close to everyday writing.',
       keys: [], newKeys: [],
@@ -1181,7 +1192,7 @@
       difficulty: 5, mastery: { wpm: 50, accuracy: 91 }
     }),
     mk({
-      id: 's5-12', stage: 5,
+      id: 's5-12', stage: 6,
       title: 'Natural Prose',
       objective: 'Reading-length passages with no unusual characters. Stay relaxed: accuracy is the goal in this stage.',
       keys: [], newKeys: [],
@@ -1194,11 +1205,12 @@
   ];
 
   /* =======================================================================
-     STAGE 6 — SPEED AND ACCURACY TRAINING
-     ======================================================================= */
-  var STAGE6 = [
+     STAGE 7 — SPEED AND ACCURACY TRAINING
+     ====================================================================== */
+
+  var STAGE7 = [
     mk({
-      id: 's6-01', stage: 6,
+      id: 's6-01', stage: 7,
       title: 'Accuracy Before Speed',
       objective: 'Return to the home row at a deliberate pace. Every key must land first time; speed is a by-product of clean movement.',
       keys: [], newKeys: [],
@@ -1211,7 +1223,7 @@
       difficulty: 3, mastery: { wpm: 35, accuracy: 97 }
     }),
     mk({
-      id: 's6-02', stage: 6,
+      id: 's6-02', stage: 7,
       title: 'Finding Your Rhythm',
       objective: 'Repeat a pattern at a constant speed. Constant, not maximum: the aim is an even movement your hands can trust.',
       keys: [], newKeys: [],
@@ -1224,7 +1236,7 @@
       difficulty: 4, mastery: { wpm: 40, accuracy: 96 }
     }),
     mk({
-      id: 's6-03', stage: 6,
+      id: 's6-03', stage: 7,
       title: 'Short Words, Quick Hands',
       objective: 'Very short words in bursts. Let your hands move continuously; small words should cost almost no time.',
       keys: [], newKeys: [],
@@ -1236,7 +1248,7 @@
       difficulty: 4, mastery: { wpm: 60, accuracy: 95 }
     }),
     mk({
-      id: 's6-04', stage: 6,
+      id: 's6-04', stage: 7,
       title: 'Weak Finger Drills',
       objective: 'Short repeated groups for the fingers that strain most: the index, middle and little fingers under load.',
       keys: [], newKeys: [],
@@ -1249,7 +1261,7 @@
       difficulty: 4, mastery: { wpm: 45, accuracy: 96 }
     }),
     mk({
-      id: 's6-05', stage: 6,
+      id: 's6-05', stage: 7,
       title: 'Home Row Bursts',
       objective: 'Pure home-row movement in short fast bursts: doubled keys, neighbour hops, then real home-row words such as flash and glass. An ideal warm-up that teaches the fingers to move without hesitating.',
       keys: [], newKeys: [],
@@ -1263,7 +1275,7 @@
       difficulty: 4, mastery: { wpm: 50, accuracy: 95 }
     }),
     mk({
-      id: 's6-06', stage: 6,
+      id: 's6-06', stage: 7,
       title: 'Top Row Bursts',
       objective: 'The same idea on the top row, where the little fingers do most of the work.',
       keys: [], newKeys: [],
@@ -1277,7 +1289,7 @@
       difficulty: 5, mastery: { wpm: 50, accuracy: 94 }
     }),
     mk({
-      id: 's6-bb', stage: 6,
+      id: 's6-bb', stage: 7,
       title: 'Bottom Row Bursts',
       objective: 'The burst idea for the bottom row, where every finger has to curl under. Short real words and clean repeated groups, with no thinking between keys.',
       keys: ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'], newKeys: [],
@@ -1291,7 +1303,7 @@
       difficulty: 5, mastery: { wpm: 50, accuracy: 94 }
     }),
     mk({
-      id: 's6-fkb', stage: 6,
+      id: 's6-fkb', stage: 7,
       title: 'Full Keyboard Bursts',
       objective: 'All three rows in one continuous burst. Trust your hands, keep the eyes one line ahead, and let the words flow without pauses between rows.',
       keys: [], newKeys: [],
@@ -1305,7 +1317,7 @@
       difficulty: 5, mastery: { wpm: 52, accuracy: 94 }
     }),
     mk({
-      id: 's6-07', stage: 6,
+      id: 's6-07', stage: 7,
       title: 'Common Words at Speed',
       objective: 'The most common words in one flowing block. Do not stop at the end of a line.',
       keys: [], newKeys: [],
@@ -1316,7 +1328,7 @@
       difficulty: 5, mastery: { wpm: 70, accuracy: 93 }
     }),
     mk({
-      id: 's6-08', stage: 6,
+      id: 's6-08', stage: 7,
       title: 'Consistency Drill',
       objective: 'Mixed easy text with no long words. Hold one pace for the whole block and judge yourself on accuracy at the end.',
       keys: [], newKeys: [],
@@ -1327,7 +1339,7 @@
       difficulty: 5, mastery: { wpm: 65, accuracy: 94 }
     }),
     mk({
-      id: 's6-09', stage: 6,
+      id: 's6-09', stage: 7,
       title: 'Sprint Practice',
       objective: 'A full block of clean natural text with nothing unusual in it. Push the pace through the whole passage and watch the timer in the stat bar — this is where rhythm becomes speed.',
       keys: [], newKeys: [],
@@ -1338,7 +1350,7 @@
       difficulty: 5, mastery: { wpm: 60, accuracy: 94 }
     }),
     mk({
-      id: 's6-10', stage: 6,
+      id: 's6-10', stage: 7,
       title: 'Mistake Recovery',
       objective: 'Text that makes clumsy fingers slip: doubled letters, similar words and doubled consonants. Fix each mistake at once and move on.',
       keys: [], newKeys: [],
@@ -1352,11 +1364,12 @@
   ];
 
   /* =======================================================================
-     STAGE 7 — ADVANCED PRACTICE
-     ======================================================================= */
-  var STAGE7 = [
+     STAGE 8 — ADVANCED PRACTICE
+     ====================================================================== */
+
+  var STAGE8 = [
     mk({
-      id: 's7-01', stage: 7,
+      id: 's7-01', stage: 8,
       title: 'Long Paragraph',
       objective: 'An uninterrupted paragraph long enough to test your stamina. Attention fades near the end, so protect the accuracy there.',
       keys: [], newKeys: [],
@@ -1367,7 +1380,7 @@
       difficulty: 5, mastery: { wpm: 65, accuracy: 93 }
     }),
     mk({
-      id: 's7-02', stage: 7,
+      id: 's7-02', stage: 8,
       title: 'Complex Punctuation',
       objective: 'Semicolons, dashes, brackets, ellipses and nested quotes. Type punctuation deliberately rather than rushing it.',
       keys: [], newKeys: [],
@@ -1378,7 +1391,7 @@
       difficulty: 5, mastery: { wpm: 55, accuracy: 90 }
     }),
     mk({
-      id: 's7-03', stage: 7,
+      id: 's7-03', stage: 8,
       title: 'Numbers and Special Characters',
       objective: 'Currency, percentages, brackets and arithmetic notation. Every Shift press has to be clean and correctly chosen.',
       keys: [], newKeys: [],
@@ -1390,7 +1403,7 @@
       difficulty: 5, mastery: { wpm: 50, accuracy: 88 }
     }),
     mk({
-      id: 's7-04', stage: 7,
+      id: 's7-04', stage: 8,
       title: 'Mixed Case and Proper Nouns',
       objective: 'Headings, names and titles in the middle of sentences. Reach for the nearer Shift key every time.',
       keys: [], newKeys: [],
@@ -1401,7 +1414,7 @@
       difficulty: 5, mastery: { wpm: 58, accuracy: 90 }
     }),
     mk({
-      id: 's7-05', stage: 7,
+      id: 's7-05', stage: 8,
       title: 'Advanced Vocabulary',
       objective: 'Formal and academic language with long unfamiliar shapes. Slow down for the long words, then speed up again.',
       keys: [], newKeys: [],
@@ -1412,7 +1425,7 @@
       difficulty: 5, mastery: { wpm: 55, accuracy: 91 }
     }),
     mk({
-      id: 's7-06', stage: 7,
+      id: 's7-06', stage: 8,
       title: 'Endurance Run',
       objective: 'A long uninterrupted stretch with no pauses. This is where the cost of hesitation shows, so resist correcting minor slips.',
       keys: [], newKeys: [],
@@ -1423,7 +1436,7 @@
       difficulty: 5, mastery: { wpm: 65, accuracy: 92 }
     }),
     mk({
-      id: 's7-07', stage: 7,
+      id: 's7-07', stage: 8,
       title: 'Technical and Business',
       objective: 'Software notes, meetings and project admin. Acronyms and version numbers are the main hazard, so keep a steady digit rhythm.',
       keys: [], newKeys: [],
@@ -1434,7 +1447,7 @@
       difficulty: 5, mastery: { wpm: 60, accuracy: 92 }
     }),
     mk({
-      id: 's7-08', stage: 7,
+      id: 's7-08', stage: 8,
       title: 'Literary Prose',
       objective: 'Well-written English with a varied rhythm. Notice that the speed comes from phrasing rather than effort.',
       keys: [], newKeys: [],
@@ -1445,7 +1458,7 @@
       difficulty: 5, mastery: { wpm: 60, accuracy: 93 }
     }),
     mk({
-      id: 's7-pvw', stage: 7,
+      id: 's7-pvw', stage: 8,
       title: 'Proverbs and Wordplay',
       objective: 'Proverbs, tongue-twisters and playful prose: doubled letters, apostrophes, quotes and numbers all together. Twisty text like this makes ordinary sentences feel easy afterwards.',
       keys: [], newKeys: [],
@@ -1459,7 +1472,7 @@
       difficulty: 4, mastery: { wpm: 62, accuracy: 92 }
     }),
     mk({
-      id: 's7-09', stage: 7,
+      id: 's7-09', stage: 8,
       title: 'Full Speed Run',
       objective: 'Everything at once: mixed case, punctuation, numbers and unfamiliar words. Push the pace and keep corrections quick.',
       keys: [], newKeys: [],
@@ -1470,7 +1483,7 @@
       difficulty: 5, mastery: { wpm: 70, accuracy: 90 }
     }),
     mk({
-      id: 's7-10', stage: 7,
+      id: 's7-10', stage: 8,
       title: 'Final Challenge',
       objective: 'A long mixed passage to finish the course. Everything you have learned is used here; aim to type it as one continuous run.',
       keys: [], newKeys: [],
@@ -1481,7 +1494,7 @@
       difficulty: 5, mastery: { wpm: 75, accuracy: 92 }
     }),
     mk({
-      id: 's7-11', stage: 7,
+      id: 's7-11', stage: 8,
       title: 'Calm Confidence',
       objective: 'A gentle final lesson: type with ease and let the rhythm carry you. Speed is the by-product of relaxed accuracy.',
       keys: [], newKeys: [],
@@ -1493,8 +1506,8 @@
     })
   ];
 
-  /* ---------------------------------------------------------------- registry */
-  var LESSONS = STAGE1.concat(STAGE2, STAGE3, STAGE4, STAGE5, STAGE6, STAGE7);
+/* ---------------------------------------------------------------- registry */
+  var LESSONS = STAGE1.concat(STAGE2, STAGE3, STAGE4, STAGE5, STAGE6, STAGE7, STAGE8);
 
   // 1-based index within each stage, used for the "Lesson 01" label.
   var stageCounters = {};
@@ -1549,22 +1562,22 @@
   /* ------------------------------------------------------------ validation */
   // Characters a learner is allowed to have met, cumulatively, per stage.
   var BASE = ' asdfghjkl;\n\t';
+  // Stage 2 holds the whole key-column-drill sequence, so every letter
+  // (plus comma, full stop and slash) is announced across those drills:
+  var WITH_KEYS = BASE + ' qwertyuiopzxcvbnm,./';
+  var WITH_CAPS = WITH_KEYS +
+     'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +                        // capitals
+     '\'"?!-:()[]{}<>@#&*+=_|\\/~`^%$' +                   // symbols
+     '0123456789';                                         // numbers
   var STAGE_ALLOWED = {
     1: BASE,
-    2: BASE + ' qwertyuiop',
-    3: BASE + ' qwertyuiopzxcvbnm,./',
-    4: BASE + ' qwertyuiopzxcvbnm,./' +
-       'abcdefghijklmnopqrstuvwxyz' +                          // capitals
-       'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
-       '\'"?!-:()[]{}<>@#&*+=_|\\/~`^%$' +
-       '0123456789',   // stage 4 introduces the number row too
-    5: BASE + ' qwertyuiopzxcvbnm,./' +
-       'abcdefghijklmnopqrstuvwxyz' +
-       'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
-       '\'"?!-:()[]{}<>@#&*+=_|\\/~`^%$' +
-       '0123456789',
-    6: null,  // null = no restriction from here on
-    7: null
+    2: WITH_KEYS,   // every key column drill (top and bottom row)
+    3: WITH_KEYS,
+    4: WITH_KEYS,
+    5: WITH_CAPS,
+    6: WITH_CAPS,
+    7: null,  // null = no restriction from here on
+    8: null
   };
 
   /**
