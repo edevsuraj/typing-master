@@ -1,7 +1,7 @@
 /* =========================================================================
    Typing Master — Application (app.js)
    -------------------------------------------------------------------------
-   Wires the DOM to the typing engine, the curriculum and local storage.
+   Wires the DOM to the typing engine and the curriculum.
 
    Responsibilities
    ----------------
@@ -11,7 +11,9 @@
    * Turn physical keystrokes into engine input, without stealing keys from
      buttons, selects or dialogs.
    * Show live statistics, a compact results card and a passage review.
-   * Remember everything worth remembering in localStorage.
+
+   The app is deliberately stateless: nothing is stored anywhere, so every
+   visit starts fresh. Settings live in memory for the current visit only.
 
    There is no on-screen keyboard anywhere in this application: input comes
    from a real keyboard through a visually hidden <textarea>.
@@ -20,7 +22,6 @@
   'use strict';
 
   var L = global.TypingMasterLessons;
-  var Store = global.TypingMasterStore;
   var Engine = global.TypingMasterEngine;
 
   var doc = global.document;
@@ -46,11 +47,14 @@
   var viewportHeight = 0;
   var tickTimer = null;
   var toastTimer = null;
-  var resetArmed = false;
-  var resetTimer = null;
   var capsOn = false;
-  var pendingMistakes = [];
-  var mistakeFlushTimer = null;
+
+  // Preferences for this visit only. They are never written anywhere.
+  var settings = {
+    theme: 'system',        // 'system' | 'light' | 'dark'
+    caret: 'block',         // 'block' | 'line' | 'underline' | 'none'
+    liveStats: true         // show the live WPM / accuracy row while typing
+  };
 
   var session = {
     lessonId: null,
@@ -63,8 +67,17 @@
   function init() {
     cacheDom();
     bindEvents();
-    applyTheme(Store.setting('theme'));
+    applyTheme(settings.theme);
     applyCaretStyle();
+
+    // The app used to keep progress in localStorage; sweep any leftover blob
+    // away so the stateless promise is literally true.
+    try {
+      if (global.localStorage) {
+        global.localStorage.removeItem('typingmaster.progress.v1');
+        global.localStorage.removeItem('typingmaster.progress.v1.corrupt');
+      }
+    } catch (e) { /* storage blocked — nothing to clean anyway */ }
 
     buildLessonList();
     syncControlsFromSettings();
@@ -72,24 +85,13 @@
     engine = new Engine({
       onUpdate: onEngineUpdate,
       onComplete: onEngineComplete,
-      onMistake: noteMistake,
       onFirstInput: onFirstInput
     });
 
     startTicker();
 
-    // Restore the last lesson the user was on, or recommend the next one.
-    var resumeId = Store.get().progress.lastLessonId;
-    var lesson = (resumeId && L.getLesson(resumeId)) || L.nextLesson(Store.completedIds());
-    startSession({ lessonId: lesson ? lesson.id : L.LESSONS[0].id });
-
-    renderProgressView();
-
-    if (Store.hadCorruption()) {
-      toast('Saved progress was unreadable and has been reset.');
-    } else if (!Store.available()) {
-      toast('Saving is unavailable in this browser — progress lasts for this visit only.');
-    }
+    // Every visit starts from the first lesson.
+    startSession({ lessonId: L.LESSONS[0].id });
   }
 
   function cacheDom() {
@@ -126,16 +128,9 @@
       viewLessons: id('view-lessons'),
       viewProgress: id('view-progress'),
       lessonList: id('lesson-list'),
-      summary: id('summary'),
-      recentList: id('recent-list'),
-      recentEmpty: id('recent-empty'),
-      weakList: id('weak-list'),
-      weakEmpty: id('weak-empty'),
       themeSelect: id('theme-select'),
       caretSelect: id('caret-select'),
       liveStats: id('live-stats'),
-      resetBtn: id('reset-btn'),
-      resetHint: id('reset-hint'),
 
       results: id('results'),
       resultsKicker: id('results-kicker'),
@@ -147,7 +142,6 @@
       rGross: id('r-gross'),
       rChars: id('r-chars'),
       rDuration: id('r-duration'),
-      rBest: id('r-best'),
       rMistakes: id('r-mistakes'),
       rRetry: id('r-retry'),
       rNext: id('r-next'),
@@ -177,8 +171,8 @@
     dom.lessonsBtn.addEventListener('click', togglePanel);
     dom.themeBtn.addEventListener('click', function () {
       var current = doc.documentElement.getAttribute('data-theme');
-      applyTheme(current === 'dark' ? 'light' : 'dark');
-      Store.setting('theme', current === 'dark' ? 'light' : 'dark');
+      settings.theme = current === 'dark' ? 'light' : 'dark';
+      applyTheme(settings.theme);
       syncControlsFromSettings();
     });
 
@@ -244,20 +238,18 @@
     dom.tabProgress.addEventListener('click', function () { switchPanelTab('progress'); });
 
     dom.themeSelect.addEventListener('change', function () {
-      applyTheme(dom.themeSelect.value);
-      Store.setting('theme', dom.themeSelect.value);
+      settings.theme = dom.themeSelect.value;
+      applyTheme(settings.theme);
     });
     dom.caretSelect.addEventListener('change', function () {
-      Store.setting('caret', dom.caretSelect.value);
+      settings.caret = dom.caretSelect.value;
       applyCaretStyle();
       placeFloatingCaret(true);
     });
     dom.liveStats.addEventListener('change', function () {
-      Store.setting('liveStats', dom.liveStats.checked);
+      settings.liveStats = dom.liveStats.checked;
       dom.statbar.classList.toggle('is-hidden', !dom.liveStats.checked);
     });
-
-    dom.resetBtn.addEventListener('click', onResetClick);
 
     dom.rRetry.addEventListener('click', function () { closeResults(); restart(); });
     dom.rNext.addEventListener('click', function () {
@@ -275,11 +267,10 @@
   }
 
   function syncControlsFromSettings() {
-    var s = Store.get().settings;
-    dom.themeSelect.value = s.theme;
-    dom.caretSelect.value = s.caret;
-    dom.liveStats.checked = !!s.liveStats;
-    dom.statbar.classList.toggle('is-hidden', !s.liveStats);
+    dom.themeSelect.value = settings.theme;
+    dom.caretSelect.value = settings.caret;
+    dom.liveStats.checked = !!settings.liveStats;
+    dom.statbar.classList.toggle('is-hidden', !settings.liveStats);
   }
 
   /* ============================================================ sessions */
@@ -304,8 +295,6 @@
       lessonTitle: lesson.title,
       mastery: lesson.mastery
     });
-
-    Store.setLastLesson(lesson.id);
 
     paintHeader(lesson);
     renderPassage(text);
@@ -401,7 +390,7 @@
     dom.text.appendChild(floatingCaret);
     floatingCaret.style.display = '';
   }
-  function caretStyle() { return Store.setting('caret'); }
+  function caretStyle() { return settings.caret; }
 
   function placeFloatingCaret(instant) {
     var style = caretStyle();
@@ -565,26 +554,6 @@
     dom.capsHint.hidden = !(capsOn && !expectsUpper);
   }
 
-  /* -------------------------------------------------- weak-key bookkeeping */
-
-  /**
-   * Mistakes are batched before they touch localStorage: writing on every
-   * keystroke would make storage the slowest part of typing.
-   */
-  function noteMistake(expected) {
-    pendingMistakes.push(expected);
-    if (mistakeFlushTimer) return;
-    mistakeFlushTimer = global.setTimeout(flushMistakes, 1200);
-  }
-
-  function flushMistakes() {
-    global.clearTimeout(mistakeFlushTimer);
-    mistakeFlushTimer = null;
-    if (!pendingMistakes.length) return;
-    Store.recordMistakes(pendingMistakes);
-    pendingMistakes = [];
-  }
-
   function focusCapture() {
     if (anyDialogOpen()) return;
     try { dom.capture.focus({ preventScroll: true }); } catch (e) { dom.capture.focus(); }
@@ -641,34 +610,12 @@
   /* ============================================================= results */
 
   function onEngineComplete(result, reason) {
-    flushMistakes();
-    var previousBest = Store.get().stats.bestWpm;
     var lesson = L.getLesson(session.lessonId) || L.LESSONS[0];
-
-    var record = {
-      lessonId: lesson.id,
-      lessonTitle: lesson.title,
-      netWpm: result.netWpm,
-      grossWpm: result.grossWpm,
-      accuracy: result.accuracy,
-      correct: result.correct,
-      incorrect: result.incorrect,
-      typed: result.typed,
-      durationMs: result.durationMs,
-      completed: result.completed,
-      mastery: lesson.mastery
-    };
-
-    var saved = null;
-    if (result.typed > 0) saved = Store.recordSession(record);
-
-    showResults(result, reason, saved, previousBest, lesson);
-    buildLessonList();
-    renderProgressView();
+    showResults(result, reason, lesson);
     markCurrentLessonRow();
   }
 
-  function showResults(result, reason, saved, previousBest, lesson) {
+  function showResults(result, reason, lesson) {
     var titles = {
       finished: result.completed ? 'Passage complete' : 'Session ended',
       time: 'Time is up',
@@ -687,20 +634,7 @@
     dom.rChars.textContent = result.correct + ' correct · ' + result.incorrect + ' wrong';
     dom.rDuration.textContent = formatDuration(result.durationMs);
 
-    // Personal best, stated honestly.
-    var bestNow = Store.get().stats.bestWpm;
-    if (result.typed < 60) {
-      dom.rBest.textContent = 'too short to count';
-    } else if (saved && saved.newBestWpm) {
-      dom.rBest.textContent = 'new best · ' + Math.round(bestNow) + ' wpm';
-    } else if (previousBest > 0) {
-      var delta = Math.round(result.netWpm) - Math.round(previousBest);
-      dom.rBest.textContent = Math.round(bestNow) + ' wpm (' + (delta >= 0 ? '+' : '') + delta + ' today)';
-    } else {
-      dom.rBest.textContent = Math.round(bestNow) + ' wpm';
-    }
-
-    dom.rMessage.textContent = buildMessage(result, saved, lesson);
+    dom.rMessage.textContent = buildMessage(result, lesson);
 
     // Which keys were missed, most frequent first.
     dom.rMistakes.textContent = '';
@@ -732,7 +666,7 @@
   }
 
   /** A short, honest, constructive comment. Never claims progress it cannot prove. */
-  function buildMessage(result, saved, lesson) {
+  function buildMessage(result, lesson) {
     var parts = [];
     var mastery = lesson.mastery;
     var slips = result.mistakesMade || 0;
@@ -744,8 +678,6 @@
       return 'Only ' + result.typed + ' characters, typed in under a second — too short to measure speed or accuracy. ' +
              'Work through the whole passage and the numbers will mean something.';
     }
-
-    if (saved && saved.newBestWpm) parts.push('New personal best.');
 
     if (result.accuracy < 85) {
       parts.push('Accuracy comes first: you slipped on ' + slips + ' character' + (slips === 1 ? '' : 's') +
@@ -772,14 +704,6 @@
       }
     } else if (result.accuracy >= 97 && slips === 0) {
       parts.push('Very accurate. If you can hold this, the next step is simply a little more speed.');
-    }
-
-    if (saved && saved.masteryEligible === false && result.completed) {
-      parts.push('Typed too quickly to count towards mastery — type it once more at an even pace and the lesson will be marked.');
-    }
-
-    if (saved && saved.masteredNow) {
-      parts.push('Marked as mastered in your progress.');
     }
     return parts.join(' ');
   }
@@ -854,7 +778,6 @@
 
     L.STAGES.forEach(function (stage) {
       var lessons = L.lessonsForStage(stage.id);
-      var mastered = lessons.filter(function (l) { return Store.isMastered(l.id); }).length;
 
       var block = doc.createElement('section');
       block.className = 'stage-block';
@@ -865,7 +788,7 @@
       h3.textContent = stage.name;
       var count = doc.createElement('span');
       count.className = 'stage-count';
-      count.textContent = mastered + '/' + lessons.length;
+      count.textContent = lessons.length + ' lessons';
       head.appendChild(h3);
       head.appendChild(count);
 
@@ -881,7 +804,6 @@
         row.type = 'button';
         row.className = 'lesson-row';
         row.dataset.lessonId = lesson.id;
-        if (Store.isMastered(lesson.id)) row.classList.add('is-mastered');
         if (lesson.id === session.lessonId) row.classList.add('is-current');
 
         var name = doc.createElement('span');
@@ -890,10 +812,7 @@
 
         var meta = doc.createElement('span');
         meta.className = 'lesson-meta';
-        var record = Store.progressFor(lesson.id);
-        meta.textContent = record && record.bestWpm
-          ? Math.round(record.bestWpm) + ' wpm · ' + Math.round(record.bestAccuracy) + '%'
-          : lesson.mastery.wpm + ' wpm target';
+        meta.textContent = lesson.mastery.wpm + ' wpm target';
 
         row.appendChild(name);
         row.appendChild(meta);
@@ -918,90 +837,6 @@
     }
   }
 
-  function renderProgressView() {
-    var o = Store.overview();
-    dom.summary.textContent = '';
-
-    [
-      { value: o.lessonsMastered + ' / ' + L.COUNT, label: 'lessons mastered' },
-      { value: o.bestWpm ? Math.round(o.bestWpm) + ' wpm' : '—', label: 'best speed' },
-      { value: o.bestAccuracy ? Math.round(o.bestAccuracy) + '%' : '—', label: 'best accuracy' },
-      { value: formatPracticeTime(o.totalTimeMs), label: 'time practised' }
-    ].forEach(function (item) {
-      var box = doc.createElement('div');
-      box.className = 'summary-item';
-      var v = doc.createElement('span');
-      v.className = 'summary-value';
-      v.textContent = item.value;
-      var l = doc.createElement('span');
-      l.className = 'summary-label';
-      l.textContent = item.label;
-      box.appendChild(v);
-      box.appendChild(l);
-      dom.summary.appendChild(box);
-    });
-
-    var recent = Store.recent(8);
-    dom.recentList.textContent = '';
-    recent.forEach(function (r) {
-      var li = doc.createElement('li');
-      var what = doc.createElement('span');
-      what.textContent = r.lessonTitle || 'Practice';
-      var numbers = doc.createElement('span');
-      numbers.textContent = Math.round(r.wpm) + ' wpm · ' + Math.round(r.accuracy) + '%';
-      li.appendChild(what);
-      li.appendChild(numbers);
-      dom.recentList.appendChild(li);
-    });
-    dom.recentEmpty.hidden = recent.length > 0;
-
-    var weak = Store.weakKeys(12);
-    dom.weakList.textContent = '';
-    weak.forEach(function (w) {
-      var li = doc.createElement('li');
-      var ch = doc.createElement('span');
-      ch.textContent = (w.char === ' ' ? 'space' : (w.char === '\n' ? 'return' : w.char));
-      var n = doc.createElement('b');
-      n.textContent = '×' + w.missed;
-      li.appendChild(ch);
-      li.appendChild(n);
-      dom.weakList.appendChild(li);
-    });
-    dom.weakEmpty.hidden = weak.length > 0;
-
-    if (!Store.available()) {
-      dom.resetHint.textContent = 'Saving is unavailable in this browser, so there is nothing stored to reset.';
-    }
-  }
-
-  function onResetClick() {
-    if (!resetArmed) {
-      resetArmed = true;
-      dom.resetHint.setAttribute('data-armed', 'true');
-      dom.resetHint.textContent = 'Click "Reset saved progress" again to confirm. This cannot be undone.';
-      dom.resetBtn.textContent = 'Confirm reset';
-      resetTimer = global.setTimeout(disarmReset, 5000);
-      return;
-    }
-    global.clearTimeout(resetTimer);
-    disarmReset();
-    Store.resetAll();
-    syncControlsFromSettings();
-    applyTheme(Store.setting('theme'));
-    buildLessonList();
-    renderProgressView();
-    var lesson = L.nextLesson(Store.completedIds()) || L.LESSONS[0];
-    startSession({ lessonId: lesson.id });
-    toast('Saved progress cleared. Back to the first lesson.');
-  }
-
-  function disarmReset() {
-    resetArmed = false;
-    dom.resetHint.removeAttribute('data-armed');
-    dom.resetHint.textContent = 'This clears lessons, records and weak keys in this browser. It cannot be undone.';
-    dom.resetBtn.textContent = 'Reset saved progress';
-  }
-
   function switchPanelTab(which) {
     var lessons = which === 'lessons';
     dom.viewLessons.hidden = !lessons;
@@ -1010,7 +845,6 @@
     dom.tabProgress.classList.toggle('is-active', !lessons);
     dom.tabLessons.setAttribute('aria-selected', String(lessons));
     dom.tabProgress.setAttribute('aria-selected', String(!lessons));
-    if (!lessons) renderProgressView();
   }
 
   function openPanel() {
@@ -1058,20 +892,14 @@
   }
 
   function applyCaretStyle() {
-    dom.text.setAttribute('data-caret', Store.setting('caret'));
+    dom.text.setAttribute('data-caret', settings.caret);
   }
 
   /* ============================================================ helpers */
 
-  /**
-   * The logo: jump back to your place in the course, the next lesson you have
-   * not finished. Deliberately not progress.lastLessonId, which startSession()
-   * rewrites on every lesson change and would make this a button that appears
-   * to do nothing.
-   */
+  /** The logo: back to the first lesson, since nothing is remembered. */
   function goHome() {
-    var lesson = L.nextLesson(Store.completedIds()) || L.LESSONS[0];
-    startSession({ lessonId: lesson.id });
+    startSession({ lessonId: L.LESSONS[0].id });
   }
 
   function restart() {
@@ -1092,15 +920,6 @@
     var m = Math.floor(total / 60);
     var s = total % 60;
     return m + 'm ' + (s < 10 ? '0' : '') + s + 's';
-  }
-
-  function formatPracticeTime(ms) {
-    var minutes = Math.round(ms / 60000);
-    if (minutes < 1) return '<1 min';
-    if (minutes < 60) return minutes + ' min';
-    var h = Math.floor(minutes / 60);
-    var m = minutes % 60;
-    return h + ' h' + (m ? ' ' + m + ' min' : '');
   }
 
   function toast(message) {

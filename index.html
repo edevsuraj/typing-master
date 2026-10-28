@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Typing Master — learn touch typing, one lesson at a time</title>
-<meta name="description" content="A calm, distraction-free touch typing tutor. Structured lessons from the home row to advanced practice, live WPM and accuracy, and progress saved in your browser.">
+<meta name="description" content="A calm, distraction-free touch typing tutor. Structured lessons from the home row to advanced practice, live WPM and accuracy — and nothing is saved anywhere.">
 <meta name="color-scheme" content="dark light">
 <script>if (/[?&]desktop=1/.test(location.search)) document.documentElement.dataset.desktop = "1";</script>
 <link rel="stylesheet" href="css/style.css">
@@ -18,8 +18,8 @@
 <header class="topbar">
   <div class="brand">
     <button type="button" class="brand-btn" id="home-btn"
-            aria-label="Typing Master — go to your next lesson"
-            title="Go to your next lesson">
+            aria-label="Typing Master — go to the first lesson"
+            title="Go to the first lesson">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor" focusable="false">
           <rect x="7.5" y="9" width="3.5" height="14" rx="1.75"/>
@@ -69,7 +69,6 @@
       </div>
       <p class="caps-hint" id="caps-hint" hidden>Caps Lock is on — that explains the capitals.</p>
       <p class="text-hint" id="text-hint">Just start typing. Nothing needs clicking first.</p>
-      <p class="storage-note">Progress is saved in this browser only — it does not sync between devices.</p>
     </div>
 
     <div class="progress" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
@@ -106,7 +105,7 @@
 
     <div class="panel-tabs" role="tablist" aria-label="Panel sections">
       <button type="button" class="tab is-active" id="tab-lessons" role="tab" aria-selected="true" aria-controls="view-lessons">Lessons</button>
-      <button type="button" class="tab" id="tab-progress" role="tab" aria-selected="false" aria-controls="view-progress">Progress &amp; settings</button>
+      <button type="button" class="tab" id="tab-progress" role="tab" aria-selected="false" aria-controls="view-progress">Settings</button>
     </div>
 
     <div class="panel-view" id="view-lessons" role="tabpanel" aria-labelledby="tab-lessons" tabindex="0">
@@ -114,16 +113,6 @@
     </div>
 
     <div class="panel-view" id="view-progress" role="tabpanel" aria-labelledby="tab-progress" tabindex="0" hidden>
-      <div class="summary" id="summary"></div>
-
-      <h3 class="panel-subtitle">Recent sessions</h3>
-      <ul class="recent" id="recent-list"></ul>
-      <p class="empty" id="recent-empty">No sessions recorded yet. Finish a passage and it will appear here.</p>
-
-      <h3 class="panel-subtitle">Keys to practise</h3>
-      <ul class="weak-list" id="weak-list"></ul>
-      <p class="empty" id="weak-empty">Mistakes you make will be collected here automatically.</p>
-
       <h3 class="panel-subtitle">Preferences</h3>
       <div class="settings">
         <span class="field">
@@ -148,11 +137,7 @@
           <label for="live-stats">Show live statistics while typing</label>
         </span>
       </div>
-
-      <div class="danger">
-        <button type="button" class="btn btn-danger" id="reset-btn">Reset saved progress</button>
-        <p class="hint" id="reset-hint" role="status">This clears lessons, records and weak keys in this browser. It cannot be undone.</p>
-      </div>
+      <p class="empty">Nothing is saved or remembered — every visit starts fresh.</p>
     </div>
   </div>
 </dialog>
@@ -179,7 +164,6 @@
       <div><dt>Gross speed</dt><dd id="r-gross">0 wpm</dd></div>
       <div><dt>Characters</dt><dd id="r-chars">0 correct · 0 wrong</dd></div>
       <div><dt>Duration</dt><dd id="r-duration">0:00</dd></div>
-      <div><dt>Personal best</dt><dd id="r-best">&mdash;</dd></div>
     </dl>
 
     <ul class="results-mistakes" id="r-mistakes"></ul>
@@ -208,7 +192,6 @@
 </noscript>
 
 <script src="js/lessons.js"></script>
-<script src="js/storage.js"></script>
 <script src="js/typing-engine.js"></script>
 <script src="js/app.js"></script>
 <script>

@@ -62,10 +62,11 @@ optional test and server scripts; the application itself never needs it.
 - **Character-by-character feedback** with a caret, wrong-character marking and
   automatic scrolling that keeps your current line in view.
 - **Results card** with net WPM, gross WPM, accuracy, character counts,
-  duration, an honest comparison with your personal best, and a passage review
-  that lists every key you missed with its surrounding text.
+  duration, and a passage review that lists every key you missed with its
+  surrounding text.
 - **Light and dark themes**, plus "match system".
-- **Progress saved in the browser**, with a two-step reset.
+- **Nothing is saved.** The app is completely stateless — no accounts, no
+  cookies, no localStorage. Every visit starts fresh.
 - **Works on a phone**, with an explanation that a physical keyboard is
   recommended for learning touch typing.
 
@@ -137,27 +138,9 @@ accuracy  = (correct characters) / (every character attempted) × 100
 
 ## What gets saved, and where
 
-Everything lives in `localStorage` under the key `typingmaster.progress.v1`, as
-one versioned JSON object:
-
-- which lessons you have completed and mastered, and your best result for each
-- best WPM, best accuracy, session count, total characters, total practice time
-- a daily practice log (last 120 days)
-- your last 25 sessions
-- per-character mistake counts, shown in the panel as "keys to practise"
-- preferences: theme, caret style, and whether the live statistics row is shown
-
-**Your progress is stored in this browser only.** It does not sync between
-browsers, devices or private windows, and clearing site data deletes it.
-
-The data is versioned (`version: 2`) and migrated forward on load, and every
-field is type-checked on read: a corrupted or hand-edited blob is repaired, a
-backup copy is kept under `…v1.corrupt`, and the app starts fresh with a
-message. If `localStorage` is unavailable altogether (private mode, storage
-disabled), the app runs from memory and says so.
-
-**Reset:** *Lessons → Progress & settings → Reset saved progress*, then confirm.
-The button changes to "Confirm reset" for five seconds.
+Nothing. The app keeps no progress, no history and no settings anywhere: no
+localStorage, no cookies, no server. Choosing a theme or a caret style lasts
+for the current visit only, and every reload starts from the first lesson.
 
 ---
 
@@ -205,8 +188,7 @@ Browser shortcuts (`Ctrl`+`R`, `Ctrl`+`Tab`, …) are deliberately left alone.
 index.html            markup and dialogs
 assets/logo.svg       the logo: a caret at the start of three lines of text
 css/style.css         tokens, layout, both themes, responsive rules
-js/lessons.js         the curriculum: 82 lessons, 342 passages
-js/storage.js         versioned localStorage with migration and repair
+js/lessons.js         the curriculum: 106 lessons, 443 passages
 js/typing-engine.js   scoring, timing and the WPM/accuracy maths (DOM-free)
 js/app.js             screens, input handling, rendering, results
 tools/verify.js       headless checks for the curriculum and the maths
@@ -214,7 +196,7 @@ tools/serve.js        optional static file server for local testing
 README.md             this file
 ```
 
-`js/lessons.js`, `js/storage.js` and `js/typing-engine.js` are plain scripts
+`js/lessons.js` and `js/typing-engine.js` are plain scripts
 that attach to `window`, loaded in dependency order with ordinary `<script>`
 tags — deliberately *not* ES modules, because modules are blocked by the CORS
 rules on `file://` and this app must run by opening a file.
@@ -245,8 +227,7 @@ bookkeeping.
 
 Manually, the useful things to try are: typing a lesson start to finish;
 making a mistake and correcting it with Backspace; pressing `Escape` and
-`Ctrl`+`Enter`; switching themes; resizing the window mid-passage; and resetting
-progress after a warning.
+`Ctrl`+`Enter`; switching themes; and resizing the window mid-passage.
 
 ---
 
@@ -259,7 +240,6 @@ progress after a warning.
    index.html
    css/style.css
    js/lessons.js
-   js/storage.js
    js/typing-engine.js
    js/app.js
    README.md
