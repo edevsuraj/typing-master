@@ -29,10 +29,10 @@
 
   /* ---------------------------------------------------------------- stages */
   var STAGES = [
-    { id: 1, name: 'Home Row', summary: 'Build the foundation on the ten home keys, starting from the two index anchors.' },
+    { id: 1, name: 'Home Row', summary: 'Build the foundation on the ten home keys, starting from the two index anchors and finishing with full-row sweeps.' },
     { id: 2, name: 'Key Drills', summary: 'Meet every outer key one at a time, drilled against its home-key partner - top row first, then the bottom row, ending with comma, full stop and slash.' },
-    { id: 3, name: 'Top Row', summary: 'Blend the top-row keys you drilled with your home keys, then move on to words, phrases and sentences.' },
-    { id: 4, name: 'Bottom Row', summary: 'Blend the bottom row with everything you know: sweeps, alternating rows, punctuation, words, sentences and a full-alphabet passage.' },
+    { id: 3, name: 'First Words', summary: 'Your first real words, phrases and a passage, typed with nothing but the ten home keys.' },
+    { id: 4, name: 'Blending', summary: 'Blend every row with everything you know: top and bottom row pairs, alternating hands, punctuation, phrases, sentences and passages.' },
     { id: 5, name: 'Complete Alphabet', summary: 'Every key, plus capitals, numbers, quotes and the punctuation you meet in real writing.' },
     { id: 6, name: 'Words & Sentences', summary: 'Natural English: everyday vocabulary, sentences, paragraphs, letters and email.' },
     { id: 7, name: 'Speed & Accuracy', summary: 'Accuracy first, then rhythm, common-word bursts and targeted drills.' },
@@ -224,46 +224,6 @@
       ],
       difficulty: 3, mastery: { wpm: 20, accuracy: 92 }
     }),
-    mk({
-      id: 's1-12', stage: 1,
-      title: 'Home Row Words',
-      objective: 'Real words built only from home-row letters. Type whole words in one smooth motion instead of letter by letter.',
-      keys: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'], newKeys: [],
-      passages: [
-        "flag flask gash glad hall half ask a lad all shall fall has had a lad a lag a lash a sag shall slash glass fall flash flag all shall fall a sad hall flag salad shall fall a sad fad gal gas has had a lad a lag a lash a sag shall slash glass fall flash flag dad fad gal gas had hag has lad a sad lad had",
-        "a glass flask dad fad gal gas had hag has lad a glass had a lad a lad had a glass all shall fall a sad hall flag ask a lad all shall fall dad fad gal gas had hag has lad a glass had a lad a lad had a glass half a glass a hall gash a sad lad ask a lad all shall fall all shall fall a sad hall flag salad shall fall a sad fad gal gas has had",
-        "a lad a lag a lash a sag a glass had a lad a lad had a glass has had a lad a lag a lash a sag glad gals lads hags hall half half a glass a hall gash a sad lad glad gals lads hags hall half flag flask gash glad hall half a sad lad had a glass flask dad fad gal gas had hag has lad a sad lad had a glass flask dad fad gal gas had hag has lad a glad gash all fall all ask flash",
-        "a flask a glass a hall glad gals lads hags hall half flash a flask a glass a hall glad gals lads hags hall half dad fad gal gas had hag has lad salad shall fall a sad fad gal gas dad fad gal gas had hag has lad a sad lad had a glass flask has had a lad a lag a lash a sag ask a lad all shall fall all shall fall a sad hall flag shall slash",
-        "glass fall flash flag dash a flask a lass shall lag glad gals lads hags hall half dad fad gal gas had hag has lad ask a lad all shall fall flag flask gash glad hall half glad gals lads hags hall half all shall fall a sad hall flag salad shall fall a sad fad gal gas half a glass a hall gash a sad lad a glass had a lad a lad had a glass flag flask gash glad hall half shall slash glass fall fl",
-      ],
-      difficulty: 3, mastery: { wpm: 22, accuracy: 92 }
-    }),
-    mk({
-      id: 's1-13', stage: 1,
-      title: 'Home Row Phrases',
-      objective: 'Keep the spaces even and the pace steady while moving between words. A space is a real key press, not a pause.',
-      keys: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'], newKeys: [],
-      passages: [
-        "glad gals lads hags hall half dad fad gal gas had hag has lad glad gals lads hags hall half all shall fall a sad hall flag shall slash glass fall flash flag flag flask gash glad hall half glad gals lads hags hall half has had a lad a lag a lash a sag salad shall fall a sad fad gal gas half a glass a",
-        "hall gash a sad lad glad gals lads hags hall half all shall fall a sad hall flag salad shall fall a sad fad gal gas all shall fall a sad hall flag glad gals lads hags hall half all shall fall a sad hall flag salad shall fall a sad fad gal gas dash a flask a lass shall lag a glass had a lad a lad had a glass dad fad gal gas had hag has lad",
-        "a sad lad had a glass flask half a glass a hall gash a sad lad salad shall fall a sad fad gal gas flash a flask a glass a hall a glass had a lad a lad had a glass dash a flask a lass shall lag a glass had a lad a lad had a glass flash a flask a glass a hall salad shall fall a sad fad gal gas flash a flask a glass a hall ask a lad all shall fall has had a lad a lag a lash a",
-        "sag glad gals lads hags hall half dad fad gal gas had hag has lad ask a lad all shall fall dash a flask a lass shall lag a glad gash all fall all ask has had a lad a lag a lash a sag salad shall fall a sad fad gal gas half a glass a hall gash a sad lad a sad lad had a glass flask has had a lad a lag a lash a sag",
-        "shall slash glass fall flash flag dad fad gal gas had hag has lad salad shall fall a sad fad gal gas flag flask gash glad hall half a glass had a lad a lad had a glass dad fad gal gas had hag has lad a glad gash all fall all ask dash a flask a lass shall lag glad gals lads hags hall half dash a flask a lass shall lag a sad lad had a glass flask flash a flask a glass a hall a glass",
-        "had a lad a lad had a glass flash a flask a glass a hall salad shall fall a sad fad gal gas dad fad gal gas had hag has lad glad gals lads hags hall half all shall fall a sad hall flag glad gals lads hags hall half dash a flask a lass shall lag a glass had a lad a lad had a glass dash a flask a lass shall lag a glass had a lad a lad had a glass dad fad gal gas had hag has lad salad",
-      ],
-      difficulty: 3, mastery: { wpm: 24, accuracy: 92 }
-    }),
-    mk({
-      id: 's1-14', stage: 1,
-      title: 'Home Row Passage',
-      objective: 'A longer stretch of home-row text. Aim for accuracy first and read a word ahead rather than looking at each key.',
-      keys: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'], newKeys: [],
-      passages: [
-        "dad fad gal gas had hag has lad a glass had a lad a lad had a glass all shall fall a sad hall flag ask a lad all shall fall half a glass a hall gash a sad lad a glad gash all fall all ask all shall fall a sad hall flag salad shall fall a sad fad gal gas has had a lad a lag a lash a sag shall slash glass",
-        "fall flash flag dash a flask a lass shall lag a sad lad had a glass flask half a glass a hall gash a sad lad ask a lad all shall fall has had a lad a lag a lash a sag a sad lad had a glass flask dad fad gal gas had hag has lad a glad gash all fall all ask flag flask gash glad hall half shall slash glass fall flash flag half a glass a hall gash a sad lad salad shall fall a sad fad gal gas dad",
-      ],
-      difficulty: 3, mastery: { wpm: 25, accuracy: 92 }
-    })
   ];
 
   /* =======================================================================
@@ -533,12 +493,59 @@
   ];
 
   /* =======================================================================
-     STAGE 3 — TOP ROW MIXING AND WORDS
-     ====================================================================== */
+     STAGE 3 — FIRST WORDS (HOME KEYS ONLY)
+     ======================================================================= */
 
   var STAGE3 = [
     mk({
-      id: 's2-01', stage: 3,
+      id: 's1-12', stage: 3,
+      title: 'Home Row Words',
+      objective: 'Real words built only from home-row letters. Type whole words in one smooth motion instead of letter by letter.',
+      keys: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'], newKeys: [],
+      passages: [
+        "flag flask gash glad hall half ask a lad all shall fall has had a lad a lag a lash a sag shall slash glass fall flash flag all shall fall a sad hall flag salad shall fall a sad fad gal gas has had a lad a lag a lash a sag shall slash glass fall flash flag dad fad gal gas had hag has lad a sad lad had",
+        "a glass flask dad fad gal gas had hag has lad a glass had a lad a lad had a glass all shall fall a sad hall flag ask a lad all shall fall dad fad gal gas had hag has lad a glass had a lad a lad had a glass half a glass a hall gash a sad lad ask a lad all shall fall all shall fall a sad hall flag salad shall fall a sad fad gal gas has had",
+        "a lad a lag a lash a sag a glass had a lad a lad had a glass has had a lad a lag a lash a sag glad gals lads hags hall half half a glass a hall gash a sad lad glad gals lads hags hall half flag flask gash glad hall half a sad lad had a glass flask dad fad gal gas had hag has lad a sad lad had a glass flask dad fad gal gas had hag has lad a glad gash all fall all ask flash",
+        "a flask a glass a hall glad gals lads hags hall half flash a flask a glass a hall glad gals lads hags hall half dad fad gal gas had hag has lad salad shall fall a sad fad gal gas dad fad gal gas had hag has lad a sad lad had a glass flask has had a lad a lag a lash a sag ask a lad all shall fall all shall fall a sad hall flag shall slash",
+        "glass fall flash flag dash a flask a lass shall lag glad gals lads hags hall half dad fad gal gas had hag has lad ask a lad all shall fall flag flask gash glad hall half glad gals lads hags hall half all shall fall a sad hall flag salad shall fall a sad fad gal gas half a glass a hall gash a sad lad a glass had a lad a lad had a glass flag flask gash glad hall half shall slash glass fall fl",
+      ],
+      difficulty: 3, mastery: { wpm: 22, accuracy: 92 }
+    }),
+    mk({
+      id: 's1-13', stage: 3,
+      title: 'Home Row Phrases',
+      objective: 'Keep the spaces even and the pace steady while moving between words. A space is a real key press, not a pause.',
+      keys: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'], newKeys: [],
+      passages: [
+        "glad gals lads hags hall half dad fad gal gas had hag has lad glad gals lads hags hall half all shall fall a sad hall flag shall slash glass fall flash flag flag flask gash glad hall half glad gals lads hags hall half has had a lad a lag a lash a sag salad shall fall a sad fad gal gas half a glass a",
+        "hall gash a sad lad glad gals lads hags hall half all shall fall a sad hall flag salad shall fall a sad fad gal gas all shall fall a sad hall flag glad gals lads hags hall half all shall fall a sad hall flag salad shall fall a sad fad gal gas dash a flask a lass shall lag a glass had a lad a lad had a glass dad fad gal gas had hag has lad",
+        "a sad lad had a glass flask half a glass a hall gash a sad lad salad shall fall a sad fad gal gas flash a flask a glass a hall a glass had a lad a lad had a glass dash a flask a lass shall lag a glass had a lad a lad had a glass flash a flask a glass a hall salad shall fall a sad fad gal gas flash a flask a glass a hall ask a lad all shall fall has had a lad a lag a lash a",
+        "sag glad gals lads hags hall half dad fad gal gas had hag has lad ask a lad all shall fall dash a flask a lass shall lag a glad gash all fall all ask has had a lad a lag a lash a sag salad shall fall a sad fad gal gas half a glass a hall gash a sad lad a sad lad had a glass flask has had a lad a lag a lash a sag",
+        "shall slash glass fall flash flag dad fad gal gas had hag has lad salad shall fall a sad fad gal gas flag flask gash glad hall half a glass had a lad a lad had a glass dad fad gal gas had hag has lad a glad gash all fall all ask dash a flask a lass shall lag glad gals lads hags hall half dash a flask a lass shall lag a sad lad had a glass flask flash a flask a glass a hall a glass",
+        "had a lad a lad had a glass flash a flask a glass a hall salad shall fall a sad fad gal gas dad fad gal gas had hag has lad glad gals lads hags hall half all shall fall a sad hall flag glad gals lads hags hall half dash a flask a lass shall lag a glass had a lad a lad had a glass dash a flask a lass shall lag a glass had a lad a lad had a glass dad fad gal gas had hag has lad salad",
+      ],
+      difficulty: 3, mastery: { wpm: 24, accuracy: 92 }
+    }),
+    mk({
+      id: 's1-14', stage: 3,
+      title: 'Home Row Passage',
+      objective: 'A longer stretch of home-row text. Aim for accuracy first and read a word ahead rather than looking at each key.',
+      keys: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'], newKeys: [],
+      passages: [
+        "dad fad gal gas had hag has lad a glass had a lad a lad had a glass all shall fall a sad hall flag ask a lad all shall fall half a glass a hall gash a sad lad a glad gash all fall all ask all shall fall a sad hall flag salad shall fall a sad fad gal gas has had a lad a lag a lash a sag shall slash glass",
+        "fall flash flag dash a flask a lass shall lag a sad lad had a glass flask half a glass a hall gash a sad lad ask a lad all shall fall has had a lad a lag a lash a sag a sad lad had a glass flask dad fad gal gas had hag has lad a glad gash all fall all ask flag flask gash glad hall half shall slash glass fall flash flag half a glass a hall gash a sad lad salad shall fall a sad fad gal gas dad",
+      ],
+      difficulty: 3, mastery: { wpm: 25, accuracy: 92 }
+    })
+  ];
+
+  /* =======================================================================
+     STAGE 4 — BLENDING (TOP ROW, BOTTOM ROW, FULL ALPHABET)
+     ======================================================================= */
+
+  var STAGE4 = [
+    mk({
+      id: 's2-01', stage: 4,
       title: 'Q and P',
       objective: 'Mix the two outside top keys across both hands: little fingers stretch up in turn, one on each side, and return straight to their home keys.',
       keys: ['q', 'p', 'a', ';'], newKeys: [],
@@ -552,7 +559,7 @@
       difficulty: 2, mastery: { wpm: 20, accuracy: 92 }
     }),
     mk({
-      id: 's2-02', stage: 3,
+      id: 's2-02', stage: 4,
       title: 'W and O',
       objective: 'Mix the two ring-finger reaches: W with the left hand, O with the right, alternating without moving the wrists.',
       keys: ['w', 'o', 'q', 'p'], newKeys: [],
@@ -566,7 +573,7 @@
       difficulty: 2, mastery: { wpm: 20, accuracy: 92 }
     }),
     mk({
-      id: 's2-03', stage: 3,
+      id: 's2-03', stage: 4,
       title: 'E and I',
       objective: 'Mix the two middle-finger reaches: E with the left hand, I with the right. These keys appear in a large share of English words.',
       keys: ['e', 'i', 'd', 'k'], newKeys: [],
@@ -580,7 +587,7 @@
       difficulty: 2, mastery: { wpm: 21, accuracy: 92 }
     }),
     mk({
-      id: 's2-04', stage: 3,
+      id: 's2-04', stage: 4,
       title: 'R and U',
       objective: 'Mix the two index-finger reaches above the anchors: R with the left hand, U with the right.',
       keys: ['r', 'u', 'f', 'j'], newKeys: [],
@@ -594,7 +601,7 @@
       difficulty: 2, mastery: { wpm: 21, accuracy: 92 }
     }),
     mk({
-      id: 's2-05', stage: 3,
+      id: 's2-05', stage: 4,
       title: 'T and Y',
       objective: 'Mix the long index reaches: T with the left hand, Y with the right — the furthest stretches on the top row.',
       keys: ['t', 'y', 'g', 'h'], newKeys: [],
@@ -608,7 +615,7 @@
       difficulty: 2, mastery: { wpm: 22, accuracy: 92 }
     }),
     mk({
-      id: 's2-06', stage: 3,
+      id: 's2-06', stage: 4,
       title: 'Top Row · Left Hand',
       objective: 'Sweep the five left-hand top keys Q W E R T forwards and back. The right hand keeps its position on the home row.',
       keys: ['q', 'w', 'e', 'r', 't'], newKeys: [],
@@ -623,7 +630,7 @@
       difficulty: 3, mastery: { wpm: 22, accuracy: 91 }
     }),
     mk({
-      id: 's2-07', stage: 3,
+      id: 's2-07', stage: 4,
       title: 'Top Row · Right Hand',
       objective: 'Sweep Y U I O P forwards and back. Watch that the right hand does not drift to the right as you reach.',
       keys: ['y', 'u', 'i', 'o', 'p'], newKeys: [],
@@ -638,7 +645,7 @@
       difficulty: 3, mastery: { wpm: 22, accuracy: 91 }
     }),
     mk({
-      id: 's2-08', stage: 3,
+      id: 's2-08', stage: 4,
       title: 'Top and Home · Alternating',
       objective: 'Pair each top-row key with the home key beneath it. This vertical reach is the core of comfortable touch typing.',
       keys: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'], newKeys: [],
@@ -653,7 +660,7 @@
       difficulty: 3, mastery: { wpm: 24, accuracy: 91 }
     }),
     mk({
-      id: 's2-09', stage: 3,
+      id: 's2-09', stage: 4,
       title: 'Top Row Words',
       objective: 'Words made from the top row plus everything you already know. Let the fingers follow the familiar pattern.',
       keys: ['t', 'y', 'p', 'r', 'i', 'q', 'e', 'o', 'w', 'u'], newKeys: [],
@@ -670,7 +677,7 @@
       difficulty: 3, mastery: { wpm: 26, accuracy: 91 }
     }),
     mk({
-      id: 's2-10', stage: 3,
+      id: 's2-10', stage: 4,
       title: 'Top Row Phrases',
       objective: 'Short phrases with a comfortable rhythm. Keep your eyes a little ahead of your fingers and trust the pattern.',
       keys: ['w', 't', 'y', 'p', 'r', 'i', 'q', 'e', 'o', 'u', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'], newKeys: [],
@@ -686,7 +693,7 @@
       difficulty: 3, mastery: { wpm: 28, accuracy: 91 }
     }),
     mk({
-      id: 's2-11', stage: 3,
+      id: 's2-11', stage: 4,
       title: 'Top Row Sentences',
       objective: 'Whole sentences, still without capitals, so attention stays on letters, spaces and word endings. Slow is fine.',
       keys: ['w', 't', 'y', 'p', 'r', 'i', 'q', 'e', 'o', 'u'], newKeys: [],
@@ -701,7 +708,7 @@
       difficulty: 4, mastery: { wpm: 30, accuracy: 90 }
     }),
     mk({
-      id: 's2-12', stage: 3,
+      id: 's2-12', stage: 4,
       title: 'Top and Home Passage',
       objective: 'A longer passage using the top row and the home row together. Read a phrase ahead and let your hands follow it.',
       keys: ['w', 't', 'y', 'p', 'r', 'i', 'q', 'e', 'o', 'u'], newKeys: [],
@@ -710,15 +717,7 @@
         "at a quiet hour we will wait here for the quiet hour we write quietly at a quiet hour the quiet road is pure i put the rope out write quietly at a quiet hour the pure light type it out pour the water quite a while type out the quiet story we put it away the pure light is out we put it away your quiet trip we will wait here type it out pour the water quite a while we write quietly at a quiet hou",
       ],
       difficulty: 4, mastery: { wpm: 32, accuracy: 90 }
-    })
-  ];
-
-  /* =======================================================================
-     STAGE 4 — BOTTOM ROW MIXING AND WORDS
-     ====================================================================== */
-
-  var STAGE4 = [
-    mk({
+    }),    mk({
       id: 's3-01', stage: 4,
       title: 'Z and M',
       objective: 'Mix the two outside bottom keys across both hands: little fingers curl down on each side and return to their home keys.',
@@ -1572,7 +1571,7 @@
   var STAGE_ALLOWED = {
     1: BASE,
     2: WITH_KEYS,   // every key column drill (top and bottom row)
-    3: WITH_KEYS,
+    3: BASE,        // first words use only the ten home keys
     4: WITH_KEYS,
     5: WITH_CAPS,
     6: WITH_CAPS,

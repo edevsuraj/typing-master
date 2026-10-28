@@ -79,10 +79,10 @@ that rule itself.
 
 | Stage | Name | What it covers |
 | --- | --- | --- |
-| 1 | Home Row | F and J as anchors, then D/K, S/L, A and `;`, G/H, full sweeps, words, phrases and a passage — using only `a s d f g h j k l ;` |
+| 1 | Home Row | F and J as anchors, then D/K, S/L, A and `;`, G/H, full sweeps — keys only, using just `a s d f g h j k l ;` |
 | 2 | Key Drills | All 20 key column drills in one place: every top-row key (aq, sw, ed, fr, gt, hy, ju, ki, lo, p;) and every bottom-row key (az, sx, dc, fv, gb, hn, jm, k,, l., ;/) drilled against its home-row partner |
-| 3 | Top Row | Blending practice for the drilled top-row keys: pairs like Q/P, W/O, E/I, R/U, T/Y, hand sweeps, alternating reaches, words, phrases, sentences and a passage |
-| 4 | Bottom Row | Blending practice for the bottom row: Z/M, X/comma, C/full stop, V/slash, B/N, alternating rows, full-alphabet words, punctuation and a three-row passage |
+| 3 | First Words | Your first real words, phrases and a passage — typed with nothing but the ten home keys |
+| 4 | Blending | Top-row and bottom-row pair practice (Q/P, W/O…, Z/M, X/comma…), alternating hands, punctuation, row words, phrases, sentences and full-alphabet passages — 24 lessons |
 | 5 | Complete Alphabet | The whole alphabet, common letter pairs, the commonest words, long words, prefixes and suffixes, capitals and Shift, quotes, numbers |
 | 6 | Words & Sentences | Everyday sentences and vocabulary, longer sentences, paragraphs, capitalisation, numbers and symbols, dialogue, letters and email, natural prose |
 | 7 | Speed & Accuracy | Accuracy before speed, rhythm, row bursts for all three rows plus the full keyboard, weak-finger drills, common words at speed, sprint practice, consistency, mistake recovery |
